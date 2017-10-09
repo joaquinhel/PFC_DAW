@@ -35,7 +35,6 @@ if (isset($_POST['email'])) {
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
 
     if (!preg_match($email_exp, $email_from)) {
-
         $error_message .= 'La dirección de correo proporcionada no es válida.<br />';
     }
 
@@ -64,9 +63,7 @@ if (isset($_POST['email'])) {
     $email_message = "Contenido del Mensaje.\n\n";
 
     function clean_string($string) {
-
         $bad = array("content-type", "bcc:", "to:", "cc:", "href");
-
         return str_replace($bad, "", $string);
     }
 
