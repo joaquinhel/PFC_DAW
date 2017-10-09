@@ -1,23 +1,13 @@
 <?php
 if (isset($_POST['email'])) {
-
-    // Edita las líneas siguientes con tu dirección de correo y asunto
-
-    $email_to = "
- tucorreo@tucorreo.com";
-
+    $email_to ="joaquin_1919@hotmail.com";
     $email_subject = "Tu Asunto de correo";
 
     function died($error) {
-
         // si hay algún error, el formulario puede desplegar su mensaje de aviso
-
         echo "Lo sentimos, hay un error en sus datos y el formulario no puede ser enviado. ";
-
         echo "Detalle de los errores.<br /><br />";
-
         echo $error . "<br /><br />";
-
         echo "Porfavor corrije los errores e inténtelo de nuevo.<br /><br />";
         die();
     }
@@ -33,17 +23,11 @@ if (isset($_POST['email'])) {
         died('Lo sentimos pero parece haber un problema con los datos enviados.');
     }
     //Valor "name" nos sirve para crear las variables que recolectaran la información de cada campo
-
     $first_name = $_POST['first_name']; // requerido
-
     $last_name = $_POST['last_name']; // requerido
-
     $email_from = $_POST['email']; // requerido
-
     $telephone = $_POST['telephone']; // no requerido 
-
     $message = $_POST['message']; // requerido
-
     $error_message = "Error";
 
 //Verificar que la dirección de correo sea válida 
@@ -60,22 +44,18 @@ if (isset($_POST['email'])) {
     $string_exp = "/^[A-Za-z .'-]+$/";
 
     if (!preg_match($string_exp, $first_name)) {
-
         $error_message .= 'El formato del nombre no es válido<br />';
     }
 
     if (!preg_match($string_exp, $last_name)) {
-
         $error_message .= 'el formato del apellido no es válido.<br />';
     }
 
     if (strlen($message) < 2) {
-
         $error_message .= 'El formato del texto no es válido.<br />';
     }
 
     if (strlen($error_message) < 0) {
-
         died($error_message);
     }
 
@@ -91,13 +71,9 @@ if (isset($_POST['email'])) {
     }
 
     $email_message .= "Nombre: " . clean_string($first_name) . "\n";
-
     $email_message .= "Apellido: " . clean_string($last_name) . "\n";
-
     $email_message .= "Email: " . clean_string($email_from) . "\n";
-
     $email_message .= "Teléfono: " . clean_string($telephone) . "\n";
-
     $email_message .= "Mensaje: " . clean_string($message) . "\n";
 
 
