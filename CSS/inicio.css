@@ -19,7 +19,7 @@ and open the template in the editor.
     display:inline;margin:0 3px;
 }
 
-#contenedor{
+.contenedor{
     background: red;
     margin:auto;  /* para centrar el contenedor */
     width: 600px; /* es necesario dar un tamaño, sino
@@ -32,7 +32,7 @@ and open the template in the editor.
     text-align:center; /*para que en IE 5.5 salga centrado*/
 }
 
-#contenedor{
+.contenedor{
     background: red;
     margin:auto;      /* para centrar el contenedor */
     width: 90%;
@@ -46,7 +46,7 @@ and open the template in the editor.
     height:220px;               /* 2 - le damos un alto */
     margin-top:10px;
 }
-#caja{
+.caja{
     width: 30%;               /* 3 */
     height: 50%;              /* 4 */
     float: left;                /* 5 - para que salga en formato de tabla*/
@@ -54,7 +54,7 @@ and open the template in the editor.
     background: blue;
 }
 
-#destacado{
+.destacado{
     margin: 0px 15px 15px 15px;
     height: 200px; /* le damos un alto mínimo*/
     background: green;
