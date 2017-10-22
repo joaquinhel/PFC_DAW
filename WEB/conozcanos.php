@@ -7,41 +7,29 @@
         <meta charset="UTF-8">
     </head>
     <body id="body">
-        <div id="menu">
-            <ul>
-                <li><a href="#">Conózcanos</a></li>
-                <li> | </li>
-                <li><a href="#">Servicios</a></li>
-                <li> | </li>
-                <li><a href="#">Catálogo</a></li>
-                <li> | </li>
-                <li><a href="#">Novedades</a></li>
-                <li> | </li>
-                <li><a href="#">Ofertas</a></li>
-                <li> | </li>
-                <li><a href="#">Consultas</a></li>
-                <li> | </li>
-                <li><a href="#">Intranet</a></li>
-            </ul>
-        </div>
+        <?php
+       include 'menu.php';
+       ?>
 
-       
+
         <div id="contenedor">
 
-            <div class="destacado">
+            <div class="fila">
                 <div class="caja">Caja 10</div>
                 <div class="caja">Caja 11</div>
                 <div class="caja">Caja 12</div>
             </div>
-            <div id="cajas">
-                <div class="caja"> <img src="../imagenes/asesoramiento.png" alt=""/></div>
+            <div id="cajas" class="fila">
+                <div class="caja"><img src="../imagenes/asesoramiento.png" alt=""/></div>
                 <div class="caja"><img src="../imagenes/bajaVision.png" alt=""/></div>
                 <div class="caja"><img src="../imagenes/contactologia.png" alt=""/></div>
+            </div>
+            <div class="fila">
                 <div class="caja"><img src="../imagenes/optometria.png" alt=""/></div>
                 <div class="caja"><img src="../imagenes/preventivo.png" alt=""/></div>
                 <div class="caja"><img src="../imagenes/taller.png" alt=""/></div>
             </div>
-            <div class="destacado">
+            <div class="fila">
                 <div class="caja">
                     LOCALÍZANOS EN <br/>
                     Avenida de Andalucía, 2  <br/>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <title>Optica</title>
+        <meta charset="UTF-8">
+    </head>
+    <body id="body">
+        <div id="menu">
+            <ul>
+                <li><a href="conozcanos.php">Conózcanos</a></li>
+                <li> | </li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li> | </li>
+                <li><a href="catalogo.php">Catálogo</a></li>
+                <li> | </li>
+                <li><a href="noticias.php">Novedades</a></li>
+                <li> | </li>
+                <li><a href="promociones.html">Promociones</a></li>
+                <li> | </li>
+                <li><a href="consultas.php">Consultas</a></li>
+                <li> | </li>
+                <li><a href="intranet.html">Intranet</a></li>
+            </ul>
+        </div>
+</html>

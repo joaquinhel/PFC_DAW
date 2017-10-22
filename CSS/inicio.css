@@ -19,43 +19,58 @@ and open the template in the editor.
     display:inline;margin:0 3px;
 }
 
-.contenedor{
-    background: red;
-    margin:auto;  /* para centrar el contenedor */
-    width: 600px; /* es necesario dar un tamaño, sino
-                  /* ocuparía toda la ventana y no se
-                  /* va a centrar*/
-}
-
 #body{
     background: white;
     text-align:center; /*para que en IE 5.5 salga centrado*/
+
 }
 
-.contenedor{
+#contenedor{
+    height:100%; 
+    width:90%; 
     background: red;
     margin:auto;      /* para centrar el contenedor */
-    width: 90%;
     text-align:left;  /* para eliminar la herencia en IE 5.5
-                      /* y que los textos dentro del contenedor
+                         /* y que los textos dentro del contenedor
                       /* no salgan centrados.*/
 }
 
-#cajas{
-    width:90%;               /* 1 - le damos un ancho */
-    height:220px;               /* 2 - le damos un alto */
+#central{
+    width:100%;               /* 1 - le damos un ancho */
+    height:100%;               /* 2 - le damos un alto */
     margin-top:10px;
 }
 .caja{
     width: 30%;               /* 3 */
-    height: 50%;              /* 4 */
+    height: 100%;              /* 4 */
     float: left;                /* 5 - para que salga en formato de tabla*/
     margin: 0px 2px 10px 5px;
     background: blue;
+    margin-left: 2.4%;
 }
 
-.destacado{
+.fila{
     margin: 0px 15px 15px 15px;
-    height: 200px; /* le damos un alto mínimo*/
+    height: 300px; /* le damos un alto mínimo*/
     background: green;
+    alignment-adjust: baseline;
+
 }
+
+#presentacion{
+    display:block;
+    width:100%;               /* 1 - le damos un ancho */
+}
+
+#footer{
+    position: absolute; 
+    bottom: 0%; 
+}
+
+img{
+    display:block;
+    margin:auto;
+    width:700px;
+    height:400px;
+}
+
