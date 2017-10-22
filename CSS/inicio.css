@@ -26,6 +26,7 @@ and open the template in the editor.
 }
 
 #contenedor{
+    padding-top: 1px;
     height:100%; 
     width:90%; 
     background: red;
@@ -40,7 +41,7 @@ and open the template in the editor.
 }
 .caja{
     width: 30%;               /* 3 */
-    height: 100%;              /* 4 */
+    height: 99%;              /* 4 */
     float: left;                /* 5 - para que salga en formato de tabla*/
     margin: 0px 2px 10px 5px;
     background: blue;
@@ -64,9 +65,8 @@ and open the template in the editor.
     display: inline-block;
 }
 
-
 .fila{
-    margin: 0px 15px 15px 15px;
+    margin: 15px 15px 15px 15px;
     height: 300px; /* le damos un alto mínimo*/
     background: green;
     alignment-adjust: baseline;

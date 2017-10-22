@@ -37,6 +37,5 @@ class categoria {
       $this->dbh = null;
       } catch (PDOException $e) {
       $e->getMessage();
-      }
-      }
-     */    
+      } */
+}

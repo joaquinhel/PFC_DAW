@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 
 <html>
+
     <head>
         <link href="../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/boton.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/conozcanos.css" rel="stylesheet" type="text/css"/>
         <title>Optica</title>
         <meta charset="UTF-8">
     </head>
+
     <body id="body">
         <?php
-       include 'menu.php';
-       ?>
-
+        include 'menu.php';
+        ?>
 
         <div id="contenedor">
+            <?php
+            include 'cabecera.php';
+            ?>
 
-            <div class="fila">
-                <div class="caja">Caja 10</div>
-                <div class="caja">Caja 11</div>
-                <div class="caja">Caja 12</div>
+            <div class="three-columns">
+                <p>
+                    Óptica Milán, centro especializado en salud visual y auditiva, nace en el año 1985 con el objetivo de dar solución a los problemas visuales y auditivos de nuestros clientes, siendo pioneros, por ejemplo, en la adaptación de lentes de contacto rígidas y audífonos.
+                    Nuestro equipo, siempre en continua formación, se compone de profesionales titulados y ampliamente cualificados que trabajan día a día innovando, tanto en productos como en procesos, para mantener la trayectoria de mejora continua que nos caracteriza y poder ofrecer siempre la mejor solución a cada problema.
+                    Nos caracterizamos por ofrecer una atención cercana, personalizada y de confianza, dar soluciones específicas a las necesidades de cada uno de nuestros clientes y por trabajar con los proveedores líderes del mercado para que nos proporcionen la calidad que exigimos, así como las últimas novedades y avances.
+                    La garantía de servicio y calidad ofrecida nos ha permitido mantenernos como referente en el sector durante más de 30 años, pero, sobre todo, el satisfacer plenamente a nuestros clientes con un servicio excelente y el dar cobertura a todas sus necesidades de cuidado, prevención y estética a nivel ocular y auditivo con la mejor relación calidad-precio sin renunciar a la calidad que caracteriza nuestro abanico de productos y servicios.
+                    En Óptica Milán tendrá la tranquilidad de confiar en profesionales especializados que le dedicarán el tiempo necesario para analizar su caso realizando exámenes visuales en profundidad, desde la graduación de la vista a la detección de otros problemas, para poder tratarlos y/o derivarle al especialista oportuno si observamos cualquier anomalía. Además, le asesoramos, tanto técnica como estéticamente, a la hora de escoger la mejor solución al problema diagnosticado, ya sea visual o auditivo.
+                </p>
             </div>
-            <div id="cajas" class="fila">
-                <div class="caja"><img src="../imagenes/asesoramiento.png" alt=""/></div>
-                <div class="caja"><img src="../imagenes/bajaVision.png" alt=""/></div>
-                <div class="caja"><img src="../imagenes/contactologia.png" alt=""/></div>
-            </div>
-            <div class="fila">
-                <div class="caja"><img src="../imagenes/optometria.png" alt=""/></div>
-                <div class="caja"><img src="../imagenes/preventivo.png" alt=""/></div>
-                <div class="caja"><img src="../imagenes/taller.png" alt=""/></div>
-            </div>
-            <div class="fila">
-                <div class="caja">
-                    LOCALÍZANOS EN <br/>
-                    Avenida de Andalucía, 2  <br/>
-                    18600, Motril, Granada  <br/>
-                    Tel.: 958 60 59 20  <br/>
-                    Email: info@opticamilan.es
-                </div>
-                <div class="caja">Caja 8</div>
-                <div class="caja">
-                    NUESTRO HORARIO ES <br/>
-                    De lunes a viernes
-                    9:30-13:30 y 17:00-20:30  <br/>
-                    Sábados
-                    9:30-13:30
-                </div>
-            </div>
+
+            <?php
+            include 'pie.php';
+            ?>
         </div>
-
-        <footer>
-            Copyright © 2017  ·  Todos los derechos reservados
-        </footer>
+        <?php
+        include 'footer.php';
+        ?>
     </body>
 </html>

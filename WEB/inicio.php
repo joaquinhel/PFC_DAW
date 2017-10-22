@@ -5,44 +5,50 @@
         <link href="../CSS/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <title>Optica</title>
-        <script type="text/javascript" src="http://www.google.com/jsapi?key=AIzaSyB7tG99cRwOAj-7_Oifs_BFPtxTkrjBuXM"></script>
         <meta charset="UTF-8">
     </head>
     <body id="body">
         <?php
         include 'menu.php';
         ?>
-
         <div id="contenedor">
-
-            <div class="fila">
-                <div class="caja">
-
-                    <p><img class="iconos" src="../imagenes/iconos/informacion.jpg" alt="info"/><br />
-                        PONGASE EN CONTACTO CON NUESTROS PROFESIONALES <br /><br />
-                        <a class="button" href="#">PEDIR CITA</a>
-                    </p>
-
-                </div>
-                <div class="caja">
-                    <p>
-                        <img id='logo' src="../imagenes/centroOptico.png" alt="logo"/><br />
-                        <img class="iconos" src="../imagenes/iconos/facebook.jpg" alt="face"/>
-                        <img class="iconos" src="../imagenes/iconos/whatsaap.png" alt="whatsaap"/>
-                        <img class="iconos" src="../imagenes/iconos/correo.jpg" alt="correo"/>
-                    </p>
-                </div>
-                <div class="caja">
-                    <p><img class="iconos" src="../imagenes/iconos/oferta.jpg" alt="oferta"/><br />
-                        CONSULTE NUESTROS ARTÍCULOS EN PROMOCIÓN <br /><br />
-                        <a class="button" href="#">OFERTAS</a>
-                    </p>
-                </div>
-            </div>
-
+            <?php
+            include 'cabecera.php';
+            ?>
+            <!--
+                    <div id="contenedor">
+                        <div class="fila">
+                            <div class="caja">
+                                <p><img class="iconos" src="../imagenes/iconos/informacion.jpg" alt="info"/><br />
+                                    PONGASE EN CONTACTO CON NUESTROS PROFESIONALES <br /><br />
+                                    <a class="button" href="#">PEDIR CITA</a>
+                                </p>
+            
+                            </div>
+                            <div class="caja">
+                                <p>
+                                    <img id='logo' src="../imagenes/centroOptico.png" alt="logo"/><br />
+                                    <img class="iconos" src="../imagenes/iconos/facebook.jpg" alt="face"/>
+                                    <img class="iconos" src="../imagenes/iconos/whatsaap.png" alt="whatsaap"/>
+                                    <img class="iconos" src="../imagenes/iconos/correo.jpg" alt="correo"/>
+                                </p>
+                            </div>
+                            <div class="caja">
+                                <p><img class="iconos" src="../imagenes/iconos/oferta.jpg" alt="oferta"/><br />
+                                    CONSULTE NUESTROS ARTÍCULOS EN PROMOCIÓN <br /><br />
+                                    <a class="button" href="#">OFERTAS</a>
+                                </p>
+                            </div>
+                        </div>
+            -->
             <div id="presentacion">
                 <img src="../imagenes/optica2.jpg" alt=""/>
             </div>
+
+            <?php
+            include 'pie.php';
+            ?>
+            <!--
             <div class="fila">
                 <div class="caja">
                     <p>
@@ -75,5 +81,10 @@
         <footer>
             Copyright © 2017  ·  Todos los derechos reservados
         </footer>
+            -->
+        </div>
+        <?php
+        include 'footer.php';
+        ?>
     </body>
 </html>
