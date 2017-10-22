@@ -30,10 +30,8 @@ and open the template in the editor.
     width:90%; 
     background: red;
     margin:auto;      /* para centrar el contenedor */
-    text-align:left;  /* para eliminar la herencia en IE 5.5
-                         /* y que los textos dentro del contenedor
-                      /* no salgan centrados.*/
 }
+
 
 #central{
     width:100%;               /* 1 - le damos un ancho */
@@ -47,7 +45,25 @@ and open the template in the editor.
     margin: 0px 2px 10px 5px;
     background: blue;
     margin-left: 2.4%;
+    border: 1px solid #99cccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+#mapa{
+    width:95%;               /* 1 - le damos un ancho */
+    height:95%;               /* 2 - le damos un alto */
+    frameborder:1%;
+    border:1;
+}
+
+#logo{
+    width: 95%;               /* 3 */
+    height: 88%;
+    display: inline-block;
+}
+
 
 .fila{
     margin: 0px 15px 15px 15px;
@@ -55,6 +71,12 @@ and open the template in the editor.
     background: green;
     alignment-adjust: baseline;
 
+}
+
+.iconos{
+    width: 10%;
+    height: 10%;
+    display: inline-block;
 }
 
 #presentacion{
@@ -73,4 +95,3 @@ img{
     width:700px;
     height:400px;
 }
-
