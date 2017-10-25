@@ -2,9 +2,9 @@
 
 <html>
     <head>
-        <link href="../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/boton.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/servicios.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/servicios.css" rel="stylesheet" type="text/css"/>
         <title>Optica</title>
         <meta charset="UTF-8">
     </head>
