@@ -12,7 +12,6 @@ class Usuario {
         $this->fecha = $row ['fecha'];
     }
     
-    
     public function getClave() {
         return $this->clave;
     }

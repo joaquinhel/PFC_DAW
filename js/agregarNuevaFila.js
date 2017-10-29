@@ -15,7 +15,10 @@ function agregarFila(idTabla,idBoton){
         nuevaFila = document.getElementById(idTabla).insertRow(numeroFila);
         
         nuevaCelda = nuevaFila.insertCell(-1);
-        nuevaCelda.innerHTML = '<td><div class="inputImagenModificado"><input class="inputImagenOculto" name="imagen'+numeroFila+'" type="file"><div class="inputParaMostrar"><input><img src="imagenes/button_select2.gif"></div></div></td>';
+        nuevaCelda.innerHTML = '<td><div class="inputImagenModificado">\n\
+<input class="inputImagenOculto" \n\
+name="imagen'+numeroFila+'" type="file"><div class="inputParaMostrar">\n\
+<input><img src="../imagenes/button_select2.gif"></div></div></td>';
 
         // Funcion para modificar el estilo de los inputs
         mostrarInputFileModificado('imagen'+numeroFila);

@@ -1,6 +1,6 @@
 <?php
 
-class PruebaCliente {
+class pruebaCliente {
 
     protected $pruebas_idpruebas;
     protected $cliente_idCliente;

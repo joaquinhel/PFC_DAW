@@ -6,7 +6,7 @@
         <script type="text/javascript" src="js/agregarNuevaFila.js"></script>
         <script type="text/javascript" src="js/modificarEstiloInputFile.js"></script>
         <script type="text/javascript" src="js/cambiarOpacidadImagenes.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+        <link rel="stylesheet" type="text/css" href="css/estilo_1.css"/>
 		
         <!-- Lightbox -->
         <script type="text/javascript" src="lightbox/js/jquery-1.7.2.min.js"></script>
@@ -42,8 +42,7 @@
         
         <div id="subirImagenes">
                     
-            <!-- Para poder subir archivos con PHP hay que poner enctype="multipart/form-data" 
-            para que no se encripte ningun caracter y el archivo no se modifique/estropee -->
+            <!-- Para poder subir archivos con PHP hay que poner enctype="multipart/form-data" para que no se encripte ningun caracter y el archivo no se modifique/estropee -->
             <form action="#" method="POST" enctype="multipart/form-data">
                 <table id="formularioSubida" border="0">
                     <thead>

@@ -1,26 +1,49 @@
 <?php
 
-require 'BD.php';
-
 class Proveedor {
 
-    public static function obtienerProveedores() {
-        $sql = "SELECT id_proveedor, nombreEmpresa,personaContacto, direccion FROM proveedor";
-        $resultado = BD::ejecutaConsulta($sql);
-        $proveedor = array();
-        if ($resultado) {
-// Añadimos un elemento por cada producto obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $proveedor[] = new Proveedor($row);
-                $row = $resultado->fetch();
-            }
-        }
-        return $productos;
+    protected $idProveedor;
+    protected $nombreEmpresa;
+    protected $personaContacto;
+    protected $direccion;
+
+    public function __construct($row) {
+        $this->idProveedor = $row ['idProveedor'];
+        $this->nombreEmpresa = $row ['nombreEmpresa'];
+        $this->personaContacto = $row ['personaContacto'];
+        $this->direccion = $row ['direccion'];
     }
 
-    /* $idProveedor;
-      $nombreEmpresa;
-      $personaContacto;
-      $direccion; */
+    function getIdProveedor() {
+        return $this->idProveedor;
+    }
+
+    function getNombreEmpresa() {
+        return $this->nombreEmpresa;
+    }
+
+    function getPersonaContacto() {
+        return $this->personaContacto;
+    }
+
+    function getDireccion() {
+        return $this->direccion;
+    }
+
+    function setIdProveedor($idProveedor) {
+        $this->idProveedor = $idProveedor;
+    }
+
+    function setNombreEmpresa($nombreEmpresa) {
+        $this->nombreEmpresa = $nombreEmpresa;
+    }
+
+    function setPersonaContacto($personaContacto) {
+        $this->personaContacto = $personaContacto;
+    }
+
+    function setDireccion($direccion) {
+        $this->direccion = $direccion;
+    }
+
 }

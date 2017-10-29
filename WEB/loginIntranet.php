@@ -12,16 +12,14 @@
         <?php
         include 'menu.php';
         ?>
-
         <div id="contenedor">
 
             <?php
             include 'cabecera.php';
             $error = "";
             ?>
-
             <div class='fila'>
-                <form action='login.php' method='post'>
+                <form action='menuIntranet.php' method='post'>
                     <fieldset >
                         <legend>Login</legend>
                         <div><span class='error'><?php echo $error; ?></span></div>

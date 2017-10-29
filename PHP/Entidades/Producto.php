@@ -1,6 +1,6 @@
 <?php
 
-class producto {
+class Producto {
 
     protected $idProducto;
     protected $nombreProducto;

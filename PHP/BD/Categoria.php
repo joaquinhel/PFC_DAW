@@ -2,7 +2,7 @@
 
 /* Categoria de los productos */
 
-class categoria {
+class Categoria {
 
     protected $idCategoria;
     protected $nombreCategoria;
