@@ -11,7 +11,7 @@
         <?php
         include_once '../../../PHP/BD/empleadoBD.php';
         if (isset($_POST['insertar'])) {
-            $row[0] = $_POST['nombre'];
+            $row[0] = $_POST['nombreEmpleado'];
             $row[1] = $_POST['apellidos'];
             $row[2] = $_POST['direccion'];
             $row[3] = $_POST['telefono'];
@@ -23,7 +23,7 @@
         ?>
         <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
             <label>Introduzca los datos del empleado: </label> <br/>
-            Nombre: <input type="text" name="nombre" /><br/>
+            Nombre: <input type="text" name="nombreEmpleado" /><br/>
             Apellidos: <input type="text" name="apellidos"/><br/>
             Dirección: <input type="text" name="direccion"/><br/>
             Teléfono: <input type="text" name="telefono"/><br/>

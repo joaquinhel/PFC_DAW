@@ -207,13 +207,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `optica`.`prueba-cliente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `optica`.`prueba-cliente` (
-  `pruebas_idpruebas` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `optica`.`pruebacliente` (
+  `prueba_idprueba` INT NOT NULL,
   `cliente_idCliente` INT NOT NULL,
   `diagnostico` VARCHAR(45) NULL,
-  INDEX `fk_prueba-cliente_pruebas1_idx` (`pruebas_idpruebas` ASC),
+  INDEX `fk_prueba-cliente_pruebas1_idx` (`prueba_idprueba` ASC),
   INDEX `fk_prueba-cliente_cliente1_idx` (`cliente_idCliente` ASC),
-  CONSTRAINT `fk_prueba-cliente_pruebas1`
+  CONSTRAINT `fk_prueba-cliente_prueba1`
     FOREIGN KEY (`pruebas_idpruebas`)
     REFERENCES `optica`.`pruebas` (`idpruebas`)
     ON DELETE NO ACTION

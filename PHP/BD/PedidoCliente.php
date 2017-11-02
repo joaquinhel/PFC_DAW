@@ -4,14 +4,12 @@ class PedidoCliente {
 
     protected $idPedido;
     protected $fechaPedido;
-    protected $cantidad;
     protected $empleado_idEmpleado;
     protected $cliente_idCliente;
 
     public function __construct($row) {
         $this->idPedido = $row ['idPedido'];
         $this->fechaPedido = $row ['fechaPedido'];
-        $this->cantidad = $row ['cantidad'];
         $this->empleado_idEmpleado = $row ['empleado_idEmpleado'];
         $this->cliente_idCliente = $row ['cliente_idCliente'];
     }
@@ -22,10 +20,6 @@ class PedidoCliente {
 
     public function getFechaPedido() {
         return $this->fechaPedido;
-    }
-
-    public function getCantidad() {
-        return $this->cantidad;
     }
 
     public function getEmpleado_idEmpleado() {
@@ -42,10 +36,6 @@ class PedidoCliente {
 
     public function setFechaPedido($fechaPedido) {
         $this->fechaPedido = $fechaPedido;
-    }
-
-    public function setCantidad($cantidad) {
-        $this->cantidad = $cantidad;
     }
 
     public function setEmpleado_idEmpleado($empleado_idEmpleado) {

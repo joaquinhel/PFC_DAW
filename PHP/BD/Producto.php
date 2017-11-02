@@ -17,7 +17,7 @@ class Producto {
         $this->marca = $row ['marca'];
         $this->precio = $row ['precio'];
         $this->categoria_idCategoria = $row ['categoria_idCategoria'];
-        $this->proveedor_idProveedor = $row ['direccion'];
+        $this->proveedor_idProveedor = $row ['proveedor_idProveedor'];
     }
 
     public function getIdProducto() {

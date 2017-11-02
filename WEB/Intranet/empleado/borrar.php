@@ -10,7 +10,7 @@
         <div>
             <?php
             include_once '../../../PHP/BD/empleadoBD.php';
-            $todos = categoriaBD::listarTodos();
+            $todos = empleadoBD::listarTodos();
             echo "<table border=1px>";
             echo "<tr><th>ID</th><th>Nombre</th><th>Apellidos</th> <th>Dirección</th> "
             . "<th>Telefono</th> <th>Email</th><th>FechaContratación</th><th>Sueldo</th></tr>";
@@ -26,7 +26,7 @@
             echo "</table>";
 
             if (isset($_POST['enviar'])) {
-                categoriaBD::borrarCategoria($_POST['id']);
+                empleadoBD::borrarEmpleado($_POST['id']);
                 echo "El registro se ha borrado";
             }
             ?>

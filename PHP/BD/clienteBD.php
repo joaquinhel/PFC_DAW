@@ -22,7 +22,7 @@ class clienteBD {
 
     //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosCliente($cod) {
-        $sql = "SELECT idCliente, nombreCliente, apellidos,direccion, telefono, nif "
+        $sql = "SELECT idCliente, nombreCliente, apellidos, direccion, telefono, nif "
                 . "from optica.cliente "
                 . "where idCliente=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
@@ -44,11 +44,11 @@ class clienteBD {
     //Insertar un nuevo producto
     public static function insertarCliente($row) {
         $sql = "insert into optica.cliente (nombreCliente, apellidos, direccion, telefono, nif) values ( "
-                . " '" . $row[0] . "'"
-                . ", '" . $row[1] . "'"
-                . ", '" . $row[2] . "'"
-                . ", '" . $row[3] . "'"
-                . ", '" . $row[4] . "');"        ;
+                . " '" . $row['nombreCliente'] . "'"
+                . ", '" . $row['apellidos'] . "'"
+                . ", '" . $row['direccion'] . "'"
+                . ", '" . $row['telefono'] . "'"
+                . ", '" . $row['nif'] . "');"        ;
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }

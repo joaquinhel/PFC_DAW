@@ -11,7 +11,7 @@
             $todos = empleadoBD::listarTodos();
             echo "<table border=1px>";
             echo "<tr><th>ID</th><th>Nombre</th><th>Apellidos</th> <th>Dirección</th> "
-            . "<th>Telefono</th> <th>Email</th><th>FechaContratación</th><th>Sueldo</th></tr>";
+            . "<th>Telefono</th> <th>Email</th><th>FechaContratación</th><th>Sueldo</th><th>Acciones</th></tr>";
 
             foreach ($todos as $aux) {
                 echo "<tr><td>" . $aux->getIdEmpleado() . "</td> <td>" . $aux->getNombreEmpleado() . "</td>"

@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -10,7 +12,7 @@
             include_once '../../../PHP/BD/proveedorBD.php';
             $todos = proveedorBD::listarTodos();
             echo "<table border=1px>";
-            echo "<tr><th>ID</th><th>Dirección</th><th>Nombre Empresa</th> <th>Persona Contacto</th> <th>Acciones</th></tr>";
+            echo "<tr><th>ID</th><th>Dirección</th><th>Nombre Empresa</th> <th>Persona Contacto</th></tr>";
 
             foreach ($todos as $aux) {
                 echo "<tr><td>" . $aux->getIdProveedor() . "</td> <td>" . $aux->getDireccion() . "</td>"
@@ -19,9 +21,19 @@
                        <a href='borrar.php?id=" . $aux->getIdProveedor() . "'>Borrar</a></tr>";
             }
             echo "</table>";
+
+            if (isset($_POST['enviar'])) {
+                proveedorBD::borrarProveedor($_POST['id']);
+                echo "El registro se ha borrado";
+            }
             ?>
-            <input type='submit' value='crear' id='crear' name='crear' onclick = "location = './crear.php'"/>
-            <a href="../../menuIntranet.php">Ir a menú</a>
+
+            INTRODUZCA EL IDENTIFICADOR DEL PRODUCTO A BORRAR
+            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                <input type='text' name='id'/>
+                <input type='submit' name='enviar' value='enviar'/>
+            </form>
+            <a href="listar.php">Ir a listar</a>
         </div>
     </body>
 </html>

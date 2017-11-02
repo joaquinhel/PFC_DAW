@@ -15,7 +15,7 @@ class Cliente {
         $this->apellidos = $row ['apellidos'];
         $this->direccion = $row ['direccion'];
         $this->telefono = $row ['telefono'];
-        $this->email = $row ['nif'];
+        $this->nif = $row ['nif'];
     }
 
     public function getIdCliente() {

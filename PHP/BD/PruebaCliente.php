@@ -5,11 +5,21 @@ class pruebaCliente {
     protected $pruebas_idpruebas;
     protected $cliente_idCliente;
     protected $diagnostico;
+    protected $fechaPrueba;
 
     public function __construct($row) {
-        $this->pruebas_idpruebas = $row ['pruebas_idpruebas'];
-        $this->cliente_idCliente = $row ['cliente_idCliente'];
+        $this->pruebas_idpruebas = $row ['cliente_idCliente'];
+        $this->cliente_idCliente = $row ['$pruebas_idpruebas'];
         $this->diagnostico = $row ['diagnostico'];
+        $this->diagnostico = $row ['fechaPrueba'];
+    }
+
+    function getFechaPrueba() {
+        return $this->fechaPrueba;
+    }
+
+    function setFechaPrueba($fechaPrueba) {
+        $this->fechaPrueba = $fechaPrueba;
     }
 
     public function getPruebas_idpruebas() {

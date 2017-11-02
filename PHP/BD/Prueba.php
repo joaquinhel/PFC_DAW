@@ -2,18 +2,18 @@
 
 class Prueba {
 
-    protected $idpruebas;
+    protected $idPrueba;
     protected $nombrePrueba;
     protected $aparatosNecesarios;
 
     public function __construct($row) {
-        $this->idpruebas = $row ['idpruebas'];
+        $this->idprueba = $row ['idPrueba'];
         $this->nombrePrueba = $row ['nombrePrueba'];
         $this->aparatosNecesarios = $row ['aparatosNecesarios'];
     }
 
-    public function getIdpruebas() {
-        return $this->idpruebas;
+    public function getIdPrueba() {
+        return $this->idPrueba;
     }
 
     public function getNombrePrueba() {
@@ -24,8 +24,8 @@ class Prueba {
         return $this->aparatosNecesarios;
     }
 
-    public function setIdpruebas($idpruebas) {
-        $this->idpruebas = $idpruebas;
+    public function setIdprueba($idPrueba) {
+        $this->idPrueba = $idPrueba;
     }
 
     public function setNombrePrueba($nombrePrueba) {
