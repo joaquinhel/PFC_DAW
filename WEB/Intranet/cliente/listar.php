@@ -2,9 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TODO supply a title</title>
+        <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <h1>LISTADO DE CATEGORIAS DE CLIENTES</h1>
+        <input type='submit' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
+
         <div>
             <?php
             include_once '../../../PHP/BD/clienteBD.php';
@@ -17,12 +21,12 @@
                 . "<td>" . $aux->getApellidos() . "</td><td>" . $aux->getDireccion() . "</td>"
                 . "<td>" . $aux->getTelefono() . "</td><td>" . $aux->getNif() . "</td>"
                 . "<td> <a href='actualizar.php?id=" . $aux->getIdCliente() . "'>Editar</a>
-                       <a href='borrar.php?id=" . $aux->getIdCliente(). "'>Borrar</a></tr>";
+                       <a href='borrar.php?id=" . $aux->getIdCliente() . "'>Borrar</a></tr>";
             }
             echo "</table>";
             ?>
-            <input type='submit' value='crear' id='crear' name='crear' onclick = "location = './crear.php'"/>
-            <a href="../../menuIntranet.php">Ir a menú</a>
+            <br/>
+            <a id='volver' href="../../menuIntranet.php">Volver al Menú de la Intranet</a>
         </div>
     </body
 </html>

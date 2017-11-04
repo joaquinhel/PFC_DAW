@@ -7,7 +7,7 @@ class Prueba {
     protected $aparatosNecesarios;
 
     public function __construct($row) {
-        $this->idprueba = $row ['idPrueba'];
+        $this->idPrueba = $row ['idPrueba'];
         $this->nombrePrueba = $row ['nombrePrueba'];
         $this->aparatosNecesarios = $row ['aparatosNecesarios'];
     }

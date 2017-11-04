@@ -3,8 +3,11 @@
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
+        <input type='submit' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
         <div>
             <?php
             include_once '../../../PHP/BD/productoBD.php';
@@ -29,8 +32,8 @@
             }
             echo "</table>";
             ?>
-            <input type='submit' value='crear' id='crear' name='crear' onclick = "location = './crear.php'"/>
-            <a href="../../menuIntranet.php">Ir a menú</a>
+            <br>
+                <a id='volver' href="../../menuIntranet.php">Volver al Menú de la Intranet</a>
         </div>
     </body>
 </html>

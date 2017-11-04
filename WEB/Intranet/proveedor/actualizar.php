@@ -10,16 +10,20 @@ include_once '../../../PHP/BD/proveedorBD.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>   
-
+        <h2> Modificar los datos guardados de un producto </h2>
         <?php
         if (!isset($_POST['actualizar'])) {
             $todos = proveedorBD::obtenerDatosProveedor($_GET['id']);
             echo "<form action ='actualizar.php' method = 'POST'>";
-            echo "LOS DATOS ACTUALES DEL PROVEEDOR A MODIFICAR SON: <br />";
-            echo "ID <input type = 'text' name = 'idProveedor' value = " . $todos->getIdProveedor() . "> <br />";
-            echo "DIRECCIÓN <input type = 'text' name = 'direccion' value = " . $todos->getDireccion() . "><br />";
-            echo "NOMBRE DE LA EMPRESA <input type = 'text' name = 'nombreEmpresa' value = " . $todos->getNombreEmpresa() . "><br />";
-            echo "PERSONA DE CONTACTO <input type = 'text' name = 'personaContacto' value = " . $todos->getPersonaContacto() . "><br />";
+            echo "<p>LOS DATOS ACTUALES DEL PROVEEDOR A MODIFICAR SON: <p />";
+            echo "<label>ID </label> <br/>";
+            echo "<input type = 'text' name = 'idProveedor' value = " . $todos->getIdProveedor() . "> <br />";
+            echo "<label>DIRECCIÓN </label> <br/>";
+            echo "<input type = 'text' name = 'direccion' value = " . $todos->getDireccion() . "><br />";
+            echo "<label>NOMBRE DE LA EMPRESA </label> <br/>";
+            echo "<input type = 'text' name = 'nombreEmpresa' value = " . $todos->getNombreEmpresa() . "><br />";
+            echo "<label>PERSONA DE CONTACTO </label> <br/>";
+            echo "<input type = 'text' name = 'personaContacto' value = " . $todos->getPersonaContacto() . "><br />";
             echo "<br/>";
             echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
             echo "<a href = 'listar.php'>Ir a listar</a>";

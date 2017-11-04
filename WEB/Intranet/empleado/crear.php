@@ -5,6 +5,7 @@
     <head>
         <title>CREAR CATEGORIA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -21,18 +22,19 @@
             empleadoBD::insertarEmpleado($row);
         }
         ?>
+        <h2>INTRODUCIR UN NUEVO EMPLEADO</h2>
         <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
-            <label>Introduzca los datos del empleado: </label> <br/>
-            Nombre: <input type="text" name="nombreEmpleado" /><br/>
-            Apellidos: <input type="text" name="apellidos"/><br/>
-            Dirección: <input type="text" name="direccion"/><br/>
-            Teléfono: <input type="text" name="telefono"/><br/>
-            Email: <input type="text" name="email"/><br/>
-            FechaContratacion: <input type="text" name="fechaContratacion"/><br/>
-            Sueldo: <input type="text" name="sueldo"/><br/>
+            <p>Introduzca los datos del empleado: </p>
+            <label>Nombre:  </label><input type="text" name="nombreEmpleado" /><br/>
+            <label>Apellidos:  </label><input type="text" name="apellidos"/><br/>
+            <label>Dirección:  </label><input type="text" name="direccion"/><br/>
+            <label>Teléfono:  </label><input type="text" name="telefono"/><br/>
+            <label>Email:  </label><input type="text" name="email"/><br/>
+            <label>Fecha de Contratacion:  </label><input type="text" name="fechaContratacion"/><br/>
+            <label>Sueldo:  </label><input type="text" name="sueldo"/><br/>
             <input type="submit" name="insertar" value="Introducir Nuevo"/>
+            <a href="listar.php">Volver al listado</a>
         </form> 
-        <a href="listar.php">Ir a listar</a>
     </body>
 </html>
 

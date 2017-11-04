@@ -5,15 +5,17 @@
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div>
+            <h1>LISTADO DE EMPLEADOS</h1>
             <?php
             include_once '../../../PHP/BD/empleadoBD.php';
             $todos = empleadoBD::listarTodos();
             echo "<table border=1px>";
             echo "<tr><th>ID</th><th>Nombre</th><th>Apellidos</th> <th>Dirección</th> "
-            . "<th>Telefono</th> <th>Email</th><th>FechaContratación</th><th>Sueldo</th></tr>";
+            . "<th>Telefono</th> <th>Email</th><th>FechaContratación</th><th>Sueldo</th><th>Acciones</th></tr>";
 
             foreach ($todos as $aux) {
                 echo "<tr><td>" . $aux->getIdEmpleado() . "</td> <td>" . $aux->getNombreEmpleado() . "</td>"
@@ -30,13 +32,12 @@
                 echo "El registro se ha borrado";
             }
             ?>
-
-            INTRODUZCA EL IDENTIFICADOR DEL PRODUCTO A BORRAR
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                <input type='text' name='id'/>
-                <input type='submit' name='enviar' value='enviar'/>
+                <p> INTRODUZCA EL IDENTIFICADOR DEL EMPLEADO BORRAR </p>
+                <label>ID categoria</label><input type='text' name='id'/><br/>
+                <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
+                <a href="listar.php">Volver a la lista de categorias</a>
             </form>
-            <a href="listar.php">Ir a listar</a>
         </div>
     </body>
 </html>

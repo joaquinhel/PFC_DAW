@@ -5,6 +5,7 @@
     <head>
         <title>CREAR CATEGORIA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -17,14 +18,17 @@
             proveedorBD::insertarProveedor($row);
         }
         ?>
+        <h2>INTRODUCIR UN NUEVO PROVEEDOR</h2>
+
         <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
-            <label>Introduzca los datos del proveedor: </label> <br/>
-            Dirección: <input type="text" name="direccion" /><br/>
-            Nombre Empresa: <input type="text" name="nombreEmpresa"/><br/>
-            Persona de Contacto: <input type="text" name="personaContacto"/><br/>
+            <p>Introduzca los datos del proveedor: </p>
+            <label>Dirección: </label><input type="text" name="direccion" /><br/>
+            <label>Nombre Empresa: </label><input type="text" name="nombreEmpresa"/><br/>
+            <label>Persona de Contacto: </label><input type="text" name="personaContacto"/><br/>
             <input type="submit" name="insertar" value="Introducir Nuevo"/>
+            <a href="listar.php">Ir a listar</a>
         </form> 
-        <a href="listar.php">Ir a listar</a>
+
     </body>
 </html>
 

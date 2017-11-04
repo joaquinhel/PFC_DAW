@@ -50,7 +50,8 @@ class categoriaBD {
 
     //Actualizar producto
     public static function actualizarCategoria($row) {
-        $sql = "update optica.categoria set nombreCategoria='" . $row['nombreCategoria'] . "' where idCategoria ='" . $row['idCategoria'] . "'";
+        $sql = "update optica.categoria set nombreCategoria='" . $row['nombreCategoria'] 
+                . "' where idCategoria ='" . $row['idCategoria'] . "'";
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }

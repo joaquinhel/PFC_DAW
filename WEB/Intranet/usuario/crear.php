@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>CREAR CATEGORIA</title>
+        <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
@@ -17,14 +18,16 @@
             usuarioBD::insertarUsuario($row);
         }
         ?>
+        <h2>INTRODUCIR UN NUEVO USUARIO</h2>
         <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
-            <label>Introduzca los datos del usuario: </label> <br/>
-            Login: <input type="text" name="login"/><br/>
-            Pass: <input type="text" name="pass"/><br/>
-            Fecha de Alta: <input type="text" name="fecha_alta"/><br/>
+            <p>Introduzca los datos del usuario: <p/>
+            <label>Login: </label><input type="text" name="login"/><br/>
+            <label>Pass: </label><input type="text" name="pass"/><br/>
+            <label>Fecha de Alta: </label><input type="text" name="fecha_alta"/><br/>
             <input type="submit" name="insertar" value="Introducir Nuevo"/>
+            <a href="listar.php">Ir a listar</a>
+
         </form> 
-        <a href="listar.php">Ir a listar</a>
     </body>
 </html>
 

@@ -5,9 +5,9 @@
     <head>
         <title>CREAR CATEGORIA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
         <?php
         include_once '../../../PHP/BD/clienteBD.php';
         if (isset($_POST['insertar'])) {
@@ -19,16 +19,18 @@
             clienteBD::insertarCliente($row);
         }
         ?>
+        <h2>INTRODUCIR UN NUEVO CLIENTE</h2>
+
         <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
-            <label>Introduzca los datos del cliente: </label> <br/>
-            Nombre: <input type="text" name="nombre" /><br/>
-            Apellidos: <input type="text" name="apellidos"/><br/>
-            Dirección: <input type="text" name="direccion"/><br/>
-            Teléfono: <input type="text" name="telefono"/><br/>
-            NIF: <input type="text" name="nif"/><br/>
-            <input type="submit" name="insertar" value="Introducir Nuevo"/>
+            <p>Introduzca los datos del cliente </p>
+            <label>Nombre: </label><input type="text" name="nombre" /><br/>
+            <label>Apellidos: </label><input type="text" name="apellidos"/><br/>
+            <label>Dirección: </label><input type="text" name="direccion"/><br/>
+            <label>Teléfono: </label> <input type="text" name="telefono"/><br/>
+            <label>NIF: </label> <input type="text" name="nif"/><br/>
+            <input type="submit" name="insertar" value="Introducir Nuevo"/><br /><br />
+                <a href="listar.php">Volver al listado</a>
         </form> 
-        <a href="listar.php">Ir a listar</a>
     </body>
 </html>
 
