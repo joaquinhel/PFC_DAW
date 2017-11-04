@@ -10,7 +10,7 @@
             include_once '../../../PHP/BD/pruebaBD.php';
             $todos = pruebaBD::listarTodos();
             echo "<table border=1px>";
-            echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>aparatosNecesarios</th>"
+            echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>Instrumental</th><th>Acciones</th>"
             . "</tr>";
 
             foreach ($todos as $aux) {

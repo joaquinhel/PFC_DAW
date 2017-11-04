@@ -8,10 +8,11 @@
         <div>
             <?php
             include_once '../../../PHP/BD/productoBD.php';
+
             $todos = productoBD::listarTodos();
             echo "<table border=1px>";
             echo "<tr><th>idProducto</th><th>nombreProducto</th><th>Descripción</th> <th>Marca</th>"
-            . "<th>Precio</th><th>proveedor_idProveedor</th> <th>categoria_idCategoria</th>"
+            . "<th>Precio</th><th>Proveedor</th> <th>Categoria</th> <th>Acciones</th>"
             . "</tr>";
 
             foreach ($todos as $aux) {

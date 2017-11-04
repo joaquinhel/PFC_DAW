@@ -9,24 +9,23 @@
     <body>
         <div>
             <?php
-            include_once '../../../PHP/BD/pruebaBD.php';
-            $todos = pruebaBD::listarTodos();
+            include_once '../../../PHP/BD/pedidoClienteBD.php';
+            $todos = pedidoClienteBD::listarTodos();
             echo "<table border=1px>";
-            echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>aparatosNecesarios</th>"
-            . "</tr>";
+            echo "<tr><th>ID</th><th>Fecha de Pedido</th><th>Id Cliente</th><th>Id empleado</th> "
+            . "<th>Ver Detalle</th><th>Acciones</th></tr>";
 
             foreach ($todos as $aux) {
-                echo "<tr>"
-                . "<td>" . $aux->getIdPrueba() . "</td> "
-                . "<td>" . $aux->getNombrePrueba() . "</td>"
-                . "<td>" . $aux->getAparatosNecesarios() . "</td>"
-                . "<td> <a href='actualizar.php?id=" . $aux->getIdPrueba() . "'>Editar</a>
-                       <a href='borrar.php?id=" . $aux->getIdPrueba() . "'>Borrar</a></tr>";
+                echo "<tr><td>" . $aux->getIdPedido() . "</td> <td>" . $aux->getFechaPedido() . "</td>"
+                . "<td>" . $aux->getCliente_idCliente() . "</td><td>" . $aux->getEmpleado_idEmpleado() . "</td>"
+                . "<td><a href='..\detallePedido\listar.php?id=" . $aux->getIdPedido() . "'>Editar</a></td> "
+                . "<td> <a href='actualizar.php?id=" . $aux->getIdPedido() . "'>Editar</a>
+                       <a href='borrar.php?id=" . $aux->getIdPedido() . "'>Borrar</a></tr>";
             }
             echo "</table>";
 
             if (isset($_POST['enviar'])) {
-                pruebaBD::borrarPrueba($_POST['id']);
+                pedidoClienteBD::borrarPedidoCliente($_POST['id']);
                 echo "El registro se ha borrado";
             }
             ?>

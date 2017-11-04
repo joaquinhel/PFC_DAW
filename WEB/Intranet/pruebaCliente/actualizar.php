@@ -27,7 +27,7 @@ include_once '../../../PHP/BD/pruebaBD.php';
             $row = array();
             $row['idPrueba'] = $_POST['idPrueba'];
             $row['nombrePrueba'] = $_POST['nombrePrueba'];
-            $row['descripción'] = $_POST['descripción'];
+            $row['descripcion'] = $_POST['descripcion'];
             pruebaBD::actualizarPrueba($row);
             echo "Los datos han sido actualizados";
             unset($_POST['actualizar']);

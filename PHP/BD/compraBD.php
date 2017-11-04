@@ -1,56 +1,66 @@
 <?php
 
-include_once ('Categoria.php');
+include_once ('Compra.php');
 include_once ('BD.php');
 
-class categoriaBD {
+class compraBD {
 
     public static function listarTodos() {
-        $sql = "SELECT idCategoria, nombreCategoria from optica.categoria";
+        $sql = "SELECT idCompra, fechaEmision, fechaVencimiento,"
+                . " proveedor_idProveedor"
+                . " from optica.compra";
         $resultado = BD::ejecutaConsulta($sql);
-        $categorias = array();
+        $compras = array();
         if ($resultado) {
 // Añadimos un elemento por cada producto obtenido
             $row = $resultado->fetch(); //Miramos si tiene datos
             while ($row != null) { //Si tiene lo vamos recorriendo
-                $categorias[] = new Categoria($row); //Guardamos en productos los objetos de Producto
+                $compras[] = new Compra($row); //Guardamos en productos los objetos de Producto
                 $row = $resultado->fetch();
             }
         }
-        return $categorias;
+        return $compras;
     }
 
 //Obtener datos de un producto a partir de su nombre
-    public static function obtenerDatosCategoria($cod) {
-        $sql = "SELECT idCategoria, nombreCategoria "
-                . "from optica.categoria "
-                . "where idCategoria=" . $cod;
+    public static function obtenerDatosCompra($cod) {
+        $sql = "SELECT idCompra, fechaEmision, fechaVencimiento,"
+                . " proveedor_idProveedor"
+                . " from optica.compra where idCompra=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
-        $categoria = array();
+        $compra = array();
         if ($resultado) {
             $row = $resultado->fetch();
-            $categoria = new Categoria($row);
+            $compra = new Compra($row);
         }
-        return $categoria;
+        return $compra;
     }
 
 //Borrar un producto
-    public static function borrarCategoria($cod) {
-        $sql = "DELETE from optica.categoria where idCategoria =" . $cod;
+    public static function borrarCompra($cod) {
+        $sql = "DELETE from optica.compra where idCompra =" . $cod;
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }
 
 //Insertar un nuevo producto
-    public static function insertarCategoria($nombreCategoria) {
-        $sql = "insert into optica.categoria (nombreCategoria) values ('$nombreCategoria')";
+    public static function insertarCompra($row) {
+        $sql = "insert into optica.compra (fechaEmision, fechaVencimiento, "
+                . "proveedor_idProveedor) values ( "
+                . " '" . $row[0] . "'"
+                . ", '" . $row[1] . "'"
+                . ", '" . $row[2] . "');"        ;
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }
 
 //Actualizar producto
-    public static function actualizarCategoria($row) {
-        $sql = "update optica.categoria set nombreCategoria='" . $row['nombreCategoria'] . "' where idCategoria ='" . $row['idCategoria'] . "'";
+    public static function actualizarCompra($row) {
+        $sql = "update optica.compra set "
+                . "fechaEmision='" . $row['fechaEmision'] . "' , "
+                . "fechaVencimiento='" . $row['fechaVencimiento'] . "'  "
+                /*. "proveedor_idProveedor='" . $row['proveedor_idProveedor'] . "' "*/
+                . "where idCompra ='" . $row['idCompra'] . "'";
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }

@@ -10,7 +10,7 @@
             include_once '../../../PHP/BD/usuarioBD.php';
             $todos = usuarioBD::listarTodos();
             echo "<table border=1px>";
-            echo "<tr><th>ID</th><th>Login</th><th>Pass</th><th>fecha_alta</th> </tr>";
+            echo "<tr><th>ID</th><th>Login</th><th>Pass</th><th>fecha_alta</th> <th>Acciones</th></tr>";
 
             foreach ($todos as $aux) {
                 echo "<tr><td>" . $aux->getIdUsuario() . "</td>"

@@ -10,6 +10,8 @@
 
         <?php
         include_once '../../../PHP/BD/productoBD.php';
+        include_once '../../../PHP/BD/proveedorBD.php';
+        include_once '../../../PHP/BD/categoriaBD.php';
         if (isset($_POST['insertar'])) {
             $row['nombreProducto'] = $_POST['nombreProducto'];
             $row['descripcion'] = $_POST['descripcion'];
@@ -20,26 +22,31 @@
             productoBD::insertarProducto($row);
         }
         ?>
+
         <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
             <label>Introduzca los datos del producto: </label> <br/>
             Nombre: <input type="text" name="nombreProducto" /><br/>
             Descripción: <input type="text" name="descripcion"/><br/>
             Marca: <input type="text" name="marca"/><br/>
             Precio: <input type="text" name="precio" /><br/>
-            ID_proveedor: <select name="proveedor_idProveedor">    
-                <option value="SanMiguel">San Miguel</option>    
-                <option value="Mahou">Mahou</option>    
-                <option value="Heineken">Heineken</option>    
-                <option value="Carlsberg">Carlsberg</option>    
-                <option value="Aguila">Aguila</option>   
+            ID_proveedor: 
+            <select name="proveedor_idProveedor">  
+                <?php
+                $todos1 = proveedorBD::listarTodos();
+                foreach ($todos1 as $id) {
+                    echo "<option value=" . $id->getIdProveedor() . ">" . $id->getNombreEmpresa() . "</option>";
+                }
+                ?>   
             </select><br> 
 
-                ID_categoria:<select name="proveedor_idProveedor">    
-                    <option value="SanMiguel">San Miguel</option>    
-                    <option value="Mahou">Mahou</option>    
-                    <option value="Heineken">Heineken</option>    
-                    <option value="Carlsberg">Carlsberg</option>    
-                    <option value="Aguila">Aguila</option>   
+                ID_categoria:
+                <select name="categoria_idCategoria">    
+                    <?php
+                    $todos2 = categoriaBD::listarTodos();
+                    foreach ($todos2 as $id) {
+                        echo "<option value=" . $id->getIdCategoria() . ">" . $id->getNombreCategoria() . "</option>";
+                    }
+                    ?>  
                 </select><br> 
 
                     <input type="submit" name="insertar" value="Introducir Nuevo"/>

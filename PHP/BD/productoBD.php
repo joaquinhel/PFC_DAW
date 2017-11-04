@@ -6,8 +6,8 @@ include_once ('BD.php');
 class productoBD {
 
     public static function listarTodos() {
-        $sql = "SELECT idProducto, nombreProducto, descripción,"
-                . " telefono, marca, precio, proveedor_idProveedor, categoria_idCategoria"
+        $sql = "SELECT idProducto, nombreProducto, descripcion,"
+                . " marca, precio, proveedor_idProveedor, categoria_idCategoria"
                 . " from optica.producto ";
         $resultado = BD::ejecutaConsulta($sql);
         $productos = array();
@@ -24,8 +24,8 @@ class productoBD {
 
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosProducto($cod) {
-        $sql = "SELECT idProducto, nombreProducto, descripción,"
-                . " telefono, marca, precio, proveedor_idProveedor, categoria_idCategoria"
+        $sql = "SELECT idProducto, nombreProducto, descripcion,"
+                . "  marca, precio, proveedor_idProveedor, categoria_idCategoria"
                 . " from optica.producto "
                 . "where idProducto=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
@@ -63,9 +63,9 @@ class productoBD {
     public static function actualizarProducto($row) {
         $sql = "update optica.producto set "
                 . "nombreProducto='" . $row['nombreProducto'] . "' , "
-                . "descripción='" . $row['descripción'] . "', "
+                . "descripcion='" . $row['descripcion'] . "', "
                 . "marca = '" . $row['marca'] . "', "
-                . "email = '" . $row['precio'] . "', "
+                . "precio = '" . $row['precio'] . "', "
                 . "proveedor_idProveedor = '" . $row['proveedor_idProveedor'] . "', "
                 . "categoria_idCategoria = '" . $row['categoria_idCategoria'] . "'"
                 . "where idProducto = '" . $row['idProducto'] . "'";
