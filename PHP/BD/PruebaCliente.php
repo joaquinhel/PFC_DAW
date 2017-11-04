@@ -1,29 +1,21 @@
 <?php
 
-class pruebaCliente {
+class PruebaCliente {
 
-    protected $pruebas_idpruebas;
+    protected $prueba_idPrueba;
     protected $cliente_idCliente;
     protected $diagnostico;
     protected $fechaPrueba;
 
     public function __construct($row) {
-        $this->pruebas_idpruebas = $row ['cliente_idCliente'];
-        $this->cliente_idCliente = $row ['$pruebas_idpruebas'];
+        $this->cliente_idCliente = $row ['cliente_idCliente'];
+        $this->prueba_idPrueba = $row ['prueba_idPrueba'];
         $this->diagnostico = $row ['diagnostico'];
-        $this->diagnostico = $row ['fechaPrueba'];
+        $this->fechaPrueba = $row ['fechaPrueba'];
     }
 
-    function getFechaPrueba() {
-        return $this->fechaPrueba;
-    }
-
-    function setFechaPrueba($fechaPrueba) {
-        $this->fechaPrueba = $fechaPrueba;
-    }
-
-    public function getPruebas_idpruebas() {
-        return $this->pruebas_idpruebas;
+    public function getPrueba_idPrueba() {
+        return $this->prueba_idPrueba;
     }
 
     public function getCliente_idCliente() {
@@ -34,8 +26,12 @@ class pruebaCliente {
         return $this->diagnostico;
     }
 
-    public function setPruebas_idpruebas($pruebas_idpruebas) {
-        $this->pruebas_idpruebas = $pruebas_idpruebas;
+    public function getFechaPrueba() {
+        return $this->fechaPrueba;
+    }
+
+    public function setPruebas_idPruebas($prueba_idPrueba) {
+        $this->prueba_idPrueba = $prueba_idPrueba;
     }
 
     public function setCliente_idCliente($cliente_idCliente) {
@@ -44,6 +40,10 @@ class pruebaCliente {
 
     public function setDiagnostico($diagnostico) {
         $this->diagnostico = $diagnostico;
+    }
+
+    public function setFechaPrueba($fechaPrueba) {
+        $this->fechaPrueba = $fechaPrueba;
     }
 
 }

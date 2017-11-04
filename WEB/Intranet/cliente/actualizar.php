@@ -31,7 +31,8 @@ include_once '../../../PHP/BD/clienteBD.php';
             echo "<input type = 'text' name = 'nif' value = " . $todos->getNif() . "> <br />";
             echo "<br/>";
             echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br />";
-            echo "<a href = 'listar.php'>Ir a listar</a>";
+            echo "<a href = 'listar.php'>Volver a la lista de cliente &emsp;&emsp;</a>";
+            echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
             echo "</form>";
         } elseif (isset($_POST['actualizar'])) {
             $row = array();

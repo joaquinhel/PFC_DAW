@@ -24,7 +24,7 @@
         }
         ?>
         <h2>INTRODUCIR UN NUEVO PRODUCTO</h2>
-        
+
         <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
             <p>Introduzca los datos del producto: </label> <p/>
                 <label>Nombre: </label> <input type="text" name="nombreProducto" /><br/>
@@ -39,22 +39,23 @@
                         echo "<option value=" . $id->getIdProveedor() . ">" . $id->getNombreEmpresa() . "</option>";
                     }
                     ?>   
-                </select><br> 
+                </select><br/> 
 
-                    <label>ID_categoria: </label>
-                    <select name="categoria_idCategoria">    
-                        <?php
-                        $todos2 = categoriaBD::listarTodos();
-                        foreach ($todos2 as $id) {
-                            echo "<option value=" . $id->getIdCategoria() . ">" . $id->getNombreCategoria() . "</option>";
-                        }
-                        ?>  
-                    </select><br> 
+                <label>ID_categoria: </label>
+                <select name="categoria_idCategoria">    
+                    <?php
+                    $todos2 = categoriaBD::listarTodos();
+                    foreach ($todos2 as $id) {
+                        echo "<option value=" . $id->getIdCategoria() . ">" . $id->getNombreCategoria() . "</option>";
+                    }
+                    ?>  
+                </select><br/> 
 
-                        <input type="submit" name="insertar" value="Introducir Nuevo"/>
-                        <a href="listar.php">Volver al listado</a>
+                <input type="submit" name="insertar" value="Introducir Nuevo"/>
+                <a href="listar.php">Volver al listado de productos </a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
 
-                        </form> 
-                        </body>
-                        </html>
+        </form> 
+    </body>
+</html>
 

@@ -11,7 +11,7 @@ include_once '../../../PHP/BD/categoriaBD.php';
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>   
-        <h2> Modificar los datos guardados de una categoria </h2>
+        <h2> MODIFICAR UNA CATEGORIA DE PRODUCTOS</h2>
         <?php
         if (!isset($_POST['actualizar'])) {
             $todos = categoriaBD::obtenerDatosCategoria($_GET['id']);
@@ -23,7 +23,8 @@ include_once '../../../PHP/BD/categoriaBD.php';
             echo "<input type = 'text' name = 'nombreCategoria' value = " . $todos->getNombreCategoria() . " />";
             echo "<br/><br />";
             echo "<input type = 'submit' value = 'Pulse para Actualizar con los datos introducidos' id='actualizar' name = 'actualizar'/><br />";
-            echo "<a href = 'listar.php'>Volver a la lista de categorias</a>";
+            echo "<a href = 'listar.php'>Volver a la lista de categorias &emsp;&emsp;</a>";
+            echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
             echo "</form>";
         } elseif (isset($_POST['actualizar'])) {
             $row = array();

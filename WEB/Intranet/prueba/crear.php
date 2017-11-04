@@ -22,7 +22,8 @@
             Instrumental: <input type="text" name="aparatosNecesarios"/><br/>
             <input type="submit" name="insertar" value="Introducir Nuevo"/>
         </form> 
-        <a href="listar.php">Ir a listar</a>
+        <a href="listar.php">Volver al listado de pruebas</a>&emsp;
+        <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
     </body>
 </html>
 

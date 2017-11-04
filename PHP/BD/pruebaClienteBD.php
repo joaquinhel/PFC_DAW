@@ -6,15 +6,15 @@ include_once ('BD.php');
 class pruebaClienteBD {
 
     public static function listarTodos() {
-        $sql = "SELECT cliente_idCliente, pruebas_idPruebaClientes, diagnostico, fechaPruebaCliente"
+        $sql = "SELECT cliente_idCliente, prueba_idPrueba, diagnostico, fechaPrueba"
                 . " from optica.pruebaCliente";
         $resultado = BD::ejecutaConsulta($sql);
-        $pruebaCliente = array();
+        $pruebaClientes = array();
         if ($resultado) {
 // Añadimos un elemento por cada producto obtenido
             $row = $resultado->fetch(); //Miramos si tiene datos
             while ($row != null) { //Si tiene lo vamos recorriendo
-                $pruebaCliente[] = new PruebaCliente($row); //Guardamos en productos los objetos de Producto
+                $pruebaClientes[] = new PruebaCliente($row); //Guardamos en productos los objetos de Producto
                 $row = $resultado->fetch();
             }
         }
@@ -22,10 +22,10 @@ class pruebaClienteBD {
     }
 
 //Obtener datos de un producto a partir de su nombre
-    public static function obtenerDatosPruebaCliente($cod) {
+    public static function obtenerDatosPruebaCliente($cod, $cod1) {
         $sql = "SELECT cliente_idCliente, prueba_idPrueba, diagnostico, fechaPrueba"
-                . "from optica.pruebaCliente "
-                . "where idPruebaCliente=" . $cod;
+                . " from optica.pruebaCliente"
+                . " where cliente_idCliente=" . $cod . " and prueba_idPrueba= ". $cod1 ;
         $resultado = BD::ejecutaConsulta($sql);
         $pruebaCliente = array();
         if ($resultado) {
@@ -36,8 +36,9 @@ class pruebaClienteBD {
     }
 
 //Borrar un producto
-    public static function borrarPruebaCliente($cod) {
-        $sql = "DELETE from optica.pruebaCliente where idPruebaCliente =" . $cod;
+    public static function borrarPruebaCliente($cod, $cod1) {
+        $sql = "DELETE from optica.pruebaCliente "
+               . "where cliente_idCliente=" . $cod . " and prueba_idPrueba= ". $cod1 ;
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }
@@ -46,10 +47,10 @@ class pruebaClienteBD {
     public static function insertarPruebaCliente($row) {
         $sql = "insert into optica.pruebaCliente ("
                 . "cliente_idCliente, prueba_idPrueba, diagnostico, fechaPrueba) values ( "
-                . ", '" . $row['cliente_idCliente'] . "'"
-                . ", '" . $row['prueba_idPrueba'] . "'"
-                . ", '" . $row['diagnostico'] . "'"
-                . ", '" . $row['fechaPrueba'] . "' )"
+                . " '" . $row[0] . "'"
+                . ", '" . $row[1] . "'"
+                . ", '" . $row[2] . "'"
+                . ", '" . $row[3] . "' )"
         ;
         $numero = BD::realizaUpdate($sql);
         return $numero;

@@ -29,7 +29,8 @@
                 <p> INTRODUZCA EL IDENTIFICADOR DE LA CATEGORIA BORRAR </p>
                 <label>ID categoria</label><input type='text' name='id'/><br/>
                 <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-                <a href="listar.php">Volver a la lista de categorias</a>
+                <a href="listar.php">Volver al listado de categorias</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
             </form>
         </div>
     </body>

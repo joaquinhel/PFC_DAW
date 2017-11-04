@@ -24,8 +24,8 @@ class pruebaBD {
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosPrueba($cod) {
         $sql = "SELECT idPrueba, nombrePrueba, aparatosNecesarios"
-                . "from optica.prueba "
-                . "where idPrueba=" . $cod;
+                . " from optica.prueba"
+                . " where idPrueba=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
         $prueba = array();
         if ($resultado) {

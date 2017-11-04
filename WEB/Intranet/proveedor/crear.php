@@ -26,7 +26,8 @@
             <label>Nombre Empresa: </label><input type="text" name="nombreEmpresa"/><br/>
             <label>Persona de Contacto: </label><input type="text" name="personaContacto"/><br/>
             <input type="submit" name="insertar" value="Introducir Nuevo"/>
-            <a href="listar.php">Ir a listar</a>
+            <a href="listar.php">Volver al listado de proveedores</a>&emsp;
+            <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
         </form> 
 
     </body>

@@ -28,7 +28,8 @@ include_once '../../../PHP/BD/usuarioBD.php';
             echo "<input type = 'text' name = 'fecha_alta' value = " . $todos->getFecha_alta() . "><br />";
             echo "<br/>";
             echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
-            echo "<a href = 'listar.php'>Ir a listar</a>";
+            echo "<a href = 'listar.php'>Volver a la lista de usuarios</a>&emsp;&emsp;";
+            echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
             echo "</form>";
         } elseif (isset($_POST['actualizar'])) {
             $row = array();

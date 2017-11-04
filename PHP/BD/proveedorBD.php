@@ -23,7 +23,7 @@ class proveedorBD {
 
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosProveedor($cod) {
-        $sql = "SELECT idProveedor, direccion, nombreEmpresa,personaContacto"
+        $sql = "SELECT idProveedor, direccion, nombreEmpresa,personaContacto "
                 . "from optica.proveedor "
                 . "where idProveedor=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
@@ -57,9 +57,9 @@ class proveedorBD {
 //Actualizar producto
     public static function actualizarProveedor($row) {
         $sql = "update optica.proveedor set "
-                . "direccion='" . $row['direccion'] . "' , "
-                . "nombreEmpresa = '" . $row['nombreEmpresa'] . "', "
-                . "personaContacto = '" . $row['personaContacto'] . "', "
+                . "nombreEmpresa='" . $row['nombreEmpresa'] . "' , "
+                . "direccion = '" . $row['nombreEmpresa'] . "', "
+                . "personaContacto = '" . $row['personaContacto'] . "' "
                 . "where idProveedor = '" . $row['idProveedor'] . "'";
         $numero = BD::realizaUpdate($sql);
         return $numero;

@@ -5,10 +5,32 @@
         <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../css/servicios.css" rel="stylesheet" type="text/css"/>
+
         <title>Optica</title>
         <meta charset="UTF-8">
     </head>
     <body id="body">
+        <?php
+        require_once('../PHP/BD/usuarioBD.php');
+        $error = "";
+        if (isset($_POST['enviar'])) {
+            if (empty($_POST['usuario']) || empty($_POST['password'])) {
+                $error = "Debes introducir un nombre de usuario y una contraseña";
+            } else {
+                $usuario = $_POST['usuario'];
+                $pass = $_POST['password'];
+                $entrar = usuarioBD::hacerLogin($usuario, $pass);
+                if ($entrar) {
+                    session_start();
+                    $_SESSION['usuario'] = $_POST['usuario'];
+                    header("Location:menuIntranet.php");
+                } else {
+                    $error = "Usuario o contraseña no válidos!";
+                }
+            }
+        }
+        ?>
+
         <?php
         include 'menu.php';
         ?>
@@ -19,7 +41,7 @@
             $error = "";
             ?>
             <div class='fila'>
-                <form action='menuIntranet.php' method='post'>
+                <form action='loginIntranet.php' method='post'>
                     <fieldset >
                         <legend>Login</legend>
                         <div><span class='error'><?php echo $error; ?></span></div>

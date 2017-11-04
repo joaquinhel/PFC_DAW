@@ -29,7 +29,8 @@
             <label>Teléfono: </label> <input type="text" name="telefono"/><br/>
             <label>NIF: </label> <input type="text" name="nif"/><br/>
             <input type="submit" name="insertar" value="Introducir Nuevo"/><br /><br />
-                <a href="listar.php">Volver al listado</a>
+            <a href="listar.php">Volver al listado de clientes</a>&emsp;
+            <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
         </form> 
     </body>
 </html>

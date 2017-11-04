@@ -20,7 +20,8 @@
             <p>Introduzca los datos de la categoria </p>
             <label>Nombre: </label> <input type="text" name="nombre"><br/><br/>
                 <input type="submit" name="insertar" value="Grabar en Registro"/> <br /><br />
-                <a href="listar.php">Volver al listado</a>
+                <a href="listar.php">Volver al listado de categorias</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>    
         </form> 
     </body>
 </html>

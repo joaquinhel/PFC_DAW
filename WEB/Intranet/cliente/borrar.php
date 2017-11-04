@@ -30,12 +30,13 @@
                 echo "El registro se ha borrado";
             }
             ?>      
-            
+
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                 <p> INTRODUZCA EL IDENTIFICADOR DEL CLIENTE A BORRAR </p>
                 <label>ID categoria</label><input type='text' name='id'/><br/>
                 <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-                <a href="listar.php">Volver a la lista de clientes</a>
+                <a href="listar.php">Volver al listado de Clientes</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
             </form>
         </div>
     </body>

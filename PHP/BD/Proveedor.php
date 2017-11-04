@@ -14,35 +14,35 @@ class Proveedor {
         $this->direccion = $row ['direccion'];
     }
 
-    function getIdProveedor() {
+    public function getIdProveedor() {
         return $this->idProveedor;
     }
 
-    function getNombreEmpresa() {
+    public function getNombreEmpresa() {
         return $this->nombreEmpresa;
     }
 
-    function getPersonaContacto() {
+    public function getPersonaContacto() {
         return $this->personaContacto;
     }
 
-    function getDireccion() {
+    public function getDireccion() {
         return $this->direccion;
     }
 
-    function setIdProveedor($idProveedor) {
+    public function setIdProveedor($idProveedor) {
         $this->idProveedor = $idProveedor;
     }
 
-    function setNombreEmpresa($nombreEmpresa) {
+    public function setNombreEmpresa($nombreEmpresa) {
         $this->nombreEmpresa = $nombreEmpresa;
     }
 
-    function setPersonaContacto($personaContacto) {
+    public function setPersonaContacto($personaContacto) {
         $this->personaContacto = $personaContacto;
     }
 
-    function setDireccion($direccion) {
+    public function setDireccion($direccion) {
         $this->direccion = $direccion;
     }
 

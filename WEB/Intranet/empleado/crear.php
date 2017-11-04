@@ -33,7 +33,8 @@
             <label>Fecha de Contratacion:  </label><input type="text" name="fechaContratacion"/><br/>
             <label>Sueldo:  </label><input type="text" name="sueldo"/><br/>
             <input type="submit" name="insertar" value="Introducir Nuevo"/>
-            <a href="listar.php">Volver al listado</a>
+            <a href="listar.php">Volver al listado de empleados</a>&emsp;
+            <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>    
         </form> 
     </body>
 </html>

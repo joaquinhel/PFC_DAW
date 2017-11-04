@@ -61,4 +61,18 @@ class usuarioBD {
         return $numero;
     }
 
+    public static function hacerLogin($login, $password) {
+        $sql = "select login, pass from optica.usuario "
+                . "where login= '" . $login . "' and pass='" . $password . "';";
+        $resultado = BD::ejecutaConsulta($sql);
+        $verificado = false;
+        if (isset($resultado)) {
+            $fila = $resultado->fetch();
+            if ($fila != false) {
+                $verificado = true;
+            }
+        }
+        return $verificado;
+    }
+
 }
