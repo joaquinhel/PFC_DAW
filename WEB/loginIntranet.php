@@ -13,6 +13,8 @@
         <?php
         require_once('../PHP/BD/usuarioBD.php');
         $error = "";
+        $_GET['accion']="";
+        $accion="";
         if (isset($_POST['enviar'])) {
             if (empty($_POST['usuario']) || empty($_POST['password'])) {
                 $error = "Debes introducir un nombre de usuario y una contraseña";

@@ -1,5 +1,6 @@
 body {
     background: darkgrey;	
+    text-align:center; /*para que en IE 5.5 salga centrado*/
 }
 
 #formularioSubida .inputImagenModificado input {
@@ -32,8 +33,6 @@ body {
     width: 600px;
     z-index: 1;
 }
-
-
 
 .galeria{
     width: 1080px;
@@ -75,4 +74,16 @@ body {
 }
 #subirImagenes .subido{
     color: chartreuse;
+}
+
+#menu{
+    margin-bottom: 15px;
+}
+
+#menu ul{
+    margin:0;padding:0;
+}
+
+#menu ul li{
+    display:inline;margin:0 3px;
 }

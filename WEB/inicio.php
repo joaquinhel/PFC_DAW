@@ -2,18 +2,20 @@
 
 <html>
     <head>
+        <link href="../imagenes/iconos/favicon.ico" rel="logo" />
         <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
         <title>Optica</title>
         <meta charset="UTF-8">
     </head>
     <body id="body">
+
         <?php
-        include 'menu.php';
+        include_once 'menu.php';
         ?>
-        <div id="contenedor">
+        <div id='contenedor'>
             <?php
-            include 'cabecera.php';
+            include_once 'cabecera.php';
             ?>
             <!--
                     <div id="contenedor">

@@ -15,24 +15,25 @@ and open the template in the editor.
 #menu ul{
     margin:0;padding:0;
 }
+
 #menu ul li{
     display:inline;margin:0 3px;
 }
 
 #body{
-    background: white;
+    background: #FFFFCC;
     text-align:center; /*para que en IE 5.5 salga centrado*/
-
 }
+
+
 
 #contenedor{
     padding-top: 1px;
     height:100%; 
     width:90%; 
-    background: red;
+    //background: red;
     margin:auto;      /* para centrar el contenedor */
 }
-
 
 #central{
     width:100%;               /* 1 - le damos un ancho */
@@ -44,7 +45,7 @@ and open the template in the editor.
     height: 99%;              /* 4 */
     float: left;                /* 5 - para que salga en formato de tabla*/
     margin: 0px 2px 10px 5px;
-    background: blue;
+    //background: blue;
     margin-left: 2.4%;
     border: 1px solid #99cccc;
     display: flex;
@@ -53,22 +54,22 @@ and open the template in the editor.
 }
 
 #mapa{
-    width:95%;               /* 1 - le damos un ancho */
-    height:95%;               /* 2 - le damos un alto */
+    width:90%;               /* 1 - le damos un ancho */
+    height:90%;               /* 2 - le damos un alto */
     frameborder:1%;
     border:1;
 }
 
 #logo{
-    width: 95%;               /* 3 */
-    height: 88%;
+    width: 55%;               /* 3 */
+    height: 60%;
     display: inline-block;
 }
 
 .fila{
     margin: 15px 15px 15px 15px;
-    height: 300px; /* le damos un alto mínimo*/
-    background: green;
+    height: 200px; /* le damos un alto mínimo*/
+    //background: green;
     alignment-adjust: baseline;
 
 }

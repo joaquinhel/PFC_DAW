@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html>
+<?php
+include_once '../../../PHP/controlSesion.php';
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
+        <title>INSERTAR CATEGORIA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <div>
+    <body>  
+        <?php
+        include_once '../comunes/menu.php';
+        ?>
+        <div id="contenedor">
+            <?php
+            include_once '../comunes/cabecera.php';
+            ?>
             <div>
                 <h1>LISTADO DE PRUEBAS A CLIENTES PROGRAMADAS</h1>
                 <input type='submit' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
@@ -37,12 +48,19 @@
                 ?>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                     <p> INTRODUZCA EL IDENTIFICADOR DE LA PRUEBA Y EL CLIENTE A BORRAR </p>
-                    <label>ID prueba</label><input type='text' name='id'/><br/>
-                    <label>ID cliente</label><input type='text' name='ida'/><br/>
+                    <label>ID prueba</label><input type='text' name='id' maxlength='4'/><br/>
+                    <label>ID cliente</label><input type='text' name='ida' maxlength='4'/><br/>
                     <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
                     <a href="listar.php">Volver al listado de Pruebas - Clientes</a>&emsp;
                     <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
                 </form>
             </div>
+            <?php
+            include_once '../comunes/pie.php';
+            ?>
+        </div>
+        <?php
+        include '../comunes/footer.php';
+        ?>
     </body>
 </html>

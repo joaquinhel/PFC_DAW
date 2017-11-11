@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html>
+<?php
+include_once '../../../PHP/controlSesion.php';
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TODO supply a title</title>
@@ -34,11 +37,18 @@
             ?>
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                 <p> INTRODUZCA EL IDENTIFICADOR DEL EMPLEADO BORRAR </p>
-                <label>ID categoria</label><input type='text' name='id'/><br/>
+                <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
                 <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
                 <a href="listar.php">Volver al listado de empleados</a>&emsp;
                 <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
             </form>
         </div>
+        <?php
+        include_once '../comunes/pie.php';
+        ?>
+        </div>
+        <?php
+        include '../comunes/footer.php';
+        ?>
     </body>
 </html>
