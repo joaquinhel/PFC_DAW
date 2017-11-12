@@ -5,7 +5,6 @@
         <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../css/servicios.css" rel="stylesheet" type="text/css"/>
-
         <title>Optica</title>
         <meta charset="UTF-8">
     </head>
@@ -13,8 +12,6 @@
         <?php
         require_once('../PHP/BD/usuarioBD.php');
         $error = "";
-        $_GET['accion']="";
-        $accion="";
         if (isset($_POST['enviar'])) {
             if (empty($_POST['usuario']) || empty($_POST['password'])) {
                 $error = "Debes introducir un nombre de usuario y una contraseña";
@@ -34,17 +31,20 @@
         ?>
 
         <?php
-        include 'menu.php';
+        include_once 'menu.php';
         ?>
         <div id="contenedor">
-
             <?php
-            include 'cabecera.php';
+            include_once 'cabecera.php';
             $error = "";
             ?>
+
+            <h2>Para acceder a este apartado debe ser un usuario registrado</h2>
+            <h3>Introduzca su usuario y contraseña</h3>
+            <a href="menu.php"></a>
             <div class='fila'>
                 <form action='loginIntranet.php' method='post'>
-                    <fieldset >
+                    <fieldset>
                         <legend>Login</legend>
                         <div><span class='error'><?php echo $error; ?></span></div>
                         <div class='campo'>
@@ -63,12 +63,12 @@
             </div>
 
             <?php
-            include 'pie.php';
+            include_once 'pie.php';
             ?>
         </div>
 
         <?php
-        include 'footer.php';
+        include_once 'footer.php';
         ?>
     </body>
 </html>

@@ -13,3 +13,9 @@ and open the template in the editor.
     height: 30%;
     display: inline-block;
 }
+
+.oferta{
+    width: 50%;               /* 3 */
+    height: 50%;
+    display: inline-block;
+}

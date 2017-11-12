@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html>
-<?php
-include_once '../../../PHP/controlSesion.php';
-?>
+<?php include_once "../../crearSesion.php"; ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>INSERTAR CATEGORIA</title>
@@ -20,9 +18,8 @@ include_once '../../../PHP/controlSesion.php';
             <?php
             include_once '../comunes/cabecera.php';
             ?>
-            <div>
+            <div id='centro'>
                 <h1>LISTADO DE PRUEBAS A CLIENTES PROGRAMADAS</h1>
-                <input type='submit' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
                 <?php
                 include_once '../../../PHP/BD/pruebaClienteBD.php';
                 $todos = pruebaClienteBD::listarTodos();

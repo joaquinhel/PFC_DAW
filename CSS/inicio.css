@@ -25,7 +25,10 @@ and open the template in the editor.
     text-align:center; /*para que en IE 5.5 salga centrado*/
 }
 
-
+fieldset{
+    margin-left: 30%;
+    width: 40%;
+}
 
 #contenedor{
     padding-top: 1px;
@@ -53,6 +56,21 @@ and open the template in the editor.
     justify-content: center;
 }
 
+.cajaOferta{
+    width: 45%;               /* 3 */
+    height: 99%;              /* 4 */
+    float: left;                /* 5 - para que salga en formato de tabla*/
+    margin: 0px 2px 10px 5px;
+    //background: blue;
+    margin-left: 2.4%;
+    border: 1px solid #99cccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
 #mapa{
     width:90%;               /* 1 - le damos un ancho */
     height:90%;               /* 2 - le damos un alto */
@@ -69,6 +87,14 @@ and open the template in the editor.
 .fila{
     margin: 15px 15px 15px 15px;
     height: 200px; /* le damos un alto mínimo*/
+    //background: green;
+    alignment-adjust: baseline;
+
+}
+
+.filaOferta{
+    margin: 15px 15px 15px 15px;
+    height: 350px; /* le damos un alto mínimo*/
     //background: green;
     alignment-adjust: baseline;
 

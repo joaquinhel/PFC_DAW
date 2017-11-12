@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE html>
 <?php
-include_once '../../../PHP/controlSesion.php';
+include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -27,6 +26,8 @@ include_once '../../../PHP/controlSesion.php';
                 $row['login'] = $_POST['login'];
                 $row['pass'] = $_POST['pass'];
                 $row['fecha_alta'] = $_POST['fecha_alta'];
+                $row['nombre'] = $_POST['nombre'];
+                $row['estado'] = $_POST['estado'];
                 usuarioBD::insertarUsuario($row);
             }
             ?>
@@ -36,6 +37,8 @@ include_once '../../../PHP/controlSesion.php';
                     <label>Login: </label><input type="text" name="login" maxlength='45'/><br/>
                     <label>Pass: </label><input type="text" name="pass" maxlength='20'/><br/>
                     <label>Fecha de Alta: </label><input type="date" name="fecha_alta"/><br/>
+                    <label>Nombre: </label><input type="text" name="nombre" maxlength='45'/><br/>
+                    <label>Estado: </label><input type="text" name="estado" maxlength='20'/><br/>
                     <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
                     <a href="listar.php">Volver al listado de usuarios</a>&emsp;
                     <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>

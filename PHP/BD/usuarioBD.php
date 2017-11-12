@@ -6,7 +6,7 @@ include_once ('BD.php');
 class usuarioBD {
 
     public static function listarTodos() {
-        $sql = "SELECT idUsuario, login, pass, fecha_alta from optica.usuario";
+        $sql = "SELECT idUsuario, login, pass, fecha_alta, nombre, estado from optica.usuario";
         $resultado = BD::ejecutaConsulta($sql);
         $usuarios = array();
         if ($resultado) {
@@ -22,7 +22,7 @@ class usuarioBD {
 
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosUsuario($cod) {
-        $sql = "SELECT idUsuario, login, pass, fecha_alta from optica.usuario "
+        $sql = "SELECT idUsuario, login, pass, fecha_alta, nombre, estado from optica.usuario "
                 . "where idUsuario=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
         $usuario = array();
@@ -42,9 +42,11 @@ class usuarioBD {
 
 //Insertar un nuevo producto
     public static function insertarUsuario($row) {
-        $sql = "insert into optica.usuario (login, pass, fecha_alta) values ( "
+        $sql = "insert into optica.usuario (login, pass, nombre, estado, fecha_alta) values ( "
                 . " ' " . $row['login'] . "'"
                 . ", '" . $row['pass'] . "'"
+                . ", '" . $row['nombre'] . "'"
+                . ", '" . $row['estado'] . "'"
                 . ", '" . $row['fecha_alta'] . "' )"
         ;
         $numero = BD::realizaUpdate($sql);
@@ -56,6 +58,8 @@ class usuarioBD {
         $sql = "update optica.usuario set "
                 . "pass = '" . $row['pass'] . "', "
                 . "fecha_alta = '" . $row['fecha_alta'] . "' "
+                . "nombre = '" . $row['nombre'] . "', "
+                . "estado = '" . $row['estado'] . "' "
                 . "where idUsuario = '" . $row['idUsuario'] . "'";
         $numero = BD::realizaUpdate($sql);
         return $numero;

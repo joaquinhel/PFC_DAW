@@ -25,7 +25,7 @@
                 <li> | </li>
                 <li><a href="../usuario/listar.php">Usuarios</a></li>
                 <br/>
-                <a href="../../eliminarSesion.php">Salir</a>
+                <a href="../ControlSesion.php">Salir</a>
             </ul>
 
         </div>

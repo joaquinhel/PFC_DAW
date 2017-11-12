@@ -6,7 +6,7 @@ include_once ('BD.php');
 class clienteBD {
 
     public static function listarTodos() {
-        $sql = "SELECT idCliente, nombreCliente, apellidos,direccion, telefono, nif from optica.cliente";
+        $sql = "SELECT idCliente, nombreCliente, apellidos,direccion, telefono, nif, email from optica.cliente";
         $resultado = BD::ejecutaConsulta($sql);
         $clientes = array();
         if ($resultado) {
@@ -22,7 +22,7 @@ class clienteBD {
 
     //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosCliente($cod) {
-        $sql = "SELECT idCliente, nombreCliente, apellidos, direccion, telefono, nif "
+        $sql = "SELECT idCliente, nombreCliente, apellidos, direccion, telefono, nif, email "
                 . "from optica.cliente "
                 . "where idCliente=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
@@ -43,12 +43,13 @@ class clienteBD {
 
     //Insertar un nuevo producto
     public static function insertarCliente($row) {
-        $sql = "insert into optica.cliente (nombreCliente, apellidos, direccion, telefono, nif) values ( "
-                . " '" . $row['nombreCliente'] . "'"
-                . ", '" . $row['apellidos'] . "'"
-                . ", '" . $row['direccion'] . "'"
-                . ", '" . $row['telefono'] . "'"
-                . ", '" . $row['nif'] . "');"        ;
+        $sql = "insert into optica.cliente (nombreCliente, apellidos, direccion, telefono, email, nif) values ( "
+                . " '" . $row[0] . "'"
+                . ", '" . $row[1] . "'"
+                . ", '" . $row[3] . "'"
+                . ", '" . $row[4] . "'"
+                . ", '" . $row[5] . "'"
+                . ", '" . $row[2] . "');";
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }
@@ -60,6 +61,7 @@ class clienteBD {
                 . "apellidos='" . $row['apellidos'] . "' , "
                 . "direccion='" . $row['direccion'] . "' , "
                 . "telefono='" . $row['telefono'] . "' , "
+                . "telefono='" . $row['email'] . "' , "
                 . "nif='" . $row['nif'] . "' "
                 . "where idCliente ='" . $row['idCliente'] . "'";
         $numero = BD::realizaUpdate($sql);

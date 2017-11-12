@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html>
+<?php
+include_once "../../crearSesion.php";
+?> 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>INSERTAR CATEGORIA</title>
@@ -24,14 +27,16 @@
                 categoriaBD::insertarCategoria($_POST['nombre']);
             }
             ?>
-            <h2>CREAR UNA NUEVA CATEGORIA</h2>
-            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
-                <p>Introduzca los datos de la categoria </p>
-                <label>Nombre: </label> <input type="text" name="nombre"  maxlength ="30" ><br/><br/>
-                    <input type="submit" name="insertar" value="Grabar en Registro"/> <br /><br />
-                    <a href="listar.php">Volver al listado de categorias</a>&emsp;
-                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>    
-            </form> 
+            <div id='centro'
+                 <h2>CREAR UNA NUEVA CATEGORIA</h2>
+                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <p>Introduzca los datos de la categoria </p>
+                    <label>Nombre: </label> <input type="text" name="nombre"  maxlength ="30" ><br/><br/>
+                        <input type="submit" name="insertar" value="Grabar en Registro"/> <br /><br />
+                        <a href="listar.php">Volver al listado de categorias</a>&emsp;
+                        <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>    
+                </form> 
+            </div>
             <?php
             include_once '../comunes/pie.php';
             ?>

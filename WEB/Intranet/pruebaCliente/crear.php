@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <?php
-include_once '../../../PHP/controlSesion.php';
+include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>

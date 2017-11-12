@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html>
-<?php
-include_once '../../../PHP/controlSesion.php';
-?>
+<?php include_once "../../crearSesion.php"; ?>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>INSERTAR CATEGORIA</title>
@@ -20,13 +19,13 @@ include_once '../../../PHP/controlSesion.php';
             <?php
             include_once '../comunes/cabecera.php';
             ?>
-            <div>
+            <div id='centro'>
                 <h1>LISTADO DE PRUEBAS DIAGNOSTICAS</h1>
                 <?php
                 include_once '../../../PHP/BD/pruebaBD.php';
                 $todos = pruebaBD::listarTodos();
-                echo "<table border=1px>";
-                echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>aparatosNecesarios</th><th>Acciones</th>"
+                echo "<table>";
+                echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>Instrumental</th> <th>Descripcion</th><th>Acciones</th>"
                 . "</tr>";
 
                 foreach ($todos as $aux) {
@@ -34,6 +33,7 @@ include_once '../../../PHP/controlSesion.php';
                     . "<td>" . $aux->getIdPrueba() . "</td> "
                     . "<td>" . $aux->getNombrePrueba() . "</td>"
                     . "<td>" . $aux->getAparatosNecesarios() . "</td>"
+                    . "<td>" . $aux->getDescripcion() . "</td>"
                     . "<td> <a href='actualizar.php?id=" . $aux->getIdPrueba() . "'>Editar</a>
                        <a href='borrar.php?id=" . $aux->getIdPrueba() . "'>Borrar</a></tr>";
                 }

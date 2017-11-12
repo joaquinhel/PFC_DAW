@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include_once "../../crearSesion.php";
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>INSERTAR CATEGORIA</title>
@@ -15,9 +18,9 @@
             <?php
             include_once '../comunes/cabecera.php';
             ?>
-            <div>
+            <div id='centro'>
                 <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
-                <input type='submit' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
+                <input type='submit' class='navegacion' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
                 <div>
                     <?php
                     include_once '../../../PHP/BD/productoBD.php';
@@ -43,14 +46,15 @@
                     echo "</table>";
                     ?>
                     <br>
-                        <a id='volver' href="../../menuIntranet.php">Volver al Menú de la Intranet</a>
-                </div>
-                <?php
-                include_once '../comunes/pie.php';
-                ?>
+                        <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
+                </div><br/><br/>
             </div>
             <?php
-            include '../comunes/footer.php';
+            include_once '../comunes/pie.php';
             ?>
+        </div>
+        <?php
+        include '../comunes/footer.php';
+        ?>
     </body>
 </html>

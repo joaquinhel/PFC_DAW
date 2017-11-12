@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <?php
-include_once '../../../PHP/controlSesion.php';
+include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -41,7 +41,7 @@ include_once '../../../PHP/controlSesion.php';
             <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
                 <p>Introduzca los datos del producto: </label> <p/>
                     <label>Nombre: </label> <input type="text" name="nombreProducto" maxlength='45' /><br/>
-                    <label>Descripción: </label><input type="text" name="descripcion maxlength='45'"/><br/>
+                    <label>Descripción: </label><input type="text" name="descripcion" maxlength='45'/><br/>
                     <label>Marca: </label><input type="text" name="marca" maxlength='45'/><br/>
                     <label>Precio: </label><input type="text" name="precio" maxlength='7'/><br/>
                     <label>ID_proveedor: </label>

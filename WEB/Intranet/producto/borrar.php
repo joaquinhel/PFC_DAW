@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <?php
-include_once '../../../PHP/controlSesion.php';
+include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -20,7 +20,7 @@ include_once '../../../PHP/controlSesion.php';
             <?php
             include_once '../comunes/cabecera.php';
             ?>
-            <div>
+            <div id='centro'>
                 <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
                 <?php
                 include_once '../../../PHP/BD/productoBD.php';

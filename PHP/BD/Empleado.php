@@ -10,6 +10,8 @@ class Empleado {
     protected $email;
     protected $fechaContratacion;
     protected $sueldo;
+    protected $nif;
+    protected $estado;
 
     public function __construct($row) {
         $this->idEmpleado = $row ['idEmpleado'];
@@ -20,6 +22,16 @@ class Empleado {
         $this->email = $row ['email'];
         $this->fechaContratacion = $row ['fechaContratacion'];
         $this->sueldo = $row ['sueldo'];
+        $this->nif = $row ['nif'];
+        $this->estado = $row ['estado'];
+    }
+
+    public function getNif() {
+        return $this->nif;
+    }
+
+    public function getEstado() {
+        return $this->estado;
     }
 
     public function getIdEmpleado() {
@@ -84,6 +96,14 @@ class Empleado {
 
     public function setSueldo($sueldo) {
         $this->sueldo = $sueldo;
+    }
+
+    public function setNif($nif) {
+        $this->nif = $nif;
+    }
+
+    public function setEstado($estado) {
+        $this->estado = $estado;
     }
 
 }

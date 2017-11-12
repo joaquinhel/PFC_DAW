@@ -6,7 +6,7 @@ include_once ('BD.php');
 class pruebaBD {
 
     public static function listarTodos() {
-        $sql = "SELECT idPrueba, nombrePrueba, aparatosNecesarios"
+        $sql = "SELECT idPrueba, nombrePrueba, aparatosNecesarios, descripcion"
                 . " from optica.prueba";
         $resultado = BD::ejecutaConsulta($sql);
         $pruebas = array();
@@ -23,7 +23,7 @@ class pruebaBD {
 
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosPrueba($cod) {
-        $sql = "SELECT idPrueba, nombrePrueba, aparatosNecesarios"
+        $sql = "SELECT idPrueba, nombrePrueba, aparatosNecesarios, descripcion"
                 . " from optica.prueba"
                 . " where idPrueba=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
@@ -44,9 +44,10 @@ class pruebaBD {
 
 //Insertar un nuevo producto
     public static function insertarPrueba($row) {
-        $sql = "insert into optica.prueba (nombrePrueba, aparatosNecesarios) values ( "
+        $sql = "insert into optica.prueba (nombrePrueba, aparatosNecesarios, descripcion) values ( "
                 . " '" . $row['nombrePrueba'] . "'"
-                . ", '" . $row['aparatosNecesarios'] . "' )"
+                . ", '" . $row['aparatosNecesarios'] . "'"
+                . ", '" . $row['descripcion'] . "' )"
         ;
         $numero = BD::realizaUpdate($sql);
         return $numero;
@@ -57,6 +58,7 @@ class pruebaBD {
         $sql = "update optica.prueba set "
                 . "nombrePrueba = '" . $row['nombrePrueba'] . "', "
                 . "aparatosNecesarios = '" . $row['aparatosNecesarios'] . "', "
+                . "descripcion = '" . $row['descripcion'] . "' "
                 . "where idPrueba = '" . $row['idPrueba'] . "'";
         $numero = BD::realizaUpdate($sql);
         return $numero;

@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <?php
-include_once '../../../PHP/controlSesion.php';
+include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -27,27 +27,34 @@ include_once '../../../PHP/controlSesion.php';
                 $row['direccion'] = $_POST['direccion'];
                 $row['nombreEmpresa'] = $_POST['nombreEmpresa'];
                 $row['personaContacto'] = $_POST['personaContacto'];
+                $row['cif'] = $_POST['cif'];
+                $row['email'] = $_POST['email'];
+                $row['telefono'] = $_POST['telefono'];
                 proveedorBD::insertarProveedor($row);
             }
             ?>
-            <h2>INTRODUCIR UN NUEVO PROVEEDOR</h2>
+            <div id='centro'>
+                <h2>INTRODUCIR UN NUEVO PROVEEDOR</h2>
 
-            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
-                <p>Introduzca los datos del proveedor: </p>
-                <label>Dirección: </label><input type="text" name="direccion" maxlength='45' /><br/>
-                <label>Nombre Empresa: </label><input type="text" name="nombreEmpresa" maxlength='45'/><br/>
-                <label>Persona de Contacto: </label><input type="text" name="personaContacto" maxlength='45'/><br/>
-                <input type="submit" name="insertar" value="Introducir Nuevo"/>
-                <a href="listar.php">Volver al listado de proveedores</a>&emsp;
-                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-            </form> 
+                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <p>Introduzca los datos del proveedor: </p>
+                    <label>Dirección: </label><input type="text" name="direccion" maxlength='45' /><br/>
+                    <label>Nombre Empresa: </label><input type="text" name="nombreEmpresa" maxlength='45'/><br/>
+                    <label>Persona de Contacto: </label><input type="text" name="personaContacto" maxlength='45'/><br/>
+                    <label>CIF: </label><input type="text" name="cif" maxlength='45' /><br/>
+                    <label>Email: </label><input type="text" name="email" maxlength='45'/><br/>
+                    <label>Teléfono: </label><input type="text" name="telefono" maxlength='45'/><br/>
+                    <input type="submit" name="insertar" value="Introducir Nuevo"/>
+                    <a href="listar.php">Volver al listado de proveedores</a>&emsp;
+                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                </form> 
+                <?php
+                include_once '../comunes/pie.php';
+                ?>
+            </div>
             <?php
-            include_once '../comunes/pie.php';
+            include '../comunes/footer.php';
             ?>
-        </div>
-        <?php
-        include '../comunes/footer.php';
-        ?>
     </body>
 </html>
 

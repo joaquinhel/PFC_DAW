@@ -8,6 +8,7 @@ class Cliente {
     protected $direccion;
     protected $telefono;
     protected $nif;
+    protected $email;
 
     public function __construct($row) {
         $this->idCliente = $row ['idCliente'];
@@ -16,9 +17,19 @@ class Cliente {
         $this->direccion = $row ['direccion'];
         $this->telefono = $row ['telefono'];
         $this->nif = $row ['nif'];
+        $this->nif = $row ['email'];
+    }
+    
+    
+    public function getEmail() {
+        return $this->email;
     }
 
-    public function getIdCliente() {
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+        public function getIdCliente() {
         return $this->idCliente;
     }
 

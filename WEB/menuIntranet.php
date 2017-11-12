@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <?php
-    include_once '../PHP/ControlSesion.php';
-    ControlSesion::cargarSesion();
-    ?>
     <head>
+        <?php
+        include_once 'crearSesion.php';
+        ?>
+
         <title>INSERTAR CATEGORIA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../CSS/tablas.css" rel="stylesheet" type="text/css"/>
@@ -14,7 +14,7 @@
     </head>
     <body>  
         <?php
-        include_once 'menu.php';
+        include_once 'menuLogin.php';
         ?>
         <div id="contenedor">
             <?php

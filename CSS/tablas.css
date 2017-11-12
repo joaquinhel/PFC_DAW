@@ -5,6 +5,7 @@
 body { 
     font: 14px/1.4 Georgia, Serif; 
 }
+
 #page-wrap {
     margin: 50px;
 }
@@ -48,6 +49,10 @@ td, th {
     margin-bottom: 40px;
 }
 
+contenido{
+    margin-bottom: 50px;
+
+}
 
 form label {
     display: inline-block;
@@ -73,4 +78,15 @@ a {color:blue;
 a:hover{
     color:red;
     text-decoration: underline;
+}
+
+.navegacion{
+    float: left;
+    text-align: center;
+}
+
+#centro{
+    background-color: white;
+    width: 90%;
+   margin-left: 5%;
 }

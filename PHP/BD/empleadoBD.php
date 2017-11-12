@@ -6,7 +6,8 @@ include_once ('BD.php');
 class empleadoBD {
 
     public static function listarTodos() {
-        $sql = "SELECT idEmpleado, nombreEmpleado, apellidos,direccion, telefono, email, fechaContratacion, sueldo"
+        $sql = "SELECT idEmpleado, nombreEmpleado, apellidos,direccion, telefono,"
+                . " email, fechaContratacion, sueldo, nif, estado"
                 . " from optica.empleado";
         $resultado = BD::ejecutaConsulta($sql);
         $empleados = array();
@@ -23,7 +24,8 @@ class empleadoBD {
 
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosEmpleado($cod) {
-        $sql = "SELECT idEmpleado, nombreEmpleado, apellidos,direccion, telefono, email, fechaContratacion, sueldo "
+        $sql = "SELECT idEmpleado, nombreEmpleado, apellidos,direccion, telefono, "
+                . "email, fechaContratacion, sueldo, nif, estado "
                 . "from optica.empleado "
                 . "where idEmpleado=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
@@ -45,14 +47,16 @@ class empleadoBD {
 //Insertar un nuevo producto
     public static function insertarEmpleado($row) {
         $sql = "insert into optica.empleado (nombreEmpleado, apellidos, direccion, telefono, "
-                . "email, fechaContratacion, sueldo) values ( "
+                . "email, fechaContratacion, sueldo, nif, estado) values ( "
                 . " '" . $row[0] . "'"
                 . ", '" . $row[1] . "'"
                 . ", '" . $row[2] . "'"
                 . ", '" . $row[3] . "'"
                 . ", '" . $row[4] . "'"
                 . ", '" . $row[5] . "'"
-                . ", '" . $row[6] . "' )"
+                . ", '" . $row[6] . "'"
+                . ", '" . $row[7] . "'"
+                . ", '" . $row[8] . "' )"
         ;
         $numero = BD::realizaUpdate($sql);
         return $numero;
@@ -67,7 +71,9 @@ class empleadoBD {
                 . "telefono = '" . $row['telefono'] . "', "
                 . "email = '" . $row['email'] . "', "
                 . "fechaContratacion = '" . $row['fechaContratacion'] . "', "
-                . "sueldo = '" . $row['sueldo'] . "'"
+                . "sueldo = '" . $row['sueldo'] . "', "
+                . "nif = '" . $row['nif'] . "', "
+                . "estado = '" . $row['estado'] . "'"
                 . "where idEmpleado = '" . $row['idEmpleado'] . "'";
         $numero = BD::realizaUpdate($sql);
         return $numero;

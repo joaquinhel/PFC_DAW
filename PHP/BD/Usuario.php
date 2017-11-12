@@ -6,15 +6,34 @@ class Usuario {
     protected $login;
     protected $pass;
     protected $fecha_alta;
+    protected $nombre;
+    protected $estado;
 
     public function __construct($row) {
         $this->idUsuario = $row ['idUsuario'];
         $this->login = $row ['login'];
         $this->pass = $row ['pass'];
         $this->fecha_alta = $row ['fecha_alta'];
+        $this->nombre = $row ['nombre'];
+        $this->estado = $row ['estado'];
+    }
+    public function getNombre() {
+        return $this->nombre;
     }
 
-    public function getIdUsuario() {
+    public function getEstado() {
+        return $this->estado;
+    }
+
+    public function setNombre($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    public function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+        public function getIdUsuario() {
         return $this->idUsuario;
     }
 
@@ -45,6 +64,5 @@ class Usuario {
     public function setFecha_alta($fecha_alta) {
         $this->fecha_alta = $fecha_alta;
     }
-
 
 }
