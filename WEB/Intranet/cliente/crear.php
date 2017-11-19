@@ -11,6 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -35,15 +37,24 @@ include_once "../../crearSesion.php";
             ?>
             <div id='centro'>
                 <h2>INTRODUCIR UN NUEVO CLIENTE</h2>
-
-                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div id="error">
+                </div>
+                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post"
+                      onsubmit="return controlarEntradaCliente()">
                     <p>Introduzca los datos del cliente </p>
-                    <label>Nombre: </label><input type="text" name="nombre" maxlength='40'/><br/>
-                    <label>Apellidos: </label><input type="text" name="apellidos" maxlength='45'/><br/>
-                    <label>NIF: </label> <input type="text" name="nif" maxlength='9'/><br/>
-                    <label>Dirección: </label><input type="text" name="direccion" maxlength='45'/><br/>
-                    <label>Teléfono: </label> <input type="text" name="telefono" maxlength='12'/><br/>
-                    <label>Email: </label> <input type="text" name="email" maxlength='60'/><br/>
+                    <label for="nombre">*Nombre: </label>
+                    <input type="text" name="nombre"id="nombre" maxlength='40' required/><br/>
+                    <label for="apellido">*Apellidos: </label>
+                    <input type="text" name="apellidos" id="apellido" maxlength='45' required/><br/>
+                    <label for="nif">*NIF: </label> 
+                    <input type="text" name="nif" id="nif" maxlength='9' rquired /><br/>
+                    <label for="direccion">Dirección: </label>
+                    <input type="text" name="direccion" id="direccion" maxlength='45'/><br/>
+                    <label for="telefono">*Teléfono: </label> 
+                    <input type="text" name="telefono" id="telefono" maxlength='9' required/><br/>
+                    <label for="email">*Email: </label> 
+                    <input type="text" name="email" maxlength='60' required/><br/>
+
                     <input type="submit" name="insertar" value="Introducir Nuevo"/><br /><br />
                     <a href="listar.php">Volver al listado de clientes</a>&emsp;
                     <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>

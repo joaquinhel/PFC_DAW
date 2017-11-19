@@ -5,7 +5,7 @@
  * 
  * @param type $dir Directorio en el que se quiere subir las imagenes (usar '' si no se quiere usar un subdirectorio).
  * @param $conexion Conexion con la base de datos.
- */
+ 
 function subirImagenes($dir, $conexion) {
     // Recorremos la lista de campos para subir archivos.
     foreach ($_FILES as $key => $value) {
@@ -15,14 +15,14 @@ function subirImagenes($dir, $conexion) {
         }
     }
 }
-
+*/
 /**
  * Funcion para subir imagenes
  * 
  * @param $campoArchivo Nombre del campo en el que se subira el archivo.
  * @param $dir Directorio en el que se guardara la imagen. 
  * @param $conexion Conexion con la base de datos.
- */
+ 
 function subirImagen($archivo, $dir, $conexion) {
     // Se comprueba que el archivo a subir sea una imagen.
     if (($_FILES[$archivo]["type"] == "image/jpeg") || ($_FILES[$archivo]["type"] == "image/png")) {
@@ -62,5 +62,5 @@ function subirImagen($archivo, $dir, $conexion) {
         echo '<div class="error">' . $_FILES[$archivo]["name"] . ': Formato de archivo no permitido. </div>';
     }
 }
-
+*/
 ?>

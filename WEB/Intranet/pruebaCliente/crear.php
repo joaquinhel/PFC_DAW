@@ -11,6 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -34,9 +36,13 @@ include_once "../../crearSesion.php";
                 pruebaClienteBD::insertarPruebaCliente($row);
             }
             ?>
-            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div id="error">
+            </div>
+            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
+                  onsubmit="return controlarEntradaPruebaCliente()"> 
                 <label>Introduzca los datos del prueba: </label> <br/>
-                Cliente: <select name="cliente_idCliente">  
+                <label for="cliente">Cliente: </label>
+                <select name="cliente_idCliente" id="cliente" required>  
                     <?php
                     $todos1 = clienteBD::listarTodos();
                     foreach ($todos1 as $id) {
@@ -45,7 +51,9 @@ include_once "../../crearSesion.php";
                     ?>   
                 </select>
                 <br/>
-                Prueba:<select name="prueba_idPrueba">  
+
+                <label for="prueba">Prueba: </label>
+                <select name="prueba_idPrueba" id='prueba' required>  
                     <?php
                     $todos1 = pruebaBD::listarTodos();
                     foreach ($todos1 as $id) {
@@ -53,8 +61,13 @@ include_once "../../crearSesion.php";
                     }
                     ?>   
                 </select><br/>
-                Fecha: <input type="date" name="fechaPrueba"/><br/>           
-                Diagnostico: <input type="text" name="diagnostico" maxlength='45'/><br/>
+
+                <label for="fecha">Fecha: </label>
+                <input type="date" name="fechaPrueba" required/><br/> 
+
+                <label for="diagnostico"> Diagnostico: </label>
+                <input type="text" name="diagnostico" maxlength='45' required/><br/>
+
                 <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
                 <a href="listar.php">Volver al listado de pruebas - clientes </a>&emsp;
                 <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>

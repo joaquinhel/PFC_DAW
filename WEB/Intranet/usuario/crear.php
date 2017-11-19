@@ -10,6 +10,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -32,13 +34,26 @@ include_once "../../crearSesion.php";
             }
             ?>
             <h2>INTRODUCIR UN NUEVO USUARIO</h2>
-            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div id="error">
+            </div>
+            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
+                  onsubmit="return controlarEntradaEmpleado()"> 
                 <p>Introduzca los datos del usuario: <p/>
-                    <label>Login: </label><input type="text" name="login" maxlength='45'/><br/>
-                    <label>Pass: </label><input type="text" name="pass" maxlength='20'/><br/>
-                    <label>Fecha de Alta: </label><input type="date" name="fecha_alta"/><br/>
-                    <label>Nombre: </label><input type="text" name="nombre" maxlength='45'/><br/>
-                    <label>Estado: </label><input type="text" name="estado" maxlength='20'/><br/>
+                    <label for="login">* Login: </label>
+                    <input type="text" name="login" id='login' maxlength='45'/><br/>
+                    <label for="pass">* Pass: </label>
+                    <input type="text" name="pass" id='pass' maxlength='20'/><br/>
+                    <label for="fecha">* Fecha de Alta: </label>
+                    <input type="date" name="fecha_alta" id='fecha'/><br/>
+                    <label for="nombre">* Nombre: </label>
+                    <input type="text" name="nombre" maxlength='45' id='nombre'/><br/>
+                    
+                    <label for="estado">* Estado: </label>
+                    <select name="estado">
+                        <option value="B">Borrado</option>
+                        <option value="A">Activo</option>
+                    </select> <br/>                        
+
                     <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
                     <a href="listar.php">Volver al listado de usuarios</a>&emsp;
                     <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>

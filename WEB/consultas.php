@@ -19,17 +19,17 @@
             ?>
 
             <?php
-            if (isset($POST['enviar'])) {
+            if (isset($_POST['enviar'])) {
                 $mail = "Prueba de mensaje";
                 //Titulo
-                $titulo = $POST['mensaje'];
+                $titulo = $_POST['mensaje'];
                 //cabecera
                 $headers = "MIME-Version: 1.0\r\n";
                 $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
                 //dirección del remitente 
-                //$headers .= "From: Geeky Theory < tu_dirección_email >\r\n";
+                $headers .= "From: Joaquín Sánchez < joaquin_1919@hotmail.com >\r\n";
                 //Enviamos el mensaje a tu_dirección_email 
-                $bool = mail("joaquin_1919@hotmail.com", $titulo, $mail, $headers);
+                $bool = mail('joaquin_1919@hotmail.com', $titulo, $mail, $headers);
                 if ($bool) {
                     echo "Mensaje enviado";
                 } else {
@@ -53,7 +53,8 @@
                     <label for="mensaje">Mensaje</label> 
                     <textarea rows=5 cols=30 id="mensaje" name="mensaje"></textarea>
                     <br/>
-                    <input type="reset" value="Borrar"/> <input type="submit" name ="enviar" value="Enviar"/>
+                    <input type="reset" value="Borrar"/> 
+                    <input type="submit" name ="enviar" value="Enviar"/>
                 </form> 
             </div> 
 

@@ -11,6 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -22,29 +24,35 @@ include_once "../../crearSesion.php";
             ?>
             <div id='centro'>
                 <h2> MODIFICAR UNA CATEGORIA DE PRODUCTOS</h2>
+                <div id="error">
+                </div>
                 <?php
                 if (!isset($_POST['actualizar'])) {
-
                     $todos = categoriaBD::obtenerDatosCategoria($_GET['id']);
-                    echo "<form action ='actualizar.php' method = 'POST'>";
-                    echo "LOS DATOS ACTUALES DE LA CATEGORIA A MODIFICAR SON: <br />";
-                    echo "<label>ID </label> <br/>";
-                    echo "<input type = 'text' name = 'idCategoria' maxlength='4' value = " . $todos->getIdCategoria() . " /> <br />";
-                    echo "<label>NOMBRE</label> <br/>";
-                    echo "<input type = 'text' name = 'nombreCategoria' maxlength='35' value = " . $todos->getNombreCategoria() . " />";
+                    $_SESSION['id'] = $_GET['id'];
+                    echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaCategoria()'>";
+                    echo "<p>LOS DATOS QUE PUEDE MODIFICAR DE LA CATEGORIA SELECCIONADA (ID= " . $_GET['id'] . ") SON: </p> <br />";
+                    echo "<input type = 'hidden' name = 'idCategoria' id='idCategoria' maxlength='35' value = " . $todos->getIdCategoria() . " />";
+                    echo "<label>* NOMBRE</label> <br/>";
+                    echo "<input type = 'text' name = 'nombreCategoria' id='nombre' maxlength='35' value = " . $todos->getNombreCategoria() . " />";
                     echo "<br/><br />";
                     echo "<input type = 'submit' value = 'Pulse para Actualizar con los datos introducidos' id='actualizar' name = 'actualizar'/><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de categorias</a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
                 } elseif (isset($_POST['actualizar'])) {
-                    $row = array();
-                    $row['idCategoria'] = $_POST['idCategoria'];
-                    $row['nombreCategoria'] = $_POST['nombreCategoria'];
-                    categoriaBD::actualizarCategoria($row);
-                    echo "<p>Los datos han sido actualizados</p>";
-                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                    require_once '../../../PHP/BD/Validaciones.php';
+                    $validar = Validaciones::controlarEntradaCategoria($_POST['nombreCategoria']);
+                    if ($validar) {
+                        $row = array();
+                        $row['idCategoria'] = $_POST['idCategoria'];
+                        $row['nombreCategoria'] = $_POST['nombreCategoria'];
+                        categoriaBD::actualizarCategoria($row);
+                        echo "<p>Los datos han sido actualizados</p>";
+                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                    }
                     unset($_POST['actualizar']);
+                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>
             </div>

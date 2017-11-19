@@ -39,9 +39,10 @@
             <?php
             include 'pie.php';
             ?>
-        </div>
+        <br/>
         <?php
         include 'footer.php';
         ?>
+        </div>
     </body>
 </html>

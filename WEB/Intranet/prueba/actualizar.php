@@ -23,19 +23,20 @@ include_once "../../crearSesion.php";
             ?>
             <div id='centro'>
                 <h2> Modificar los datos guardados de una prueba </h2>
+                <div id="error">
+                </div>
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = pruebaBD::obtenerDatosPrueba($_GET['id']);
-                    echo "<form action ='actualizar.php' method = 'POST'>";
+                    echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaEmpleado()'>";
                     echo "<p>LOS DATOS ACTUALES DE LAS PRUEBAS A MODIFICAR SON: <p />";
-                    echo "<label>ID </label> <br/>";
-                    echo "<input type = 'text' name = 'idPrueba' disabled value = " . $todos->getIdPrueba() . "> <br />";
-                    echo "<label>NOMBRE </label> <br/>";
-                    echo "<input type = 'text' name = 'nombrePrueba' maxlength='45' value = " . $todos->getNombrePrueba() . "><br />";
-                    echo "<label>INSTRUMENTAL </label> <br/>";
-                    echo "<input type = 'text' name = 'aparatosNecesarios' maxlength='45' value = " . $todos->getAparatosNecesarios() . "><br />";
+                    echo "<input type = 'hidden' name = 'idPrueba' value = " . $todos->getIdPrueba() . "> <br />";
+                    echo "<label>* NOMBRE </label> <br/>";
+                    echo "<input type = 'text' name = 'nombrePrueba' id='nombre' required maxlength='45' value = " . $todos->getNombrePrueba() . "><br />";
+                    echo "<label>* INSTRUMENTAL </label> <br/>";
+                    echo "<input type = 'text' name = 'aparatosNecesarios' id='instrumental' required maxlength='45' value = " . $todos->getAparatosNecesarios() . "><br />";
                     echo "<label>DESCRIPCIÓN </label> <br/>";
-                    echo "<input type = 'text' name = 'descripcion' maxlength='45' value = " . $todos->getDescripcion() . "><br />";
+                    echo "<input type = 'text' name = 'descripcion' id='descripcion' required maxlength='45' value = " . $todos->getDescripcion() . "><br />";
                     echo "<br/>";
                     echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de pruebas</a> &emsp;&emsp;";

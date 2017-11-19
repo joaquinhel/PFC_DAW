@@ -23,25 +23,26 @@ include_once "../../crearSesion.php";
             ?>   
             <div id='centro'>
                 <h2> Modificar los datos guardados de un producto </h2>
+                <div id="error">
+                </div>
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = productoBD::obtenerDatosProducto($_GET['id']);
-                    echo "<form action ='actualizar.php' method = 'POST'>";
+                    echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaProducto()'>";
                     echo "<p>LOS DATOS ACTUALES DEL PRODUCTO A MODIFICAR SON: <p />";
-                    echo "<label>ID </label> <br/>";
-                    echo "<input type = 'text' name = 'idProducto' maxlength='4' value = " . $todos->getIdProducto() . "> <br />";
-                    echo "<label>NOMBRE </label> <br/>";
-                    echo "<input type = 'text' name = 'nombreProducto' maxlength='40' value = " . $todos->getNombreProducto() . "><br />";
+                    echo "<input type = 'hidden' name = 'idProducto' maxlength='4' value = " . $todos->getIdProducto() . "> <br />";
+                    echo "<label>* NOMBRE </label> <br/>";
+                    echo "<input type = 'text' name = 'nombreProducto' id='nombre' required maxlength='40' value = " . $todos->getNombreProducto() . "><br />";
                     echo "<label>DESCRIPCIÓN </label> <br/>";
-                    echo "<input type = 'text' name = 'descripcion' maxlength='45' value = " . $todos->getDescripcion() . "><br />";
-                    echo "<label>MARCA </label> <br/>";
-                    echo "<input type = 'text' name = 'marca' maxlength='45' value = " . $todos->getMarca() . "><br />";
-                    echo "<label>PRECIO </label> <br/>";
-                    echo "<input type = 'text' name = 'precio' maxlength='7' value = " . $todos->getPrecio() . "><br />";
-                    echo "<label>ID_PROVEEDOR </label> <br/>";
-                    echo "<input type = 'text' name = 'proveedor_idProveedor' value = " . $todos->getProveedor_idProveedor() . "><br />";
-                    echo "<label>ID_CATEGORIA </label> <br/>";
-                    echo "<input type = 'text' name = 'categoria_idCategoria' value = " . $todos->getCategoria_idCategoria() . "><br />";
+                    echo "<input type = 'text' name = 'descripcion' id='nombre' maxlength='45' value = " . $todos->getDescripcion() . "><br />";
+                    echo "<label>* MARCA </label> <br/>";
+                    echo "<input type = 'text' name = 'marca' id='marca' required maxlength='45' value = " . $todos->getMarca() . "><br />";
+                    echo "<label>* PRECIO </label> <br/>";
+                    echo "<input type = 'text' name = 'precio' id='precio' required maxlength='7' value = " . $todos->getPrecio() . "><br />";
+                    echo "<label>* ID_PROVEEDOR </label> <br/>";
+                    echo "<input type = 'text' name = 'proveedor_idProveedor' id='proveedor' required value = " . $todos->getProveedor_idProveedor() . "><br />";
+                    echo "<label>* ID_CATEGORIA </label> <br/>";
+                    echo "<input type = 'text' name = 'categoria_idCategoria' id='categoria' required value = " . $todos->getCategoria_idCategoria() . "><br />";
                     echo "<br/>";
                     echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de productos </a> &emsp;&emsp;";

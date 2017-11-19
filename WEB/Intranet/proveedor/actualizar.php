@@ -23,25 +23,26 @@ include_once "../../crearSesion.php";
             ?> 
             <div id='centro'>
                 <h2> Modificar los datos guardados de un proveedor </h2>
+                <div id="error">
+                </div>
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = proveedorBD::obtenerDatosProveedor($_GET['id']);
-                    echo "<form action ='actualizar.php' method = 'POST'>";
+                    echo "<form action ='actualizar.php' method = 'POST'  onsubmit='return controlarEntradaProveedor()'>";
                     echo "<p>LOS DATOS ACTUALES DEL PRODUCTO A MODIFICAR SON: <p />";
-                    echo "<label>ID </label> <br/>";
-                    echo "<input type = 'text' name = 'idProveedor' maxlength='4' value = " . $todos->getIdProveedor() . "> <br />";
-                    echo "<label>NOMBRE </label> <br/>";
-                    echo "<input type = 'text' name = 'nombreEmpresa' maxlength='45' value = " . $todos->getNombreEmpresa() . "><br />";
+                    echo "<input type = 'hidden' name = 'idProveedor' maxlength='4' value = " . $todos->getIdProveedor() . "> <br />";
+                    echo "<label>* NOMBRE </label> <br/>";
+                    echo "<input type = 'text' name = 'nombreEmpresa' id='nombre' required maxlength='45' value = " . $todos->getNombreEmpresa() . "><br />";
                     echo "<label>DIRECCIÓN </label> <br/>";
-                    echo "<input type = 'text' name = 'direccion' maxlength='45' value = " . $todos->getDireccion() . "><br />";
-                    echo "<label>CONTACTO </label> <br/>";
-                    echo "<input type = 'text' name = 'personaContacto' maxlength='45' value = " . $todos->getPersonaContacto() . "><br />";
-                    echo "<label>CIF </label> <br/>";
-                    echo "<input type = 'text' name = 'cif' maxlength='45' value = " . $todos->getCif() . "><br />";
-                    echo "<label>EMAIL </label> <br/>";
-                    echo "<input type = 'text' name = 'email' maxlength='45' value = " . $todos->getEmail() . "><br />";
-                    echo "<label>TELÉFONO </label> <br/>";
-                    echo "<input type = 'text' name = 'telefono' maxlength='45' value = " . $todos->getTelefono() . "><br />";
+                    echo "<input type = 'text' name = 'direccion' id='nombre' maxlength='45' value = " . $todos->getDireccion() . "><br />";
+                    echo "<label>* CONTACTO </label> <br/>";
+                    echo "<input type = 'text' name = 'personaContacto' id='contacto' required maxlength='45' value = " . $todos->getPersonaContacto() . "><br />";
+                    echo "<label>* CIF </label> <br/>";
+                    echo "<input type = 'text' name = 'cif' id='cif' required  maxlength='45' value = " . $todos->getCif() . "><br />";
+                    echo "<label>* EMAIL </label> <br/>";
+                    echo "<input type = 'text' name = 'email' id='email' required  maxlength='45' value = " . $todos->getEmail() . "><br />";
+                    echo "<label>* TELÉFONO </label> <br/>";
+                    echo "<input type = 'text' name = 'telefono' id='telefono' required  maxlength='9' value = " . $todos->getTelefono() . "><br />";
                     echo "<br/>";
                     echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de proveedores </a> &emsp;&emsp;";

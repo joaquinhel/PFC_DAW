@@ -11,6 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -35,16 +37,25 @@ include_once "../../crearSesion.php";
             ?>
             <div id='centro'>
                 <h2>INTRODUCIR UN NUEVO PROVEEDOR</h2>
-
-                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div id="error">
+                </div>
+                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
+                      onsubmit="return controlarEntradaProveedor()">
                     <p>Introduzca los datos del proveedor: </p>
-                    <label>Dirección: </label><input type="text" name="direccion" maxlength='45' /><br/>
-                    <label>Nombre Empresa: </label><input type="text" name="nombreEmpresa" maxlength='45'/><br/>
-                    <label>Persona de Contacto: </label><input type="text" name="personaContacto" maxlength='45'/><br/>
-                    <label>CIF: </label><input type="text" name="cif" maxlength='45' /><br/>
-                    <label>Email: </label><input type="text" name="email" maxlength='45'/><br/>
-                    <label>Teléfono: </label><input type="text" name="telefono" maxlength='45'/><br/>
-                    <input type="submit" name="insertar" value="Introducir Nuevo"/>
+                    <label for="nombre">* Nombre Empresa: </label>
+                    <input type="text" name="nombreEmpresa" id="nombre" maxlength='45' required/><br/>
+                    <label for="direccion">Dirección: </label>
+                    <input type="text" name="direccion" id="direccion" maxlength='45' /><br/>
+                    <label for="contacto">Persona de Contacto: </label>
+                    <input type="text" name="personaContacto" id="contacto" maxlength='45'/><br/>
+                    <label for="cif">* CIF: </label>
+                    <input type="text" name="cif" id="cif" maxlength='45' required=""/><br/>
+                    <label for="email">* Email: </label>
+                    <input type="text" name="email" id="email" maxlength='45' required/><br/>
+                    <label for="telefono">* Teléfono: </label>
+                    <input type="text" name="telefono" id="telefono" maxlength='9' required/><br/>
+
+                    <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
                     <a href="listar.php">Volver al listado de proveedores</a>&emsp;
                     <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
                 </form> 

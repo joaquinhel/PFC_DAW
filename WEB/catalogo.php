@@ -7,7 +7,7 @@
         <script type="text/javascript" src="../js/modificarEstiloInputFile.js"></script>
         <script type="text/javascript" src="../js/cambiarOpacidadImagenes.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/estilo_1.css"/>
-
+        <link href="../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <!-- Lightbox -->
         <script type="text/javascript" src="../lightbox/js/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="../lightbox/js/jquery-ui-1.8.18.custom.min.js"></script>
@@ -26,12 +26,15 @@
               ?>
 
         <div id="contenedor">
+            <?php
+            include 'cabecera.php';
+            ?>
 
             <div class="galeria" style="clear: both">
-                <h1>Mis Imagenes</h1>
+                <h1>NUESTROS ARTÍCULOS</h1>
                 <?php
                 require 'config.php';
-                require 'GestorArchivos.php';
+                //require 'GestorArchivos.php';
 
                 $conexion = new mysqli($servidor, $usuarioBD, $passwordBD, $baseDatos);
 
@@ -49,36 +52,43 @@
                 }
                 ?>
             </div>
-
-            <div id="subirImagenes">
-
-                <!-- Para poder subir archivos con PHP hay que poner enctype="multipart/form-data" para que no se encripte ningun caracter y el archivo no se modifique/estropee -->
-                <form action="#" method="POST" enctype="multipart/form-data">
-                    <table id="formularioSubida" border="0">
-                        <thead>
-                        <th>Elige los archivos que quieras subir</th>
-                        </thead>
-                        <tr>
-                            <td>
-                                <div class="inputImagenModificado">
-                                    <input class="inputImagenOculto" name="imagen1" type="file">
-                                    <div class="inputParaMostrar">
-                                        <input style="background: white">
-                                        <img src="../imagenes/prueba/button_select2.gif">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 
-                                <input type="button" id="botonAnnadir" 
-                                       onClick="agregarFila('formularioSubida', 'botonAnnadir')" 
-                                       value="Añadir archivo" style="width:138px;">        
-                                <input type="submit" name="botonSubir" value="Subir"> 
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-
-                </body>
-                </html>
+        </div>
+        <!--
+                    <div id="subirImagenes">
+        <!-- Para poder subir archivos con PHP hay que poner enctype="multipart/form-data"
+para que no se encripte ningun caracter y el archivo no se modifique/estropee
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <table id="formularioSubida" border="0">
+                <thead>
+                <th>Elige los archivos que quieras subir</th>
+                </thead>
+                <tr>
+                    <td>
+                        <div class="inputImagenModificado">
+                            <input class="inputImagenOculto" name="imagen1" type="file">
+                            <div class="inputParaMostrar">
+                                <input style="background: white">
+                                <img src="../imagenes/prueba/button_select2.gif">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <input type="button" id="botonAnnadir" 
+                               onClick="agregarFila('formularioSubida', 'botonAnnadir')" 
+                               value="Añadir archivo" style="width:138px;">        
+                        <input type="submit" name="botonSubir" value="Subir"> 
+                    </td>
+                </tr>
+            </table>
+        </form>
+        -->
+        <?php
+        include 'pie.php';
+        ?>
+        <?php
+        include 'footer.php';
+        ?>
+    </body>
+</html>

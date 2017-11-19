@@ -11,6 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -23,18 +25,27 @@ include_once "../../crearSesion.php";
 
             <?php
             include_once '../../../PHP/BD/categoriaBD.php';
+            require_once '../../../PHP/BD/Validaciones.php';
+
             if (isset($_POST['insertar'])) {
-                categoriaBD::insertarCategoria($_POST['nombre']);
+                $validar = Validaciones::controlarEntradaCategoria($_POST['nombre']);
+                if ($validar) {
+                    categoriaBD::insertarCategoria($_POST['nombre']);
+                }
             }
             ?>
-            <div id='centro'
-                 <h2>CREAR UNA NUEVA CATEGORIA</h2>
-                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div id='centro'>
+                <h2>CREAR UNA NUEVA CATEGORIA</h2>
+                <div id="error">
+                </div>
+                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
+                      onsubmit="return controlarEntradaCategoria()">
                     <p>Introduzca los datos de la categoria </p>
-                    <label>Nombre: </label> <input type="text" name="nombre"  maxlength ="30" ><br/><br/>
-                        <input type="submit" name="insertar" value="Grabar en Registro"/> <br /><br />
-                        <a href="listar.php">Volver al listado de categorias</a>&emsp;
-                        <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>    
+                    <label for="nombre"> * Nombre: </label> 
+                    <input type="text" id="nombre" name="nombre" maxlength ="30" /><br/><br/>
+                    <input type="submit" name="insertar" value="Introducir Nuevo"/> <br /><br />
+                    <a href="listar.php">Volver al listado de categorias</a>&emsp;
+                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>    
                 </form> 
             </div>
             <?php

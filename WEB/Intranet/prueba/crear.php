@@ -11,6 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -30,11 +32,19 @@ include_once "../../crearSesion.php";
                 pruebaBD::insertarPrueba($row);
             }
             ?>
-            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post">
+            <h2>INTRODUCIR UNA NUEVA PRUEBA</h2>
+            <div id="error">
+            </div>
+            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
+                  onsubmit="return controlarEntradaEmpleado()">   
                 <p>Introduzca los datos de la prueba: </p> <br/>
-                <label>Nombre Prueba:</label> <input type="text" name="nombrePrueba" maxlength='45'/><br/>
-                <label>Instrumental:</label> <input type="text" name="aparatosNecesarios" maxlength='45'/><br/>
-                <label>Descripcion:</label> <input type="text" name="descripcion" maxlength='60'/><br/>
+                <label for="nombre">* Nombre Prueba:</label>
+                <input type="text" name="nombrePrueba" id="nombre" maxlength='45' required/><br/>
+                <label for="instrumental">* Instrumental:</label> 
+                <input type="text" name="aparatosNecesarios" id="instrumental" maxlength='45' required/><br/>
+                <label for="descripcion">Descripcion:</label>
+                <input type="text" name="descripcion" id="descripcion" maxlength='60'/><br/>
+
                 <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
                 <a href="listar.php">Volver al listado de pruebas</a>&emsp;
                 <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>

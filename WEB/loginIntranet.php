@@ -17,7 +17,7 @@
                 $error = "Debes introducir un nombre de usuario y una contraseña";
             } else {
                 $usuario = $_POST['usuario'];
-                $pass = $_POST['password'];
+                $pass = ($_POST['password']);
                 $entrar = usuarioBD::hacerLogin($usuario, $pass);
                 if ($entrar) {
                     session_start();

@@ -12,6 +12,8 @@ include_once '../../crearSesion.php';
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -23,25 +25,26 @@ include_once '../../crearSesion.php';
             ?>   
             <div id='centro'>
                 <h2> Modificar los datos del cliente </h2>
+                <div id="error">
+                </div>
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = clienteBD::obtenerDatosCliente($_GET['id']);
-                    echo "<form action ='actualizar.php' method = 'POST'>";
-                    echo "LOS DATOS ACTUALES DEL PRODUCTO A MODIFICAR SON: <br />";
-                    echo "<label>ID</label> <br/>";
-                    echo "<input type = 'text' name = 'idCliente' value = " . $todos->getIdCliente() . "> <br />";
+                    echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaCliente()'>";
+                    echo "LOS DATOS QUE PUEDE MODIFICAR DEL CLIENTE CON ID " . $_GET['id'] . " SON:<br />";
+                    echo "<input hidden = 'text' name = 'idCliente' value = " . $todos->getIdCliente() . "> <br />";
                     echo "<label>NOMBRE</label> <br/>";
-                    echo "<input type = 'text' name = 'nombreCliente' maxlength='40' value = " . $todos->getNombreCliente() . "> <br />";
+                    echo "<input type = 'text' name = 'nombreCliente' id='nombre' maxlength='40' required value = " . $todos->getNombreCliente() . "> <br />";
                     echo "<label>APELLIDOS</label> <br/>";
+                    echo "<input type = 'text' name = 'apellidos' maxlength='45' id='apellido' required value = " . $todos->getApellidos() . "> <br />";
                     echo "<label>NIF </label> <br/>";
-                    echo "<input type = 'text' name = 'nif' maxlength='10' value = " . $todos->getNif() . "> <br />";
-                    echo "<input type = 'text' name = 'apellidos' maxlength='45' value = " . $todos->getApellidos() . "> <br />";
+                    echo "<input type = 'text' name = 'nif' maxlength='10' id='nif' required value = " . $todos->getNif() . "> <br />";
                     echo "<label>DIRECCIÓN</label> <br/>";
-                    echo "<input type = 'text' name = 'direccion' maxlength='40' value = " . $todos->getDireccion() . "> <br />";
+                    echo "<input type = 'text' name = 'direccion' id='direccion' required maxlength='40' value = " . $todos->getDireccion() . "> <br />";
                     echo "<label>TELÉFONO </label> <br/>";
-                    echo "<input type = 'text' name = 'telefono' maxlength='12' value = " . $todos->getTelefono() . "> <br />";
+                    echo "<input type = 'text' name = 'telefono' id='telefono' required maxlength='12' value = " . $todos->getTelefono() . "> <br />";
                     echo "<label>EMAIL </label> <br/>";
-                    echo "<input type = 'text' name = 'email' maxlength='60' value = " . $todos->getEmail() . "> <br />";
+                    echo "<input type = 'text' name = 'email' id='email' required maxlength='60' value = " . $todos->getEmail() . "> <br />";
                     echo "<br/>";
                     echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de cliente </a> &emsp;&emsp;";

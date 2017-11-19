@@ -35,22 +35,47 @@ include_once "../../crearSesion.php";
                 $row[6] = $_POST['sueldo'];
                 $row[7] = $_POST['nif'];
                 $row[8] = $_POST['estado'];
-                empleadoBD::insertarEmpleado($row);
+               
+            }
+
+            require_once '../../../PHP/BD/Validaciones.php';
+
+            if (isset($_POST['insertar'])) {
+                $validar = Validaciones::controlarEntradaCategoria($row);
+                if ($validar) {
+                     empleadoBD::insertarEmpleado($row);
+                }
             }
             ?>
             <div id='centro'>
                 <h2>INTRODUCIR UN NUEVO EMPLEADO</h2>
-                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return recuperarDatos()">
+                <div id="error">
+                </div>
+                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
+                      onsubmit="return controlarEntradaEmpleado()">
                     <p>Introduzca los datos del empleado: </p>
-                    <label>Nombre: </label><input type='text' name='nombreEmpleado' id='nombreEmpleado' maxlength='40'/><br/>
-                    <label>Apellidos: </label><input type='text' name='apellidos' id='apellidos' maxlength='45'/><br/>
-                    <label>Dirección: </label><input type='text' name='direccion' id='direccion' maxlength='45'/><br/>
-                    <label>Teléfono: </label><input type='text' name='telefono' id='telefono' maxlength='12'/><br/>
-                    <label>Email: </label><input type='text' name='email' id='email' maxlength='45'/><br/>
-                    <label>Fecha de Contratacion:  </label><input type='date' name='fechaContratacion' id='fechaContratacion'/><br/>
-                    <label>Sueldo: </label><input type='text' name='sueldo' id='sueldo' maxlength='7'/><br/>
-                    <label>NIF: </label><input type='text' name='nif' id='nif' maxlength='7'/><br/>
-                    <label>Estado: </label><input type='text' name='estado' id='estado' maxlength='7'/><br/>
+                    <label for="nombre">* Nombre: </label>
+                    <input type='text' name='nombreEmpleado' id='nombre' required maxlength='40'/><br/>
+                    <label for="apellido">* Apellidos: </label>
+                    <input type='text' name='apellidos' id='apellido' required maxlength='45'/><br/>
+                    <label for="direccion">Dirección: </label>
+                    <input type='text' name='direccion' id='direccion' maxlength='45'/><br/>
+                    <label for="telefono">* Teléfono: </label>
+                    <input type='text' name='telefono' id='telefono' required maxlength='12'/><br/>
+                    <label for="email">Email: </label>
+                    <input type='text' name='email' id='email' maxlength='45'/><br/>
+                    <label for="fechaContratacion"> * Fecha Contratacion:  </label>
+                    <input type='date' name='fechaContratacion' id='fechaContratacion' required/><br/>
+                    <label for="sueldo">* Sueldo: </label>
+                    <input type='text' name='sueldo' id='sueldo' maxlength='7'/><br/>
+                    <label for="nif">* NIF: </label><input type='text' name='nif' id='nif' required maxlength='9'/><br/>
+
+                    <label for="estado">* Estado: </label>
+                    <select name="estado">
+                        <option value="B">Borrado</option>
+                        <option value="A">Activo</option>
+                    </select> <br/>
+
                     <input type='submit' name='insertar' value='Introducir Nuevo'/><br/>
                     <a href='listar.php'>Volver al listado de empleados</a>&emsp;
                     <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>    

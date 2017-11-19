@@ -11,6 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -22,24 +24,24 @@ include_once "../../crearSesion.php";
             ?> 
             <div id='centro'>
                 <h2> Modificar los datos guardados de un usuario</h2>
-
+                <div id="error">
+                </div>
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = usuarioBD::obtenerDatosUsuario($_GET['id']);
-                    echo "<form action ='actualizar.php' method = 'POST'>";
+                    echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaEmpleado()'>";
                     echo "<p>LOS DATOS ACTUALES DEL USUARIO A MODIFICAR SON: <p />";
-                    echo "<label>ID </label> <br/>";
-                    echo "<input type = 'text' name = 'idUsuario' maxlength='4' value = '" . $todos->getIdUsuario() . "'><br />";
-                    echo "<label>LOGIN </label> <br/>";
-                    echo "<input type = 'text' name = 'login' maxlength='45' value = '" . $todos->getLogin() . "'><br />";
-                    echo "<label>PASSWORD </label> <br/>";
-                    echo "<input type = 'text' name = 'pass' maxlength='20' value = " . $todos->getPass() . "><br />";
-                    echo "<label>FECHA DE ALTA </label> <br/>";
-                    echo "<input type = 'date' name = 'fecha_alta' value = " . $todos->getFecha_alta() . "><br />";
-                    echo "<label>NOMBRE </label> <br/>";
-                    echo "<input type = 'text' name = 'nombre' maxlength='20' value = " . $todos->getNombre() . "><br />";
-                    echo "<label>ESTADO </label> <br/>";
-                    echo "<input type = 'date' name = 'estado' value = " . $todos->getEstado() . "><br />";
+                    echo "<input type = 'hidden' name = 'idUsuario' maxlength='4' value = '" . $todos->getIdUsuario() . "'><br />";
+                    echo "<label>* LOGIN </label> <br/>";
+                    echo "<input type = 'text' name = 'login' maxlength='45' id='login' required value = '" . $todos->getLogin() . "'><br />";
+                    echo "<label>* PASSWORD </label> <br/>";
+                    echo "<input type = 'text' name = 'pass' maxlength='20' id='pass' required value = " . $todos->getPass() . "><br />";
+                    echo "<label>* FECHA DE ALTA </label> <br/>";
+                    echo "<input type = 'date' name = 'fecha_alta' id='fecha' required value = " . $todos->getFecha_alta() . "><br />";
+                    echo "<label>* NOMBRE </label> <br/>";
+                    echo "<input type = 'text' name = 'nombre' id='nombre' required maxlength='20' value = " . $todos->getNombre() . "><br />";
+                    echo "<label>* ESTADO </label> <br/>";
+                    echo "<input type = 'date' name = 'estado' id='estado' required value = " . $todos->getEstado() . "><br />";
                     echo "<br/>";
                     echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de usuarios</a>&emsp;&emsp;";

@@ -23,10 +23,12 @@ include_once "../../crearSesion.php";
             ?> 
             <div id='centro'>
                 <h2> Modificar los datos de las pruebas programadas </h2>
+                <div id="error">
+                </div>
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = pruebaClienteBD::obtenerDatosPruebaCliente($_GET['id'], $_GET['ida']);
-                    echo "<form action ='actualizar.php' method = 'POST'>";
+                    echo "<form action ='actualizar.php' method = 'POST'  onsubmit='return controlarEntradaPruebaCliente()'>";
                     echo "LOS DATOS ACTUALES DE LAS PRUEBAS A MODIFICAR SON: <br />";
                     echo "<label>CLIENTE</label> <br/>";
                     echo "<input type = 'text' name = 'cliente_idCliente'  maxlength='4' value = " . $todos->getCliente_idCliente() . "><br />";

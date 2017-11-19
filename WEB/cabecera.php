@@ -28,7 +28,7 @@
             <div class="caja">
                 <p><img class="iconos" src="../imagenes/iconos/oferta.jpg" alt="oferta"/><br />
                     CONSULTE NUESTROS ARTÍCULOS EN PROMOCIÓN <br /><br />
-                    <a class="button" href="#">OFERTAS</a>
+                    <a class="button" href="ofertas.php">OFERTAS</a>
                 </p>
             </div>
         </div>
