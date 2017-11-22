@@ -2,9 +2,10 @@
 
 class Validaciones {
 
-    public static function controlarEntradaCategoria($nombre) {
+    public static function controlarEntradaCategoria($nombre1) {
         $error = false;
-
+        $nombre = implode($nombre1);
+        echo gettype($nombre);
         if ($nombre == "") {
             echo "<h4>Los campos marcados con * son obligatorios</h4>";
             $error = true;
@@ -25,13 +26,12 @@ class Validaciones {
     public static function controlarEntradaEmpleado($row) { //No hacen falta parámetros usamos las variables
         $error = false;
 
-        $nombre = $row[0];
-        $apellido = $row[1];
-        $email = $row[4];
-        $telefono = $row[3];
-        $sueldo = $row[6];
-        $dni = $row[7];
-        $email = $row[];
+        $nombre = $row['nombreEmpleado'];
+        $apellido = $row['apellidos'];
+        $email = $row['email'];
+        $telefono = $row['telefono'];
+        $sueldo = $row['sueldo'];
+        $dni = $row['nif'];
 
         if ($nombre == "" || $apellido == "" || $email == "" || $telefono == "" || $sueldo == "") {
             echo "<h4>Los campos marcados con * son obligatorios </h4>";
@@ -45,10 +45,10 @@ class Validaciones {
         } else if (strlen($nombre) < 3 || strlen($apellido) < 3 || strlen($nombre) > 50 || strlen($apellido) > 50) {
             echo "<h4>Los campos de nombre apellido solo aceptan valores entre 3 y 50 caracteres</h4>";
             $error = true;
-        } else if (validarEmail($email) == false) {
+        } else if ($this->validarEmail($email) == false) {
             echo "<h4>El email introducido es incorrecto</h4>";
             $error = true;
-        } else if (validarNIF($dni) == false) {
+        } else if ($this->validarNIF($dni) == false) {
             echo "<h4> El dni introducido es incorrecto </h4>)";
             $error = true;
             return false;
@@ -57,47 +57,47 @@ class Validaciones {
                 echo "La dirección introducida no es correcta";
                 $error = true;
                 return false;
-            } else if ($email != "") {
-                if (strlen($email) < 5 || !is_numeric(email))
-                    echo "<h4> El email introducido no es correcto </h4>)";
-                $error = true;
-                return false;
             }
-            return !$error;
+        } else if ($email != "") {
+            if (strlen($email) < 5 || !is_numeric($email))
+                echo "<h4> El email introducido no es correcto </h4>)";
+            $error = true;
+            return false;
         }
+        return !$error;
     }
 
-    function controlarEntradaCliente($row) { //No hacen falta parámetros usamos las variables
+    public static function controlarEntradaCliente($row) { //No hacen falta parámetros usamos las variables
         $error = false;
-        $nombre = $row[];
-        $apellido = $row[];
-        $email = $row[];
-        $telefono = $row[];
-        $dni = $row[];
-        $direccion = $row[];
+        $nombre = $row['nombreCliente'];
+        $apellido = $row['apellidos'];
+        $dni = $row['nif'];
+        $direccion = $row['direccion'];
+        $telefono = $row['telefono'];
+        $email = $row['email'];
 
         if ($nombre == "" || $apellido == "" || $email == "" || $telefono == "") {
             echo "<h4>Los campos marcados con * son obligatorios</h4>)";
             $error = true;
-        } else if ((telefono) || strlen($telefono) < 9) {
-            echo "<h4>El campo teléfono deben ser númerico y tener 9 dígitos</h4>)";
+        } else if (!is_numeric($telefono) || strlen($telefono) != '9') {
+            echo "<h4>El campo teléfono deben ser númerico y tener 9 dígitos</h4>";
             $error = true;
         } else if (strlen($nombre) < 3 || strlen($apellido) < 3 || strlen($nombre) > 50 || strlen($apellido) > 50) {
-            echo "<h4>Los campos de nombre apellido solo aceptan valores entre 3 y 50 caracteres</h4>)";
+            echo "<h4>Los campos de nombre apellido solo aceptan valores entre 3 y 50 caracteres</h4>";
             $error = true;
         } else if (is_numeric($nombre) || is_numeric($apellido)) {
-            echo "<h4>El campo nombre y apellido no pueden ser númerico</h4>)";
+            echo "<h4>El campo nombre y apellido no pueden ser númerico</h4>";
             $error = true;
-        } else if (validarEmail($email) === false) {
-            echo "<h4>Introduzca un email correcto</h4>)";
+        } else if ($this->validarEmail($email) == false) {
+            echo "<h4>Introduzca un email correcto</h4>";
             $error = true;
-        } else if (validarNIF($dni) === false) {
+        } else if ($this->validarNIF($dni) == false) {
             echo "El dni introducido es incorrecto";
             $error = true;
             return false;
         } else if (direccion != "") {
             if (strlen($direccion) < 5 || is_numeric($direccion)) {
-                echo "<h4>La dirección introducida nno es correcta</h4>)";
+                echo "<h4>La dirección introducida no es correcta</h4>";
                 $error = true;
                 return false;
             }
@@ -106,39 +106,39 @@ class Validaciones {
     }
 
     public static function controlarEntradaProducto($row) {
-        $nombre = $row[];
-        $descripcion = $row[];
-        $marca = $row[];
-        $precio = $row[];
+        $nombre = $row['nombreProducto'];
+        $descripcion = $row['descripcion'];
+        $marca = $row['marca'];
+        $precio = $row['precio'];
         $error = false;
 
-
         if ($nombre == "" || $marca == "" || $precio == "") {
-            echo "<h4>Los campos marcados con * son obligatorios</h4>)";
+            echo "<h4>Los campos marcados con * son obligatorios</h4>";
             $error = true;
-        } else if (!is_numeric(precio)) {
-            echo "<h4>El campo precio debe ser númerico</h4>)";
+        } else if (!is_numeric($precio)) {
+            echo "<h4>El campo precio debe ser númerico</h4>";
             $error = true;
-        } else
-        if (strlen($nombre) < 3 || strlen($marca) < 3 || strlen($nombre) > 50 || strlen($marca) > 50) {
-            echo "<h4>Los campos de nombre y marca solo aceptan valores entre 3 y 50 caracteres</h4>)";
+        } else if (strlen($nombre) < 3 || strlen($marca) < 3 || strlen($nombre) > 50 || strlen($marca) > 50) {
+            echo "<h4>Los campos de nombre y marca solo aceptan valores entre 3 y 50 caracteres</h4>";
             $error = true;
         } else if ($descripcion != "") {
-            if (strlen($descripcion) < 3 || is_numeric($descripcion))
-                echo "<h4>La dirección introducida no es correcta</h4>)";
+            if (strlen($descripcion) < 3 || is_numeric($descripcion)) {
+                echo "<h4>La dirección introducida no es correcta</h4>";
+            }
             $error = true;
-            return false;
+        } else {
+            echo "<h4>Los datos se han guardado correctamente</h4>";
         }
         return !$error;
     }
 
-    function controlarEntradaProveedor($row) { //No hacen falta parámetros usamos las variables
-        $nombre = $row[];
-        $direccion = $row[];
-        $contacto = $row[];
-        $cif = $row[];
-        $email = $row[];
-        $telefono = $row[];
+    public static function controlarEntradaProveedor($row) { //No hacen falta parámetros usamos las variables
+        $nombre = $row['nombreEmpresa'];
+        $direccion = $row['direccion'];
+        $contacto = $row['personaContacto'];
+        $cif = $row['cif'];
+        $email = $row['email'];
+        $telefono = $row['telefono'];
         $error = false;
 
 
@@ -163,14 +163,14 @@ class Validaciones {
                 $error = true;
                 return false;
             }
-            return !error;
+            return !$error;
         }
     }
 
     public static function controlarEntradaPrueba($row) {
-        $nombre = $row[];
-        $instrumental = $row[];
-        $descripcion = $row[];
+        $nombre = $row['nombrePrueba'];
+        $instrumental = $row['aparatosNecesarios'];
+        $descripcion = $row['descripcion'];
         $error = false;
 
         if ($nombre == "" || $instrumental == "" || $descripcion == "") {
@@ -185,18 +185,18 @@ class Validaciones {
             $error = true;
             return false;
         }
-
         if ($error == true) {
             return false;
         } else {
             echo "<h4>El registro ha sido grabado correctamente</h4>";
             return true;
         }
+        return !$error;
     }
 
     public static function controlarEntradaPruebaCliente($row) {
-        $fecha = $row[];
-        $diagnostico = $row[];
+        $fecha = $row['fechaPrueba'];
+        $diagnostico = $row['diagnostico'];
 
         $error = false;
 
@@ -207,20 +207,20 @@ class Validaciones {
             echo "</h4>El campo diagnostico solo acepta valores entre 3 y 50 caracteres </h4>";
             $error = true;
         }
-
         if ($error == true)
             return false;
         else {
             echo "<h4>El registro ha sido grabado correctamente</h4>";
             return true;
         }
+        return !$error;
     }
 
     public static function controlarUsuario($row) { //No hacen falta parámetros usamos las variables
-        $nombre = $row[];
-        $login = $row[];
-        $pass = $row[];
-        $fecha = $row[];
+        $nombre = $row['nombre'];
+        $login = $row['login'];
+        $pass = $row['pass'];
+        $fecha = $row['fecha_alta'];
 
         $error = false;
 
@@ -231,7 +231,7 @@ class Validaciones {
             echo "<h4>Los campos de nombre, login y pass solo aceptan valores entre 3 y 50 caracteres</h4>)";
             $error = true;
         }
-        return !error;
+        return !$error;
     }
 
     function validarNif($dni) {
@@ -244,7 +244,7 @@ class Validaciones {
         $letra = substr($dni, -1, 1);
         $numero = substr($dni, 0, 8);
 
-// Si es un NIE hay que cambiar la primera letra por 0, 1 ó 2 dependiendo de si es X, Y o Z.
+        // Si es un NIE hay que cambiar la primera letra por 0, 1 ó 2 dependiendo de si es X, Y o Z.
         $numero = str_replace(array('X', 'Y', 'Z'), array(0, 1, 2), $numero);
 
         $modulo = $numero % 23;
@@ -258,7 +258,7 @@ class Validaciones {
         }
     }
 
-    function validarEmail($email) {
+    public function validarEmail($email) {
         if (ereg("^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$", $email)) {
             return true;
         } else {
@@ -274,13 +274,13 @@ class Validaciones {
 
         if (preg_match('/^[ABCDEFGHJNPQRSUVW]{1}/', $cif)) {
             if (in_array($cif[0], array('A', 'B', 'E', 'H'))) {
-// Numerico
+                // Numerico
                 return ($cif[8] == $n);
             } elseif (in_array($cif[0], array('K', 'P', 'Q', 'S'))) {
-// Letras
+                // Letras
                 return ($cif[8] == $cif_codes[$n]);
             } else {
-// Alfanumérico
+                // Alfanumérico
                 if (is_numeric($cif[8])) {
                     return ($cif[8] == $n);
                 } else {
@@ -288,7 +288,6 @@ class Validaciones {
                 }
             }
         }
-
         return false;
     }
 

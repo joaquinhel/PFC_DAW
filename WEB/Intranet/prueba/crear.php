@@ -25,11 +25,16 @@ include_once "../../crearSesion.php";
 
             <?php
             include_once '../../../PHP/BD/pruebaBD.php';
+            require_once '../../../PHP/BD/Validaciones.php';
             if (isset($_POST['insertar'])) {
                 $row['nombrePrueba'] = $_POST['nombrePrueba'];
                 $row['aparatosNecesarios'] = $_POST['aparatosNecesarios'];
                 $row['descripcion'] = $_POST['descripcion'];
-                pruebaBD::insertarPrueba($row);
+
+                $validar = Validaciones::controlarEntradaPrueba($row);
+                if ($validar) {
+                    pruebaBD::insertarPrueba($row);
+                }
             }
             ?>
             <h2>INTRODUCIR UNA NUEVA PRUEBA</h2>

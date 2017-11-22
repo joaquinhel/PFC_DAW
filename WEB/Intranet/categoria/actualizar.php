@@ -40,13 +40,14 @@ include_once "../../crearSesion.php";
                     echo "<a href = 'listar.php'>Volver a la lista de categorias</a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
-                } elseif (isset($_POST['actualizar'])) {
+                } else if (isset($_POST['actualizar'])) {
                     require_once '../../../PHP/BD/Validaciones.php';
                     $validar = Validaciones::controlarEntradaCategoria($_POST['nombreCategoria']);
                     if ($validar) {
                         $row = array();
                         $row['idCategoria'] = $_POST['idCategoria'];
                         $row['nombreCategoria'] = $_POST['nombreCategoria'];
+
                         categoriaBD::actualizarCategoria($row);
                         echo "<p>Los datos han sido actualizados</p>";
                         echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";

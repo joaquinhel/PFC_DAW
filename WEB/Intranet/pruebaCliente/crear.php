@@ -11,8 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>
+        <!--<script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -27,13 +27,17 @@ include_once "../../crearSesion.php";
             include_once '../../../PHP/BD/pruebaClienteBD.php';
             include_once '../../../PHP/BD/clienteBD.php';
             include_once '../../../PHP/BD/pruebaBD.php';
+            require_once '../../../PHP/BD/Validaciones.php';
             if (isset($_POST['insertar'])) {
-                $row[0] = $_POST['cliente_idCliente'];
-                $row[1] = $_POST['prueba_idPrueba'];
-                $row[2] = $_POST['fechaPrueba'];
-                $row[3] = $_POST['diagnostico'];
+                $row['cliente_idCliente'] = $_POST['cliente_idCliente'];
+                $row['prueba_idPrueba'] = $_POST['prueba_idPrueba'];
+                $row['fechaPrueba'] = $_POST['fechaPrueba'];
+                $row['diagnostico'] = $_POST['diagnostico'];
 
-                pruebaClienteBD::insertarPruebaCliente($row);
+                $validar = Validaciones::controlarEntradaPruebaCliente($row);
+                if ($validar) {
+                    pruebaClienteBD::insertarPruebaCliente($row);
+                }
             }
             ?>
             <div id="error">

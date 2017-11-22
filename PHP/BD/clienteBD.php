@@ -44,12 +44,12 @@ class clienteBD {
     //Insertar un nuevo producto
     public static function insertarCliente($row) {
         $sql = "insert into optica.cliente (nombreCliente, apellidos, direccion, telefono, email, nif) values ( "
-                . " '" . $row[0] . "'"
-                . ", '" . $row[1] . "'"
-                . ", '" . $row[3] . "'"
-                . ", '" . $row[4] . "'"
-                . ", '" . $row[5] . "'"
-                . ", '" . $row[2] . "');";
+                . " '" . $row['nombre'] . "'"
+                . ", '" . $row['apellidos'] . "'"
+                . ", '" . $row['direccion'] . "'"
+                . ", '" . $row['telefono'] . "'"
+                . ", '" . $row['email'] . "'"
+                . ", '" . $row['nif'] . "');";
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }

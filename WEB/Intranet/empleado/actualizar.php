@@ -12,8 +12,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>
+      <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -30,6 +30,7 @@ include_once "../../crearSesion.php";
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = empleadoBD::obtenerDatosEmpleado($_GET['id']);
+                    $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST'  onsubmit='return controlarEntradaEmpleado()'>";
                     echo "<p>LOS DATOS ACTUALES DEL EMPLEADO A MODIFICAR SON: <p />";
                     echo "<input type = 'hidden' name = 'idEmpleado' id='idEmpleado' maxlength='4' value = " . $todos->getIdEmpleado() . "> <br />";
@@ -56,7 +57,7 @@ include_once "../../crearSesion.php";
                     echo "<a href = 'listar.php'>Volver a la lista de empleados </a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
-                } elseif (isset($_POST['actualizar'])) {
+                } else if (isset($_POST['actualizar'])) {
                     $row = array();
                     $row['idEmpleado'] = $_POST['idEmpleado'];
                     $row['nombreEmpleado'] = $_POST['nombreEmpleado'];
@@ -68,10 +69,16 @@ include_once "../../crearSesion.php";
                     $row['sueldo'] = $_POST['sueldo'];
                     $row['nif'] = $_POST['nif'];
                     $row['estado'] = $_POST['estado'];
-                    empleadoBD::actualizarEmpleado($row);
-                    echo "<p>Los datos han sido actualizados</p>";
-                    echo "<a href = 'listar.php'>Pulse para volver al listado</a>";
+
+                    require_once '../../../PHP/BD/Validaciones.php';
+                    $validar = Validaciones::controlarEntradaEmpleado($row);
+                    if ($validar) {
+                        empleadoBD::actualizarEmpleado($row);
+                        echo "<p>Los datos han sido actualizados</p>";
+                        echo "<a href = 'listar.php'>Pulse para volver al listado</a>";
+                    }
                     unset($_POST['actualizar']);
+                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>
             </div>

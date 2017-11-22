@@ -25,6 +25,7 @@ include_once "../../crearSesion.php";
 
             <?php
             include_once '../../../PHP/BD/proveedorBD.php';
+            require_once '../../../PHP/BD/Validaciones.php';
             if (isset($_POST['insertar'])) {
                 $row['direccion'] = $_POST['direccion'];
                 $row['nombreEmpresa'] = $_POST['nombreEmpresa'];
@@ -32,7 +33,11 @@ include_once "../../crearSesion.php";
                 $row['cif'] = $_POST['cif'];
                 $row['email'] = $_POST['email'];
                 $row['telefono'] = $_POST['telefono'];
-                proveedorBD::insertarProveedor($row);
+
+                $validar = Validaciones::controlarEntradaProveedor($row);
+                if ($validar) {
+                    proveedorBD::insertarProveedor($row);
+                }
             }
             ?>
             <div id='centro'>

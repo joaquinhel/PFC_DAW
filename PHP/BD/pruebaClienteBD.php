@@ -47,10 +47,10 @@ class pruebaClienteBD {
     public static function insertarPruebaCliente($row) {
         $sql = "insert into optica.pruebaCliente ("
                 . "cliente_idCliente, prueba_idPrueba, diagnostico, fechaPrueba) values ( "
-                . " '" . $row[0] . "'"
-                . ", '" . $row[1] . "'"
-                . ", '" . $row[2] . "'"
-                . ", '" . $row[3] . "' )"
+                . " '" . $row['cliente_idCliente'] . "'"
+                . ", '" . $row['prueba_idPrueba'] . "'"
+                . ", '" . $row['diagnostico'] . "'"
+                . ", '" . $row['fechaPrueba'] . "' )"
         ;
         $numero = BD::realizaUpdate($sql);
         return $numero;

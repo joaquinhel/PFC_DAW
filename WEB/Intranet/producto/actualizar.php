@@ -12,6 +12,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+         <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -28,6 +30,7 @@ include_once "../../crearSesion.php";
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = productoBD::obtenerDatosProducto($_GET['id']);
+                    $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaProducto()'>";
                     echo "<p>LOS DATOS ACTUALES DEL PRODUCTO A MODIFICAR SON: <p />";
                     echo "<input type = 'hidden' name = 'idProducto' maxlength='4' value = " . $todos->getIdProducto() . "> <br />";
@@ -48,7 +51,7 @@ include_once "../../crearSesion.php";
                     echo "<a href = 'listar.php'>Volver a la lista de productos </a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
-                } elseif (isset($_POST['actualizar'])) {
+                } else if (isset($_POST['actualizar'])) {
                     $row = array();
                     $row['idProducto'] = $_POST['idProducto'];
                     $row['nombreProducto'] = $_POST['nombreProducto'];
@@ -57,10 +60,16 @@ include_once "../../crearSesion.php";
                     $row['precio'] = $_POST['precio'];
                     $row['proveedor_idProveedor'] = $_POST['proveedor_idProveedor'];
                     $row['categoria_idCategoria'] = $_POST['categoria_idCategoria'];
-                    productoBD::actualizarProducto($row);
-                    echo "<p>Los datos han sido actualizados</p>";
-                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+
+                    require_once '../../../PHP/BD/Validaciones.php';
+                    $validar = Validaciones::controlarEntradaProducto($row);
+                    if ($validar) {
+                        productoBD::actualizarProducto($row);
+                        echo "<p>Los datos han sido actualizados</p>";
+                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                    }
                     unset($_POST['actualizar']);
+                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>
             </div>

@@ -11,8 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>
         <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -28,9 +28,10 @@ include_once "../../crearSesion.php";
             require_once '../../../PHP/BD/Validaciones.php';
 
             if (isset($_POST['insertar'])) {
-                $validar = Validaciones::controlarEntradaCategoria($_POST['nombre']);
+                $nombre = $_POST['nombre'];
+                $validar = Validaciones::controlarEntradaCategoria($nombre);
                 if ($validar) {
-                    categoriaBD::insertarCategoria($_POST['nombre']);
+                    categoriaBD::insertarCategoria($nombre);
                 }
             }
             ?>
@@ -56,5 +57,4 @@ include_once "../../crearSesion.php";
         include '../comunes/footer.php';
         ?>
     </body>
-
 </html>

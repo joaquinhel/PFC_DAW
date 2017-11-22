@@ -11,8 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>
+      <!--  <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -25,16 +25,22 @@ include_once "../../crearSesion.php";
 
             <?php
             include_once '../../../PHP/BD/clienteBD.php';
+            require_once '../../../PHP/BD/Validaciones.php';
             if (isset($_POST['insertar'])) {
-                $row[0] = $_POST['nombre'];
-                $row[1] = $_POST['apellidos'];
-                $row[2] = $_POST['nif'];
-                $row[3] = $_POST['direccion'];
-                $row[4] = $_POST['telefono'];
-                $row[5] = $_POST['email'];
-                clienteBD::insertarCliente($row);
+                $row['nombre'] = $_POST['nombre'];
+                $row['apellidos'] = $_POST['apellidos'];
+                $row['nif'] = $_POST['nif'];
+                $row['direccion'] = $_POST['direccion'];
+                $row['telefono'] = $_POST['telefono'];
+                $row['email'] = $_POST['email'];
+
+                $validar = Validaciones::controlarEntradaCategoria($row);
+                if ($validar) {
+                    clienteBD::insertarCliente($row);
+                }
             }
             ?>
+
             <div id='centro'>
                 <h2>INTRODUCIR UN NUEVO CLIENTE</h2>
                 <div id="error">
@@ -43,7 +49,7 @@ include_once "../../crearSesion.php";
                       onsubmit="return controlarEntradaCliente()">
                     <p>Introduzca los datos del cliente </p>
                     <label for="nombre">*Nombre: </label>
-                    <input type="text" name="nombre"id="nombre" maxlength='40' required/><br/>
+                    <input type="text" name="nombre" id="nombre" maxlength='40' required/><br/>
                     <label for="apellido">*Apellidos: </label>
                     <input type="text" name="apellidos" id="apellido" maxlength='45' required/><br/>
                     <label for="nif">*NIF: </label> 
@@ -53,7 +59,7 @@ include_once "../../crearSesion.php";
                     <label for="telefono">*Teléfono: </label> 
                     <input type="text" name="telefono" id="telefono" maxlength='9' required/><br/>
                     <label for="email">*Email: </label> 
-                    <input type="text" name="email" maxlength='60' required/><br/>
+                    <input type="email" name="email" id="email" maxlength='60'/><br/>
 
                     <input type="submit" name="insertar" value="Introducir Nuevo"/><br /><br />
                     <a href="listar.php">Volver al listado de clientes</a>&emsp;

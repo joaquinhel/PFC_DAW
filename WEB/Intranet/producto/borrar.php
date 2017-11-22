@@ -21,13 +21,20 @@ include_once "../../crearSesion.php";
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
+                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                    <p> INTRODUZCA EL IDENTIFICADOR DEL PRODUCTO A BORRAR </p>
+                    <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
+                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
+
+                </form>
                 <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
+
                 <?php
                 include_once '../../../PHP/BD/productoBD.php';
                 $todos = productoBD::listarTodos();
                 echo "<table border=1px>";
                 echo "<tr><th>idProducto</th><th>nombreProducto</th><th>Descripción</th> <th>Marca</th>"
-                . "<th>Precio</th><th>proveedor_idProveedor</th> <th>categoria_idCategoria</th>"
+                . "<th>Precio</th><th>proveedor_idProveedor</th> <th>categoria_idCategoria</th> <th>Acciones</th>"
                 . "</tr>";
 
                 foreach ($todos as $aux) {
@@ -49,13 +56,9 @@ include_once "../../crearSesion.php";
                     echo "El registro se ha borrado";
                 }
                 ?>
-                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DEL PRODUCTO A BORRAR </p>
-                    <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
-                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-                    <a href="listar.php">Volver al listado de productos</a>&emsp;
-                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-                </form>
+
+                <a href="listar.php">Volver al listado de productos</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
             </div>
             <?php
             include_once '../comunes/pie.php';

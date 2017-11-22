@@ -17,7 +17,7 @@ class Cliente {
         $this->direccion = $row ['direccion'];
         $this->telefono = $row ['telefono'];
         $this->nif = $row ['nif'];
-        $this->nif = $row ['email'];
+        $this->email = $row ['email'];
     }
     
     

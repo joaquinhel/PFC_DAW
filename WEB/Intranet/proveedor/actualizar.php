@@ -12,6 +12,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+         <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -48,19 +50,25 @@ include_once "../../crearSesion.php";
                     echo "<a href = 'listar.php'>Volver a la lista de proveedores </a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
-                } elseif (isset($_POST['actualizar'])) {
-                    $row = array();
-                    $row['idProveedor'] = $_POST['idProveedor'];
-                    $row['nombreEmpresa'] = $_POST['nombreEmpresa'];
-                    $row['direccion'] = $_POST['direccion'];
-                    $row['personaContacto'] = $_POST['personaContacto'];
-                    $row['cif'] = $_POST['cif'];
-                    $row['email'] = $_POST['email'];
-                    $row['telefono'] = $_POST['telefono'];
-                    proveedorBD::actualizarProveedor($row);
-                    echo "<p>Los datos han sido actualizados</p>";
-                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                } else if (isset($_POST['actualizar'])) {
+                    require_once '../../../PHP/BD/Validaciones.php';
+                    $validar = Validaciones::controlarEntradaProveedor($row);
+                    $_SESSION['id'] = $_GET['id'];
+                    if ($validar) {
+                        $row = array();
+                        $row['idProveedor'] = $_POST['idProveedor'];
+                        $row['nombreEmpresa'] = $_POST['nombreEmpresa'];
+                        $row['direccion'] = $_POST['direccion'];
+                        $row['personaContacto'] = $_POST['personaContacto'];
+                        $row['cif'] = $_POST['cif'];
+                        $row['email'] = $_POST['email'];
+                        $row['telefono'] = $_POST['telefono'];
+                        proveedorBD::actualizarProveedor($row);
+                        echo "<p>Los datos han sido actualizados</p>";
+                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                    }
                     unset($_POST['actualizar']);
+                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>
             </div>

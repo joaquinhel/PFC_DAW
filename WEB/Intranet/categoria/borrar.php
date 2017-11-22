@@ -20,6 +20,13 @@ include_once "../../crearSesion.php";
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
+                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                    <p> INTRODUZCA EL IDENTIFICADOR DE LA CATEGORIA BORRAR </p>
+                    <label>ID categoria</label><input type='text' name='id'  maxlength="4"/><br/>
+                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
+                    <a href="listar.php">Volver al listado de categorias</a>&emsp;
+                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                </form>
                 <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
                 <?php
                 include_once '../../../PHP/BD/categoriaBD.php';
@@ -36,13 +43,7 @@ include_once "../../crearSesion.php";
                     echo "El registro se ha borrado";
                 }
                 ?>
-                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DE LA CATEGORIA BORRAR </p>
-                    <label>ID categoria</label><input type='text' name='id'  maxlength="4"/><br/>
-                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-                    <a href="listar.php">Volver al listado de categorias</a>&emsp;
-                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-                </form>
+
             </div>
             <?php
             include_once '../comunes/pie.php';

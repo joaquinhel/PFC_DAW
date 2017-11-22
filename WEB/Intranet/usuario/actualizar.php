@@ -47,18 +47,24 @@ include_once "../../crearSesion.php";
                     echo "<a href = 'listar.php'>Volver a la lista de usuarios</a>&emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
-                } elseif (isset($_POST['actualizar'])) {
-                    $row = array();
-                    $row['idUsuario'] = $_POST['idUsuario'];
-                    $row['login'] = $_POST['login'];
-                    $row['pass'] = $_POST['pass'];
-                    $row['fecha_alta'] = $_POST['fecha_alta'];
-                    $row['nombre'] = $_POST['nombre'];
-                    $row['estado'] = $_POST['estado'];
-                    usuarioBD::actualizarUsuario($row);
-                    echo "<p>Los datos han sido actualizados</p>";
-                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                } else if (isset($_POST['actualizar'])) {
+                    require_once '../../../PHP/BD/Validaciones.php';
+                    $validar = Validaciones::controlarUsuario($row);
+                    $_SESSION['id'] = $_GET['id'];
+                    if ($validar) {
+                        $row = array();
+                        $row['idUsuario'] = $_POST['idUsuario'];
+                        $row['login'] = $_POST['login'];
+                        $row['pass'] = $_POST['pass'];
+                        $row['fecha_alta'] = $_POST['fecha_alta'];
+                        $row['nombre'] = $_POST['nombre'];
+                        $row['estado'] = $_POST['estado'];
+                        usuarioBD::actualizarUsuario($row);
+                        echo "<p>Los datos han sido actualizados</p>";
+                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                    }
                     unset($_POST['actualizar']);
+                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>
             </div>

@@ -6,13 +6,13 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CATEGORIA</title>
+        <title>INSERTAR EMPLEADO</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>
+       <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -25,25 +25,22 @@ include_once "../../crearSesion.php";
 
             <?php
             include_once '../../../PHP/BD/empleadoBD.php';
-            if (isset($_POST['insertar'])) {
-                $row[0] = $_POST['nombreEmpleado'];
-                $row[1] = $_POST['apellidos'];
-                $row[2] = $_POST['direccion'];
-                $row[3] = $_POST['telefono'];
-                $row[4] = $_POST['email'];
-                $row[5] = $_POST['fechaContratacion'];
-                $row[6] = $_POST['sueldo'];
-                $row[7] = $_POST['nif'];
-                $row[8] = $_POST['estado'];
-               
-            }
-
             require_once '../../../PHP/BD/Validaciones.php';
 
             if (isset($_POST['insertar'])) {
+                $row['nombreEmpleado'] = $_POST['nombreEmpleado'];
+                $row['apellidos'] = $_POST['apellidos'];
+                $row['direccion'] = $_POST['direccion'];
+                $row['telefono'] = $_POST['telefono'];
+                $row['email'] = $_POST['email'];
+                $row['fechaContratacion'] = $_POST['fechaContratacion'];
+                $row['sueldo'] = $_POST['sueldo'];
+                $row['nif'] = $_POST['nif'];
+                $row['estado'] = $_POST['estado'];
+
                 $validar = Validaciones::controlarEntradaCategoria($row);
                 if ($validar) {
-                     empleadoBD::insertarEmpleado($row);
+                    empleadoBD::insertarEmpleado($row);
                 }
             }
             ?>
@@ -63,7 +60,7 @@ include_once "../../crearSesion.php";
                     <label for="telefono">* Teléfono: </label>
                     <input type='text' name='telefono' id='telefono' required maxlength='12'/><br/>
                     <label for="email">Email: </label>
-                    <input type='text' name='email' id='email' maxlength='45'/><br/>
+                    <input type='email' name='email' id='email' maxlength='45'/><br/>
                     <label for="fechaContratacion"> * Fecha Contratacion:  </label>
                     <input type='date' name='fechaContratacion' id='fechaContratacion' required/><br/>
                     <label for="sueldo">* Sueldo: </label>

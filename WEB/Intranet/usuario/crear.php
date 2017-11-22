@@ -10,8 +10,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>
+         <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -24,20 +24,26 @@ include_once "../../crearSesion.php";
 
             <?php
             include_once '../../../PHP/BD/usuarioBD.php';
+            require_once '../../../PHP/BD/Validaciones.php';
             if (isset($_POST['insertar'])) {
                 $row['login'] = $_POST['login'];
                 $row['pass'] = $_POST['pass'];
                 $row['fecha_alta'] = $_POST['fecha_alta'];
                 $row['nombre'] = $_POST['nombre'];
                 $row['estado'] = $_POST['estado'];
-                usuarioBD::insertarUsuario($row);
+
+
+                $validar = Validaciones::controlarUsuario($row);
+                if ($validar) {
+                    usuarioBD::insertarUsuario($row);
+                }
             }
             ?>
             <h2>INTRODUCIR UN NUEVO USUARIO</h2>
             <div id="error">
             </div>
             <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
-                  onsubmit="return controlarEntradaEmpleado()"> 
+                  onsubmit="return controlarUsuario()"> 
                 <p>Introduzca los datos del usuario: <p/>
                     <label for="login">* Login: </label>
                     <input type="text" name="login" id='login' maxlength='45'/><br/>
@@ -47,7 +53,7 @@ include_once "../../crearSesion.php";
                     <input type="date" name="fecha_alta" id='fecha'/><br/>
                     <label for="nombre">* Nombre: </label>
                     <input type="text" name="nombre" maxlength='45' id='nombre'/><br/>
-                    
+
                     <label for="estado">* Estado: </label>
                     <select name="estado">
                         <option value="B">Borrado</option>

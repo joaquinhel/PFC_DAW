@@ -12,6 +12,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+         <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -28,6 +30,7 @@ include_once "../../crearSesion.php";
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = pruebaClienteBD::obtenerDatosPruebaCliente($_GET['id'], $_GET['ida']);
+                    $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST'  onsubmit='return controlarEntradaPruebaCliente()'>";
                     echo "LOS DATOS ACTUALES DE LAS PRUEBAS A MODIFICAR SON: <br />";
                     echo "<label>CLIENTE</label> <br/>";
@@ -43,16 +46,23 @@ include_once "../../crearSesion.php";
                     echo "<a href = 'listar.php'>Volver a la lista de pruebas - clientes</a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
-                } elseif (isset($_POST['actualizar'])) {
+                } else if (isset($_POST['actualizar'])) {
                     $row = array();
                     $row['cliente_idCliente'] = $_POST['cliente_idCliente'];
                     $row['prueba_idPrueba'] = $_POST['prueba_idPrueba'];
                     $row['fechaPrueba'] = $_POST['fechaPrueba'];
                     $row['diagnostico'] = $_POST['diagnostico'];
-                    pruebaClienteBD::actualizarPrueba($row);
-                    echo "<p>Los datos han sido actualizados</p>";
-                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+
+                    require_once '../../../PHP/BD/Validaciones.php';
+                    $validar = Validaciones::controlarEntradaPruebaCliente($row);
+
+                    if ($validar) {
+                        pruebaClienteBD::actualizarPrueba($row);
+                        echo "<p>Los datos han sido actualizados</p>";
+                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                    }
                     unset($_POST['actualizar']);
+                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>
             </div>
