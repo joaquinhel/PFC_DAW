@@ -2,10 +2,13 @@
 
 class Validaciones {
 
-    public static function controlarEntradaCategoria($nombre1) {
+    public static function controlarEntradaCategoria($nombre) {
         $error = false;
-        $nombre = implode($nombre1);
-        echo gettype($nombre);
+        //echo gettype($nombre);
+        if (gettype($nombre) == 'array') {
+            $nombre = implode($nombre);
+        }
+
         if ($nombre == "") {
             echo "<h4>Los campos marcados con * son obligatorios</h4>";
             $error = true;
@@ -32,6 +35,7 @@ class Validaciones {
         $telefono = $row['telefono'];
         $sueldo = $row['sueldo'];
         $dni = $row['nif'];
+        $direccion = $row['direccion'];
 
         if ($nombre == "" || $apellido == "" || $email == "" || $telefono == "" || $sueldo == "") {
             echo "<h4>Los campos marcados con * son obligatorios </h4>";
@@ -45,24 +49,21 @@ class Validaciones {
         } else if (strlen($nombre) < 3 || strlen($apellido) < 3 || strlen($nombre) > 50 || strlen($apellido) > 50) {
             echo "<h4>Los campos de nombre apellido solo aceptan valores entre 3 y 50 caracteres</h4>";
             $error = true;
-        } else if ($this->validarEmail($email) == false) {
+        } else if (self::validarEmail($email) == false) {
             echo "<h4>El email introducido es incorrecto</h4>";
             $error = true;
-        } else if ($this->validarNIF($dni) == false) {
-            echo "<h4> El dni introducido es incorrecto </h4>)";
+        } else if (self::validarNIF($dni) == false) {
+            echo "<h4> El dni introducido es incorrecto </h4>";
             $error = true;
-            return false;
-        } else if (direccion != "") {
+        } else if ($direccion != "") {
             if (strlen($direccion) < 5 || is_numeric($direccion)) {
                 echo "La dirección introducida no es correcta";
                 $error = true;
-                return false;
             }
         } else if ($email != "") {
             if (strlen($email) < 5 || !is_numeric($email))
-                echo "<h4> El email introducido no es correcto </h4>)";
+                echo "<h4> El email introducido no es correcto </h4>";
             $error = true;
-            return false;
         }
         return !$error;
     }
@@ -88,18 +89,16 @@ class Validaciones {
         } else if (is_numeric($nombre) || is_numeric($apellido)) {
             echo "<h4>El campo nombre y apellido no pueden ser númerico</h4>";
             $error = true;
-        } else if ($this->validarEmail($email) == false) {
+        } else if (self::validarEmail($email) == false) {
             echo "<h4>Introduzca un email correcto</h4>";
             $error = true;
-        } else if ($this->validarNIF($dni) == false) {
+        } else if (self::validarNIF($dni) == false) {
             echo "El dni introducido es incorrecto";
             $error = true;
-            return false;
-        } else if (direccion != "") {
+        } else if ($direccion != "") {
             if (strlen($direccion) < 5 || is_numeric($direccion)) {
                 echo "<h4>La dirección introducida no es correcta</h4>";
                 $error = true;
-                return false;
             }
             return !$error;
         }
@@ -121,12 +120,11 @@ class Validaciones {
         } else if (strlen($nombre) < 3 || strlen($marca) < 3 || strlen($nombre) > 50 || strlen($marca) > 50) {
             echo "<h4>Los campos de nombre y marca solo aceptan valores entre 3 y 50 caracteres</h4>";
             $error = true;
-        } else if ($descripcion != "") {
+        } else if ($descripcion !== "") {
             if (strlen($descripcion) < 3 || is_numeric($descripcion)) {
-                echo "<h4>La dirección introducida no es correcta</h4>";
+                echo "<h4>El campo descipcion no es correcta</h4>";
             }
-            $error = true;
-        } else {
+        } if ($error == false) {
             echo "<h4>Los datos se han guardado correctamente</h4>";
         }
         return !$error;
@@ -141,30 +139,33 @@ class Validaciones {
         $telefono = $row['telefono'];
         $error = false;
 
-
         if ($nombre == "" || $cif == "" || $email == "" || $telefono == "") {
-            echo "<h4>Los campos marcados con * son obligatorios >/h4>)";
+            echo "<h4>Los campos marcados con * son obligatorios >/h4>";
             $error = true;
-        } else if (!is_numeric(telefono)) {
-            echo "<h4>El campo precio debe ser númerico</h4>)";
+        } else if (!is_numeric($telefono)) {
+            echo "<h4>El campo teléfono debe ser númerico</h4>";
             $error = true;
-        } else if (strlen($nombre) < 3 || strlen($email) < 3 || strlen($nombre) > 50 || strlen($email) > 50) {
+        } else if (strlen($nombre) < 3 || strlen($email) < 3 || strlen($nombre) > 50 || strlen($email) > 60) {
             echo "<h4>Los campos de nombre y marca solo aceptan valores entre 3 y 50 caracteres</h4>)";
             $error = true;
-        } else if (contacto != "") {
-            if (strlen($contacto) < 3 || !is_numeric($contacto)) {
-                echo "<h4> El contacto introducido no es correcta</h4>)";
+        } else if (self::validarCif($cif) == false) {
+            echo "<h4>El campo cif es erróneo</h4>";
+            $error = true;
+        } else if ($contacto != "") {
+            if (strlen($contacto) < 3 || is_numeric($contacto)) {
+                echo "<h4> El contacto introducido no es correcto</h4>";
                 $error = true;
-                return false;
             }
-        } else if (direccion != "") {
+        } else if ($direccion != "") {
             if (strlen($direccion) < 3 || is_numeric($direccion)) {
-                echo "<h4>La dirección introducida no es correcta</h4>)";
+                echo "<h4>La dirección introducida no es correcta</h4>";
                 $error = true;
-                return false;
             }
-            return !$error;
         }
+        if ($error == false) {
+            echo "<h4>Los datos se han guardado correctamente</h4>";
+        }
+        return true;
     }
 
     public static function controlarEntradaPrueba($row) {
@@ -174,16 +175,16 @@ class Validaciones {
         $error = false;
 
         if ($nombre == "" || $instrumental == "" || $descripcion == "") {
-            echo "<h4>Los campos marcados con * son obligatorios</h4>)";
+            echo "<h4>Los campos marcados con * son obligatorios</h4>";
             $error = true;
-        } else if (strlen($nombre) < 3 || strlen($instrumental) < 3 || strlen($email) > 50 || strlen($instrumental) > 50) {
-            echo "<h4>Los campos de nombre e instrumental solo aceptan valores entre 3 y 50 caracteres </h4>)";
+        } else if (strlen($nombre) < 3 || strlen($instrumental) < 3 || strlen($nombre) > 50 || strlen($instrumental) > 50) {
+            echo "<h4>Los campos de nombre e instrumental solo aceptan valores entre 3 y 50 caracteres </h4>";
             $error = true;
         } else if ($descripcion != "") {
-            if (strlen($descripcion) < 3 || is_numeric($descripcion))
-                echo "<h4> La dirección introducida no es correcta</h4>)";
-            $error = true;
-            return false;
+            if (strlen($descripcion) < 3 || is_numeric($descripcion)) {
+                echo "<h4> La dirección introducida no es correcta</h4>";
+                $error = true;
+            }
         }
         if ($error == true) {
             return false;
@@ -203,13 +204,13 @@ class Validaciones {
         if ($fecha == "" || $diagnostico == "") {
             echo "<h4>Los campos marcados con * son obligatorios</h4>";
             $error = true;
-        } else if (strlen($diagnostico) < 3 || strlen($diagnostico) > 50) {
-            echo "</h4>El campo diagnostico solo acepta valores entre 3 y 50 caracteres </h4>";
+        } else if (strlen($diagnostico) < 3 || strlen($diagnostico) > 60) {
+            echo "</h4>El campo diagnóstico solo acepta valores entre 3 y 60 caracteres </h4>";
             $error = true;
         }
-        if ($error == true)
+        if ($error == true) {
             return false;
-        else {
+        } else {
             echo "<h4>El registro ha sido grabado correctamente</h4>";
             return true;
         }
@@ -227,14 +228,15 @@ class Validaciones {
         if ($nombre == "" || $login == "" || $pass == "" || $fecha == "") {
             echo "<h4> Los campos marcados con * son obligatorios </h4>)";
             $error = true;
-        } else if (strlen($nombre) < 3 || strlen($login) < 3 || strlen($email) > 50 || strlen($login) > 50 || strlen($pass) < 3 || strlen($pass) > 50) {
+        } else if (strlen($nombre) < 3 || strlen($login) < 3 || strlen($email) > 50 ||
+                strlen($login) > 50 || strlen($pass) < 3 || strlen($pass) > 50) {
             echo "<h4>Los campos de nombre, login y pass solo aceptan valores entre 3 y 50 caracteres</h4>)";
             $error = true;
         }
         return !$error;
     }
 
-    function validarNif($dni) {
+    static function validarNif($dni) {
         if (strlen($dni) < 9) {
             return false;
         }
@@ -258,37 +260,22 @@ class Validaciones {
         }
     }
 
-    public function validarEmail($email) {
-        if (ereg("^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$", $email)) {
+    static function validarEmail($email) {
+        $reg = "/^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$/";
+        if (preg_match($reg, $email)) {
             return true;
         } else {
             return false;
         }
     }
 
-    function validarCif($cif) {
-        $cif_codes = 'JABCDEFGHI';
-
-        $sum = (string) getCifSum($cif);
-        $n = (10 - substr($sum, -1)) % 10;
-
-        if (preg_match('/^[ABCDEFGHJNPQRSUVW]{1}/', $cif)) {
-            if (in_array($cif[0], array('A', 'B', 'E', 'H'))) {
-                // Numerico
-                return ($cif[8] == $n);
-            } elseif (in_array($cif[0], array('K', 'P', 'Q', 'S'))) {
-                // Letras
-                return ($cif[8] == $cif_codes[$n]);
-            } else {
-                // Alfanumérico
-                if (is_numeric($cif[8])) {
-                    return ($cif[8] == $n);
-                } else {
-                    return ($cif[8] == $cif_codes[$n]);
-                }
-            }
+    static function validarCif($cif) {
+        $reg = "/^(X(-|\.)?0?\d{7}(-|\.)?[A-Z]|[A-Z](-|\.)?\d{7}(-|\.)?[0-9A-Z]|\d{8}(-|\.)?[A-Z])$/";
+        if (preg_match($reg, $cif)) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
 }

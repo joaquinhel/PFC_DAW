@@ -28,6 +28,7 @@ include_once "../../crearSesion.php";
             include_once '../../../PHP/BD/clienteBD.php';
             include_once '../../../PHP/BD/pruebaBD.php';
             require_once '../../../PHP/BD/Validaciones.php';
+
             if (isset($_POST['insertar'])) {
                 $row['cliente_idCliente'] = $_POST['cliente_idCliente'];
                 $row['prueba_idPrueba'] = $_POST['prueba_idPrueba'];
@@ -40,12 +41,14 @@ include_once "../../crearSesion.php";
                 }
             }
             ?>
-            <div id="error">
-            </div>
+            <div id='centro'>
+                <h2>PROGRAMAR NUEVA PRUBA PARA CLIENTE</h2>
+                <div id="error">
+                </div>
             <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
                   onsubmit="return controlarEntradaPruebaCliente()"> 
                 <label>Introduzca los datos del prueba: </label> <br/>
-                <label for="cliente">Cliente: </label>
+                <label for="cliente">*Cliente: </label>
                 <select name="cliente_idCliente" id="cliente" required>  
                     <?php
                     $todos1 = clienteBD::listarTodos();
@@ -56,7 +59,7 @@ include_once "../../crearSesion.php";
                 </select>
                 <br/>
 
-                <label for="prueba">Prueba: </label>
+                <label for="prueba">*Prueba: </label>
                 <select name="prueba_idPrueba" id='prueba' required>  
                     <?php
                     $todos1 = pruebaBD::listarTodos();
@@ -66,10 +69,10 @@ include_once "../../crearSesion.php";
                     ?>   
                 </select><br/>
 
-                <label for="fecha">Fecha: </label>
+                <label for="fecha">* Fecha: </label>
                 <input type="date" name="fechaPrueba" required/><br/> 
 
-                <label for="diagnostico"> Diagnostico: </label>
+                <label for="diagnostico">* Diagnostico: </label>
                 <input type="text" name="diagnostico" maxlength='45' required/><br/>
 
                 <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>

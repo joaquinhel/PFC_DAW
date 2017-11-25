@@ -51,7 +51,6 @@ class clienteBD {
                 . ", '" . $row['email'] . "'"
                 . ", '" . $row['nif'] . "');";
         $numero = BD::realizaUpdate($sql);
-        return $numero;
     }
 
 //Actualizar producto
@@ -61,11 +60,10 @@ class clienteBD {
                 . "apellidos='" . $row['apellidos'] . "' , "
                 . "direccion='" . $row['direccion'] . "' , "
                 . "telefono='" . $row['telefono'] . "' , "
-                . "telefono='" . $row['email'] . "' , "
+                . "email='" . $row['email'] . "' , "
                 . "nif='" . $row['nif'] . "' "
                 . "where idCliente ='" . $row['idCliente'] . "'";
         $numero = BD::realizaUpdate($sql);
-        return $numero;
     }
 
 }

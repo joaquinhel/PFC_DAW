@@ -21,8 +21,20 @@
             ?>
             <div id='centro'>
                 <h1>LISTADO DE PRUEBAS DIAGNOSTICAS</h1>
+
+                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                    <p> INTRODUZCA EL IDENTIFICADOR DE LA PRUEBA A BORRAR </p>
+                    <label>ID categoria</label><input type='text' name='id'/><br/>
+                    <input type='submit' name='enviar' value='Borrar' maxlength='4'/> <br/><br/>
+                </form>
+
                 <?php
                 include_once '../../../PHP/BD/pruebaBD.php';
+
+                if (isset($_POST['enviar'])) {
+                    pruebaBD::borrarPrueba($_POST['id']);
+                    echo "El registro se ha borrado";
+                }
                 $todos = pruebaBD::listarTodos();
                 echo "<table>";
                 echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>Instrumental</th> <th>Descripcion</th><th>Acciones</th>"
@@ -38,19 +50,11 @@
                        <a href='borrar.php?id=" . $aux->getIdPrueba() . "'>Borrar</a></tr>";
                 }
                 echo "</table>";
-
-                if (isset($_POST['enviar'])) {
-                    pruebaBD::borrarPrueba($_POST['id']);
-                    echo "El registro se ha borrado";
-                }
                 ?>
-                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DE LA PRUEBA A BORRAR </p>
-                    <label>ID categoria</label><input type='text' name='id'/><br/>
-                    <input type='submit' name='enviar' value='Borrar' maxlength='4'/> <br/><br/>
-                    <a href="listar.php">Volver al listado de pruebas</a>&emsp;
-                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-                </form>
+                <br/><br/> 
+                <a href="listar.php">Volver al listado de pruebas</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                <br/><br/> 
             </div>
             <?php
             include_once '../comunes/pie.php';

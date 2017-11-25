@@ -6,7 +6,7 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CATEGORIA</title>
+        <title>INSERTAR PROVEEDOR</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
@@ -21,9 +21,19 @@ include_once "../../crearSesion.php";
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
+                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                    <p> INTRODUZCA EL IDENTIFICADOR DEL PROVEEDOR A BORRAR </p>
+                    <label>ID proveedor</label><input type='text' name='id' maxlength='4'/><br/>
+                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
+                </form>
                 <h1>LISTADO DE PROVEEDORES</h1>
                 <?php
                 include_once '../../../PHP/BD/proveedorBD.php';
+                if (isset($_POST['enviar'])) {
+                    proveedorBD::borrarProveedor($_POST['id']);
+                    echo "<p>El registro se ha borrado</p>";
+                }
+                echo "<h1>LISTADO DE PROVEEDORES</h1 >";
                 $todos = proveedorBD::listarTodos();
                 echo "<table>";
                 echo "<tr><th>ID</th><th>Dirección</th><th>Nombre Empresa</th><th>Persona Contacto</th>"
@@ -41,19 +51,11 @@ include_once "../../crearSesion.php";
                        <a href='borrar.php?id=" . $aux->getIdProveedor() . "'>Borrar</a></tr>";
                 }
                 echo "</table>";
-
-                if (isset($_POST['enviar'])) {
-                    proveedorBD::borrarProveedor($_POST['id']);
-                    echo "El registro se ha borrado";
-                }
                 ?>
-                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DEL PROVEEDOR A BORRAR </p>
-                    <label>ID proveedor</label><input type='text' name='id' maxlength='4'/><br/>
-                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-                    <a href="listar.php">Volver al listado de proveedores</a>&emsp;
-                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-                </form>
+                <br/><br/> 
+                <a href="listar.php">Volver al listado de proveedores</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                <br/><br/> 
             </div>
             <?php
             include_once '../comunes/pie.php';

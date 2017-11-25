@@ -48,15 +48,15 @@ class empleadoBD {
     public static function insertarEmpleado($row) {
         $sql = "insert into optica.empleado (nombreEmpleado, apellidos, direccion, telefono, "
                 . "email, fechaContratacion, sueldo, nif, estado) values ( "
-                . " '" . $row[0] . "'"
-                . ", '" . $row[1] . "'"
-                . ", '" . $row[2] . "'"
-                . ", '" . $row[3] . "'"
-                . ", '" . $row[4] . "'"
-                . ", '" . $row[5] . "'"
-                . ", '" . $row[6] . "'"
-                . ", '" . $row[7] . "'"
-                . ", '" . $row[8] . "' )"
+                . " '" . $row['nombreEmpleado'] . "'"
+                . ", '" . $row['apellidos'] . "'"
+                . ", '" . $row['direccion'] . "'"
+                . ", '" . $row['telefono'] . "'"
+                . ", '" . $row['email'] . "'"
+                . ", '" . $row['fechaContratacion'] . "'"
+                . ", '" . $row['sueldo'] . "'"
+                . ", '" . $row['nif'] . "'"
+                . ", '" . $row['estado'] . "' )"
         ;
         $numero = BD::realizaUpdate($sql);
         return $numero;

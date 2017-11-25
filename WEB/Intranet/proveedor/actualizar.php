@@ -30,6 +30,7 @@ include_once "../../crearSesion.php";
                 <?php
                 if (!isset($_POST['actualizar'])) {
                     $todos = proveedorBD::obtenerDatosProveedor($_GET['id']);
+                    $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST'  onsubmit='return controlarEntradaProveedor()'>";
                     echo "<p>LOS DATOS ACTUALES DEL PRODUCTO A MODIFICAR SON: <p />";
                     echo "<input type = 'hidden' name = 'idProveedor' maxlength='4' value = " . $todos->getIdProveedor() . "> <br />";
@@ -51,19 +52,20 @@ include_once "../../crearSesion.php";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";
                 } else if (isset($_POST['actualizar'])) {
+                    $row = array();
+                    $row['idProveedor'] = $_POST['idProveedor'];
+                    $row['nombreEmpresa'] = $_POST['nombreEmpresa'];
+                    $row['direccion'] = $_POST['direccion'];
+                    $row['personaContacto'] = $_POST['personaContacto'];
+                    $row['cif'] = $_POST['cif'];
+                    $row['email'] = $_POST['email'];
+                    $row['telefono'] = $_POST['telefono'];
+
                     require_once '../../../PHP/BD/Validaciones.php';
                     $validar = Validaciones::controlarEntradaProveedor($row);
-                    $_SESSION['id'] = $_GET['id'];
+                   
                     if ($validar) {
-                        $row = array();
-                        $row['idProveedor'] = $_POST['idProveedor'];
-                        $row['nombreEmpresa'] = $_POST['nombreEmpresa'];
-                        $row['direccion'] = $_POST['direccion'];
-                        $row['personaContacto'] = $_POST['personaContacto'];
-                        $row['cif'] = $_POST['cif'];
-                        $row['email'] = $_POST['email'];
-                        $row['telefono'] = $_POST['telefono'];
-                        proveedorBD::actualizarProveedor($row);
+                         proveedorBD::actualizarProveedor($row);
                         echo "<p>Los datos han sido actualizados</p>";
                         echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
                     }

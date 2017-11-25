@@ -11,8 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>
+        <!--<script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
     </head>
     <body>  
         <?php
@@ -33,7 +33,7 @@ include_once "../../crearSesion.php";
                     echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaCategoria()'>";
                     echo "<p>LOS DATOS QUE PUEDE MODIFICAR DE LA CATEGORIA SELECCIONADA (ID= " . $_GET['id'] . ") SON: </p> <br />";
                     echo "<input type = 'hidden' name = 'idCategoria' id='idCategoria' maxlength='35' value = " . $todos->getIdCategoria() . " />";
-                    echo "<label>* NOMBRE</label> <br/>";
+                    echo "<label for='nombre'>* NOMBRE</label> <br/>";
                     echo "<input type = 'text' name = 'nombreCategoria' id='nombre' maxlength='35' value = " . $todos->getNombreCategoria() . " />";
                     echo "<br/><br />";
                     echo "<input type = 'submit' value = 'Pulse para Actualizar con los datos introducidos' id='actualizar' name = 'actualizar'/><br />";
@@ -43,6 +43,7 @@ include_once "../../crearSesion.php";
                 } else if (isset($_POST['actualizar'])) {
                     require_once '../../../PHP/BD/Validaciones.php';
                     $validar = Validaciones::controlarEntradaCategoria($_POST['nombreCategoria']);
+                    
                     if ($validar) {
                         $row = array();
                         $row['idCategoria'] = $_POST['idCategoria'];

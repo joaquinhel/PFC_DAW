@@ -75,10 +75,10 @@ include_once "../../crearSesion.php";
                     if ($validar) {
                         empleadoBD::actualizarEmpleado($row);
                         echo "<p>Los datos han sido actualizados</p>";
-                        echo "<a href = 'listar.php'>Pulse para volver al listado</a>";
+                        echo "<a href = 'listar.php'>Pulse para volver al listado</a>&emsp;";
                     }
                     unset($_POST['actualizar']);
-                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
+                    echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver a actualizar</a>";
                 }
                 ?>
             </div>

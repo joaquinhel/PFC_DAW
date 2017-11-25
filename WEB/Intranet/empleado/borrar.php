@@ -8,6 +8,7 @@
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
     </head>
     <?php
@@ -18,9 +19,20 @@
         include_once '../comunes/cabecera.php';
         ?>
         <div id='centro'>
-            <h1>LISTADO DE EMPLEADOS</h1>
+
+            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                <p> INTRODUZCA EL IDENTIFICADOR DEL EMPLEADO BORRAR </p>
+                <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
+                <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
+            </form>
+
             <?php
             include_once '../../../PHP/BD/empleadoBD.php';
+            if (isset($_POST['enviar'])) {
+                empleadoBD::borrarEmpleado($_POST['id']);
+                echo "El registro se ha borrado";
+            }
+            echo "<h1>LISTADO DE EMPLEADOS</h1>";
             $todos = empleadoBD::listarTodos();
             echo "<table border=1px>";
             echo "<tr><th>ID</th><th>Nombre</th><th>Apellidos</th> <th>Dirección</th> "
@@ -42,19 +54,11 @@
                        <a href='borrar.php?id=" . $aux->getIdEmpleado() . "'>Borrar</a></tr>";
             }
             echo "</table>";
-
-            if (isset($_POST['enviar'])) {
-                empleadoBD::borrarEmpleado($_POST['id']);
-                echo "El registro se ha borrado";
-            }
             ?>
-            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                <p> INTRODUZCA EL IDENTIFICADOR DEL EMPLEADO BORRAR </p>
-                <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
-                <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-                <a href="listar.php">Volver al listado de empleados</a>&emsp;
-                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-            </form>
+            <a href="listar.php">Volver al listado de empleados</a>&emsp;
+            <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+
+
         </div>
         <?php
         include_once '../comunes/pie.php';

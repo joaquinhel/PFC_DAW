@@ -63,7 +63,7 @@ class proveedorBD {
         $sql = "update optica.proveedor set "
                 . "nombreEmpresa='" . $row['nombreEmpresa'] . "' , "
                 . "direccion = '" . $row['nombreEmpresa'] . "', "
-                . "personaContacto = '" . $row['personaContacto'] . "' "
+                . "personaContacto = '" . $row['personaContacto'] . "' ,"
                 . "cif='" . $row['cif'] . "' , "
                 . "email = '" . $row['email'] . "', "
                 . "telefono = '" . $row['telefono'] . "' "

@@ -6,7 +6,7 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CATEGORIA</title>
+        <title>INSERTAR PRODUCTO</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
@@ -25,12 +25,15 @@ include_once "../../crearSesion.php";
                     <p> INTRODUZCA EL IDENTIFICADOR DEL PRODUCTO A BORRAR </p>
                     <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
                     <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-
                 </form>
-                <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
 
                 <?php
                 include_once '../../../PHP/BD/productoBD.php';
+                if (isset($_POST['enviar'])) {
+                    productoBD::borrarProducto($_POST['id']);
+                    echo "El registro se ha borrado";
+                }
+                echo "<h1>LISTADO DE PRODUCTOS</h1 >";
                 $todos = productoBD::listarTodos();
                 echo "<table border=1px>";
                 echo "<tr><th>idProducto</th><th>nombreProducto</th><th>Descripción</th> <th>Marca</th>"
@@ -50,11 +53,6 @@ include_once "../../crearSesion.php";
                        <a href='borrar.php?id=" . $aux->getIdProducto() . "'>Borrar</a></tr>";
                 }
                 echo "</table>";
-
-                if (isset($_POST['enviar'])) {
-                    productoBD::borrarProducto($_POST['id']);
-                    echo "El registro se ha borrado";
-                }
                 ?>
 
                 <a href="listar.php">Volver al listado de productos</a>&emsp;

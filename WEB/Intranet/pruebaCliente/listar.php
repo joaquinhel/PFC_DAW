@@ -20,7 +20,7 @@ include_once "../../crearSesion.php";
             ?>
             <div>
                 <div id='centro'>
-                    <h1>LISTADO DE PRUEBAS A CLIENTES PROGRAMADAS</h1>
+                    <h1>LISTADO DE PRUEBAS PROGRAMADAS A CLIENTES</h1>
                     <div>
                         <input type='submit' class='navegacion' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
                         <?php
