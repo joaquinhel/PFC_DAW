@@ -7,6 +7,9 @@ and open the template in the editor.
     Created on : 09-oct-2017, 11:24:52
     Author     : Joaquín
 */
+a{
+    text-decoration: none;
+}
 
 #menu{
     margin-bottom: 15px;
@@ -23,7 +26,9 @@ and open the template in the editor.
 #body{
     background: #FFFFCC;
     text-align:center; /*para que en IE 5.5 salga centrado*/
+    font-family: 'arial','verdana';
 }
+
 
 fieldset{
     margin-left: 30%;

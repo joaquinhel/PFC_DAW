@@ -44,7 +44,7 @@ include_once "../../crearSesion.php";
                     echo "</table>";
                     ?>
                     <br/>
-                    <a id='volver'  class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
+                    <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
                 </div> <br/><br/>
             </div>
             <?php

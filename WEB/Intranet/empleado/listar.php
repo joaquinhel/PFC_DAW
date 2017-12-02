@@ -19,7 +19,7 @@ include_once "../../crearSesion.php";
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
+                <h1>LISTADO DE EMPLEADOS</h1>
                 <input type='submit' value='Crear Nuevo Registro' class='navegacion' id='crear' name='crear' onclick = "location = './crear.php'"/>
                 <div>
                     <?php

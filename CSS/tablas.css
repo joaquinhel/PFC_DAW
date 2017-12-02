@@ -19,7 +19,7 @@ h1, h2, form{
     padding-top: 20px;
 }
 h4{
-   color: red;
+    color: red;
 }
 
 table { 
@@ -91,5 +91,10 @@ a:hover{
 #centro{
     background-color: white;
     width: 90%;
-   margin-left: 5%;
+    margin-left: 5%;
+}
+
+#btnajax{
+    color:red;
+    display: inline-block;
 }

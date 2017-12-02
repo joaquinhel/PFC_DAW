@@ -24,12 +24,19 @@ include_once "../../crearSesion.php";
                     <p> INTRODUZCA EL IDENTIFICADOR DE LA CATEGORIA BORRAR </p>
                     <label>ID categoria</label><input type='text' name='id'  maxlength="4"/><br/>
                     <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
-                    <a href="listar.php">Volver al listado de categorias</a>&emsp;
-                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
                 </form>
-                <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>
+
                 <?php
                 include_once '../../../PHP/BD/categoriaBD.php';
+                if (isset($_POST['enviar'])) {
+                    $borrado = categoriaBD::borrarCategoria($_POST['id']);
+                    if ($borrado == true) {
+                        echo "<h4>El registro se ha borrado</h4>";
+                    } else {
+                        echo "<h4>El borrado no ha sido posible, categoria de producto ya utilizada</h4>";
+                    }
+                }
+                echo " <h1>LISTADO DE CATEGORIAS DE PRODUCTOS</h1>";
                 $todos = categoriaBD::listarTodos();
                 echo "<table border=1px>";
                 echo "<tr><th>ID</th><th>Nombre</th></tr>";
@@ -37,13 +44,9 @@ include_once "../../crearSesion.php";
                     echo "<tr><td>" . $aux->getIdCategoria() . "</td> <td>" . $aux->getNombreCategoria() . "</td></tr>";
                 }
                 echo "</table>";
-
-                if (isset($_POST['enviar'])) {
-                    categoriaBD::borrarCategoria($_POST['id']);
-                    echo "El registro se ha borrado";
-                }
                 ?>
-
+                <a href = "listar.php">Volver al listado de categorias</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
             </div>
             <?php
             include_once '../comunes/pie.php';

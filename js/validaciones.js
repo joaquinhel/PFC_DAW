@@ -19,14 +19,13 @@ function controlarEntradaCategoria() {
     }
 }
 
-//isNaN--> Si introduzco una letra se evalua a false
-//Debemos usar .append y no .html ya que sino solo nos sadrá el último mensaje de error
 function controlarEntradaEmpleado() { //No hacen falta parámetros usamos las variables
     nombre = $("#nombre").val();
     apellido = $("#apellido").val();
     email = $("#email").val();
     telefono = $("#telefono").val();
     sueldo = $("#sueldo").val();
+    direccion = $("#direccion").val();
     dni = $("#nif").val();
     error = false;
     $("#error").html(""); //Borramos los mensajes de error anteriores, si los hubiera
@@ -48,7 +47,7 @@ function controlarEntradaEmpleado() { //No hacen falta parámetros usamos las va
         $('#error').append('<h4>' + "Los campos de nombrebre apellido solo aceptan valores entre 3 y 50 caracteres" + '</h4>');
         error = true;
     }
-    else if (!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(email))) {
+    else if (validarEmail(email) === false) {
         $('#error').append('<h4>' + "Introduzca un email correcto" + '</h4>');
         error = true;
     }
@@ -56,25 +55,26 @@ function controlarEntradaEmpleado() { //No hacen falta parámetros usamos las va
     else if (validarNIF(dni) === false) {
         $('#error').append('<h4>' + "El dni introducido es incorrecto" + '</h4>');
         error = true;
-        return false;
     }
     else if (direccion != "") {
-        if (direccion.length < 5 || !isNaN(direccion))
+        if (direccion.length < 5 || !isNaN(direccion)) {
             $('#error').append('<h4>' + "La dirección introducida no es correcta" + '</h4>');
-        error = true;
-        return false;
+            error = true;
+        }
     }
 
     else if (email != "") {
         if (email.length < 5 || !isNaN(email))
             $('#error').append('<h4>' + "La dirección introducida no es correcta" + '</h4>');
         error = true;
-        return false;
     }
-    return !error;
+    if (error == true) {
+        return false;
+    } else {
+        alert("El registro ha sido grabado correctamente");
+        return true;
+    }
 }
-
-
 
 
 /************************************************/
@@ -93,7 +93,7 @@ function controlarEntradaCliente() { //No hacen falta parámetros usamos las var
         error = true;
     }
     else if (isNaN(telefono) || telefono.length < 9) {
-        $('#error').append('<h4>' + "El campo teléfono deben ser númerico y tener 9 dígitos" + '</h4>');
+        $('#error').append('<h4>' + "El campo teléfono deben ser númerico y jjjjtener 9 dígitos" + '</h4>');
         error = true;
     }
 
@@ -115,16 +115,21 @@ function controlarEntradaCliente() { //No hacen falta parámetros usamos las var
     else if (validarNIF(dni) === false) {
         $('#error').append('<h4>' + "El dni introducido es incorrecto" + '</h4>');
         error = true;
-        return false;
     }
 
     else if (direccion != "") {
-        if (direccion.length < 5 || !isNaN(direccion))
-            $('#error').append('<h4>' + "La dirección introducida nno es correcta" + '</h4>');
-        error = true;
-        return false;
+        if (direccion.length < 5 || !isNaN(direccion)) {
+            $('#error').append('<h4>' + "La dirección introducida no es correcta" + '</h4>');
+            error = true;
+        }
     }
-    return !error;
+    if (error == true) {
+        return false;
+    } else {
+        alert("El registro ha sido grabado correctamente");
+        return true;
+    }
+    alert("El registro ha sido grabado correctamente");
 }
 
 
@@ -151,12 +156,17 @@ function controlarEntradaProducto() { //No hacen falta parámetros usamos las va
     }
 
     else if (descripcion != "") {
-        if (descripcion.length < 3 || !isNaN(descripcion))
+        if (descripcion.length < 3 || !isNaN(descripcion)) {
             $('#error').append('<h4>' + "La dirección introducida no es correcta" + '</h4>');
-        error = true;
-        return false;
+            error = true;
+        }
     }
-    return !error;
+    if (error == true) {
+        return false;
+    } else {
+        alert("El registro ha sido grabado correctamente");
+        return true;
+    }
 }
 
 function controlarEntradaProveedor() { //No hacen falta parámetros usamos las variables
@@ -187,16 +197,19 @@ function controlarEntradaProveedor() { //No hacen falta parámetros usamos las v
         if (contacto.length < 3 || !isNaN(contacto))
             $('#error').append('<h4>' + "El contacto introducida no es correcta" + '</h4>');
         error = true;
-        return false;
     }
 
     else if (direccion != "") {
         if (direccion.length < 3 || !isNaN(direccion))
             $('#error').append('<h4>' + "La dirección introducida no es correcta" + '</h4>');
         error = true;
-        return false;
     }
-    return !error;
+    if (error == true) {
+        return false;
+    } else {
+        alert("El registro ha sido grabado correctamente");
+        return true;
+    }
 }
 
 
@@ -211,19 +224,17 @@ function controlarEntradaPrueba() {
         $('#error').append('<h4>' + "Los campos marcados con * son obligatorios" + '</h4>');
         error = true;
     }
-
     else if (nombre.length < 3 || instrumental.length < 3 || email.length > 50 || instrumental.length > 50) {
         $('#error').append('<h4>' + "Los campos de nombre e instrumental solo aceptan valores entre 3 y 50 caracteres" + '</h4>');
         error = true;
     }
-
     else if (descripcion != "") {
-        if (descripcion.length < 3 || !isNaN(descripcion))
+        if (descripcion.length < 3 || !isNaN(descripcion)) {
             $('#error').append('<h4>' + "La dirección introducida no es correcta" + '</h4>');
-        error = true;
+            error = true;
+        }
         return false;
     }
-
     if (error == true)
         return false
     else {
@@ -233,6 +244,8 @@ function controlarEntradaPrueba() {
 }
 
 function controlarEntradaPruebaCliente() {
+    alert("El registro ha sido grabado correctamente");
+
     fecha = $("#fecha").val();
     diagnostico = $("#diagnostico").val();
     error = false;
@@ -242,15 +255,14 @@ function controlarEntradaPruebaCliente() {
         $('#error').append('<h4>' + "Los campos marcados con * son obligatorios" + '</h4>');
         error = true;
     }
-
-    else if (nombre.diagnostico < 3 || email.diagnostico > 50) {
+    else if (diagnostico.length < 3 || diagnostico.length > 50) {
         $('#error').append('<h4>' + "El campo diagnostico solo acepta valores entre 3 y 50 caracteres" + '</h4>');
         error = true;
     }
-
-    if (error == true)
-        return false
-    else {
+    if (error == true) {
+        alert("El registro ha sido grabado correctamente");
+        return false;
+    } else {
         alert("El registro ha sido grabado correctamente");
         return true;
     }
@@ -278,6 +290,16 @@ function controlarUsuario() { //No hacen falta parámetros usamos las variables
         error = true;
     }
     return !error;
+}
+
+
+function validarEmail(email) {
+    expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!expr.test(email)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 

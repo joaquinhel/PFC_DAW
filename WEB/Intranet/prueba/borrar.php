@@ -20,7 +20,7 @@
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1>LISTADO DE PRUEBAS DIAGNOSTICAS</h1>
+
 
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                     <p> INTRODUZCA EL IDENTIFICADOR DE LA PRUEBA A BORRAR </p>
@@ -32,9 +32,14 @@
                 include_once '../../../PHP/BD/pruebaBD.php';
 
                 if (isset($_POST['enviar'])) {
-                    pruebaBD::borrarPrueba($_POST['id']);
-                    echo "El registro se ha borrado";
+                    $borrado = pruebaBD::borrarPrueba($_POST['id']);
+                    if ($borrado == true) {
+                        echo "El registro se ha borrado";
+                    } else {
+                        echo "<h4>El borrado no ha sido posible ya que esta prueba está ne uso</h4>";
+                    }
                 }
+                echo "<h1>LISTADO DE PRUEBAS DIAGNOSTICAS</h1>";
                 $todos = pruebaBD::listarTodos();
                 echo "<table>";
                 echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>Instrumental</th> <th>Descripcion</th><th>Acciones</th>"

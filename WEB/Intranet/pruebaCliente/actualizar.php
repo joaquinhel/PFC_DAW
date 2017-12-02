@@ -14,8 +14,8 @@ include_once '../../../PHP/BD/pruebaBD.php';
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-         <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -57,7 +57,8 @@ include_once '../../../PHP/BD/pruebaBD.php';
                     echo "<label for='fecha'>* FECHA</label> <br/>";
                     echo "<input type = 'date' name = 'fechaPrueba' id='fecha' required value = " . $todos->getFechaPrueba() . "> <br />";
                     echo "<label for='diagnostico'>* DIAGNOSTICO</label> <br/>";
-                    echo "<input type = 'text' name = 'diagnostico' id='diagnostico' maxlength='45' value = " . $todos->getDiagnostico() . "> <br />";
+                    echo "<input type = 'text' name = 'diagnostico' id='diagnostico' maxlength='55' "
+                    . "value = " . $todos->getDiagnostico() . "> <br />";
                     echo "<br/>";
                     echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de pruebas - clientes</a> &emsp;&emsp;";
@@ -70,15 +71,22 @@ include_once '../../../PHP/BD/pruebaBD.php';
                     $row['fechaPrueba'] = $_POST['fechaPrueba'];
                     $row['diagnostico'] = $_POST['diagnostico'];
 
+                    global $js; //Variable para controlar si entra o no al js
+                    $js = 0;
+                    echo "<noscript>"; //Cuando está desactivado javascript
+                    $js = 1;
                     require_once '../../../PHP/BD/Validaciones.php';
                     $validar = Validaciones::controlarEntradaPruebaCliente($row);
-
                     if ($validar) {
                         pruebaClienteBD::actualizarPruebaCliente($row);
-                        echo "<p>Los datos han sido actualizados</p>";
-                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                    }
+                    echo "</noscript>";
+                    if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
+                        pruebaClienteBD::actualizarPruebaCliente($row);
                     }
                     unset($_POST['actualizar']);
+                    echo "<p>Los datos han sido actualizados</p>";
+                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
                     echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "&ida=" . $_SESSION['ida'] . "'>Pulse para volver</a>";
                 }
                 ?>

@@ -9,6 +9,10 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <script src="//code.jquery.com/jquery-latest.js"></script>
+
+        <script src="../../../js/miscript.js" type="text/javascript"></script>
+
     </head>
     <body>  
         <?php
@@ -26,23 +30,24 @@ include_once "../../crearSesion.php";
                     include_once '../../../PHP/BD/usuarioBD.php';
                     $todos = usuarioBD::listarTodos();
                     echo "<table>";
-                    echo "<tr><th>ID</th><th>Login</th><th>Pass</th><th>fecha_alta</th> "
-                    . "<th>Nombre</th><th>Estado</th> <th>Acciones</th></tr>";
+                    echo "<tr><th>ID</th><th>Login</th>"
+                    . "<th>Nombre</th> <th>Acciones</th></tr>";
 
                     foreach ($todos as $aux) {
                         echo "<tr><td>" . $aux->getIdUsuario() . "</td>"
                         . "<td>" . $aux->getLogin() . "</td>"
-                        . "<td>" . $aux->getPass() . "</td>"
-                        . "<td>" . $aux->getFecha_alta() . "</td>"
                         . "<td>" . $aux->getNombre() . "</td>"
-                        . "<td>" . $aux->getEstado() . "</td>"
                         . "<td> <a href='actualizar.php?id=" . $aux->getIdUsuario() . "'>Editar</a>
                        <a href='borrar.php?id=" . $aux->getIdUsuario() . "'>Borrar</a></tr>";
                     }
                     echo "</table>";
                     ?>
                     <br>
-                        <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
+                        <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/> <br/> 
+                        <button id='btnajax' data-user="[1,2,3,4,5,6,7,8,9]">Pulsar para ver el detalle de los usuarios</button>
+                </div>
+
+                <div id="response-container">
                 </div>
                 <br/><br/>
             </div>

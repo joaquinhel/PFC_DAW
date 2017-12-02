@@ -14,8 +14,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-         <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -60,12 +60,12 @@ include_once "../../crearSesion.php";
                         echo "<option value = " . $id->getIdCategoria() . ">" . $id->getNombreCategoria() . "</option>";
                     }
                     echo "</select><br/>";
-/*
-                    echo "<label for = 'proveedor'>* ID_PROVEEDOR </label> <br/>";
-                    echo "<input type = 'text' name = 'proveedor_idProveedor' id = 'proveedor' required value = " . $todos->getProveedor_idProveedor() . "><br />";
-                    echo "<label for = 'categoria'>* ID_CATEGORIA </label> <br/>";
-                    echo "<input type = 'text' name = 'categoria_idCategoria' id = 'categoria' required value = " . $todos->getCategoria_idCategoria() . "><br />";
-                    echo "<br/>";*/
+                    /* Cambio el tipo de seleccion
+                      echo "<label for = 'proveedor'>* ID_PROVEEDOR </label> <br/>";
+                      echo "<input type = 'text' name = 'proveedor_idProveedor' id = 'proveedor' required value = " . $todos->getProveedor_idProveedor() . "><br />";
+                      echo "<label for = 'categoria'>* ID_CATEGORIA </label> <br/>";
+                      echo "<input type = 'text' name = 'categoria_idCategoria' id = 'categoria' required value = " . $todos->getCategoria_idCategoria() . "><br />";
+                      echo "<br/>"; */
                     echo "<input type = 'submit' value = 'Actualizar' id = 'actualizar' name = 'actualizar'/><br /><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de productos </a> &emsp;
                             &emsp;
@@ -82,14 +82,22 @@ include_once "../../crearSesion.php";
                     $row['proveedor_idProveedor'] = $_POST['proveedor_idProveedor'];
                     $row['categoria_idCategoria'] = $_POST['categoria_idCategoria'];
 
+                    global $js; //Variable para controlar si entra o no al js
+                    $js = 0;
+                    echo "<noscript>"; //Cuando está desactivado javascript
+                    $js = 1;
                     require_once '../../../PHP/BD/Validaciones.php';
                     $validar = Validaciones::controlarEntradaProducto($row);
                     if ($validar) {
                         productoBD::actualizarProducto($row);
-                        echo "<p>Los datos han sido actualizados</p>";
-                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
                     }
-                    unset($_POST['actualizar']);
+                    echo "</noscript>";
+                    if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
+                        productoBD::actualizarProducto($row);
+                    }
+                    unset($_POST ['actualizar']);
+                    echo "<p>Los datos han sido actualizados</p>";
+                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
                     echo "<a href = 'actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>

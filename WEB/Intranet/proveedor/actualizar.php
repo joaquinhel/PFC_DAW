@@ -12,8 +12,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-         <!-- <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -61,15 +61,22 @@ include_once "../../crearSesion.php";
                     $row['email'] = $_POST['email'];
                     $row['telefono'] = $_POST['telefono'];
 
+                    global $js; //Variable para controlar si entra o no al js
+                    $js = 0;
+                    echo "<noscript>"; //Cuando está desactivado javascript
+                    $js = 1;
                     require_once '../../../PHP/BD/Validaciones.php';
                     $validar = Validaciones::controlarEntradaProveedor($row);
-                   
                     if ($validar) {
-                         proveedorBD::actualizarProveedor($row);
-                        echo "<p>Los datos han sido actualizados</p>";
-                        echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
+                        proveedorBD::actualizarProveedor($row);
+                    }
+                    echo "</noscript>";
+                    if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
+                        proveedorBD::actualizarProveedor($row);
                     }
                     unset($_POST['actualizar']);
+                    echo "<p>Los datos han sido actualizados</p>";
+                    echo "<a href = 'listar.php'>Pulse para volver al listado</a><br />";
                     echo "<a href='actualizar.php?id=" . $_SESSION['id'] . "'>Pulse para volver</a>";
                 }
                 ?>

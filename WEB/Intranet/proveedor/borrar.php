@@ -26,12 +26,16 @@ include_once "../../crearSesion.php";
                     <label>ID proveedor</label><input type='text' name='id' maxlength='4'/><br/>
                     <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
                 </form>
-                <h1>LISTADO DE PROVEEDORES</h1>
+
                 <?php
                 include_once '../../../PHP/BD/proveedorBD.php';
                 if (isset($_POST['enviar'])) {
-                    proveedorBD::borrarProveedor($_POST['id']);
-                    echo "<p>El registro se ha borrado</p>";
+                   $borrado =  proveedorBD::borrarProveedor($_POST['id']);
+                   if ($borrado == true) {
+                        echo "El registro se ha borrado";
+                    } else {
+                        echo "<h4>El borrado no ha sido posible ya que este proveedor está en uso</h4>";
+                    }
                 }
                 echo "<h1>LISTADO DE PROVEEDORES</h1 >";
                 $todos = proveedorBD::listarTodos();

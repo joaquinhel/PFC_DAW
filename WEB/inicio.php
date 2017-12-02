@@ -21,6 +21,9 @@
             </div>
         </div>
         <?php
+        include 'pie.php';
+        ?>
+        <?php
         include 'footer.php';
         ?>
     </body>

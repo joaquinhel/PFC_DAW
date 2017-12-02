@@ -25,7 +25,7 @@ class pruebaClienteBD {
     public static function obtenerDatosPruebaCliente($cod, $cod1) {
         $sql = "SELECT cliente_idCliente, prueba_idPrueba, diagnostico, fechaPrueba"
                 . " from optica.pruebaCliente"
-                . " where cliente_idCliente=" . $cod . " and prueba_idPrueba= ". $cod1 ;
+                . " where cliente_idCliente=" . $cod . " and prueba_idPrueba=". $cod1 ;
         $resultado = BD::ejecutaConsulta($sql);
         $pruebaCliente = array();
         if ($resultado) {
@@ -60,9 +60,9 @@ class pruebaClienteBD {
     public static function actualizarPruebaCliente($row) {
         $sql = "update optica.pruebaCliente set "
                 . "diagnostico = '" . $row['diagnostico'] . "', "
-                . "fechaPrueba = '" . $row['fechaPrueba'] . "', "
+                . "fechaPrueba = '" . $row['fechaPrueba'] . "' "
                 . "where cliente_idCliente = '" . $row['cliente_idCliente'] . "'"
-                . "and prueba_idPrueba = '" . $row['prueba_idPrueba'] . "'";
+                . " and prueba_idPrueba = '" . $row['prueba_idPrueba'] . "'";
         $numero = BD::realizaUpdate($sql);
         return $numero;
     }

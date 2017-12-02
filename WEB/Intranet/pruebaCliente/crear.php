@@ -11,8 +11,8 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
-        <!--<script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-        <script src="../../../js/validaciones.js" type="text/javascript"></script>-->
+        <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
         <?php
@@ -27,7 +27,6 @@ include_once "../../crearSesion.php";
             include_once '../../../PHP/BD/pruebaClienteBD.php';
             include_once '../../../PHP/BD/clienteBD.php';
             include_once '../../../PHP/BD/pruebaBD.php';
-            require_once '../../../PHP/BD/Validaciones.php';
 
             if (isset($_POST['insertar'])) {
                 $row['cliente_idCliente'] = $_POST['cliente_idCliente'];
@@ -35,57 +34,68 @@ include_once "../../crearSesion.php";
                 $row['fechaPrueba'] = $_POST['fechaPrueba'];
                 $row['diagnostico'] = $_POST['diagnostico'];
 
+                global $js; //Variable para controlar si entra o no al js
+                $js = 0;
+                /*echo "<noscript>"; //Cuando está desactivado javascript
+                $js = 1;
+                require_once '../../../PHP/BD/Validaciones.php';
                 $validar = Validaciones::controlarEntradaPruebaCliente($row);
                 if ($validar) {
+                   pruebaClienteBD::insertarPruebaCliente($row);
+                }
+                echo "</noscript>";*/
+                
+                if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
                     pruebaClienteBD::insertarPruebaCliente($row);
                 }
+                
             }
             ?>
             <div id='centro'>
-                <h2>PROGRAMAR NUEVA PRUBA PARA CLIENTE</h2>
+                <h2>PROGRAMAR NUEVA PRUEBA PARA CLIENTE</h2>
                 <div id="error">
                 </div>
-            <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
-                  onsubmit="return controlarEntradaPruebaCliente()"> 
-                <label>Introduzca los datos del prueba: </label> <br/>
-                <label for="cliente">*Cliente: </label>
-                <select name="cliente_idCliente" id="cliente" required>  
-                    <?php
-                    $todos1 = clienteBD::listarTodos();
-                    foreach ($todos1 as $id) {
-                        echo "<option value=" . $id->getIdCliente() . ">" . $id->getNif() . "</option>";
-                    }
-                    ?>   
-                </select>
-                <br/>
+                <label>Introduzca los datos del prueba: </label>
+                <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
+                      onsubmit=" return controlarEntradaPruebaCliente()"> 
+                    <label for="cliente">*Cliente: </label>
+                    <select name="cliente_idCliente" id="cliente" required>  
+                        <?php
+                        $todos1 = clienteBD::listarTodos();
+                        foreach ($todos1 as $id) {
+                            echo "<option value=" . $id->getIdCliente() . ">" . $id->getNif() . "</option>";
+                        }
+                        ?>   
+                    </select>
+                    <br/>
 
-                <label for="prueba">*Prueba: </label>
-                <select name="prueba_idPrueba" id='prueba' required>  
-                    <?php
-                    $todos1 = pruebaBD::listarTodos();
-                    foreach ($todos1 as $id) {
-                        echo "<option value=" . $id->getIdPrueba() . ">" . $id->getNombrePrueba() . "</option>";
-                    }
-                    ?>   
-                </select><br/>
+                    <label for="prueba">*Prueba: </label>
+                    <select name="prueba_idPrueba" id='prueba' required>  
+                        <?php
+                        $todos1 = pruebaBD::listarTodos();
+                        foreach ($todos1 as $id) {
+                            echo "<option value=" . $id->getIdPrueba() . ">" . $id->getNombrePrueba() . "</option>";
+                        }
+                        ?>   
+                    </select><br/>
 
-                <label for="fecha">* Fecha: </label>
-                <input type="date" name="fechaPrueba" required/><br/> 
+                    <label for="fecha">* Fecha: </label>
+                    <input type="date" name="fechaPrueba" required/><br/> 
 
-                <label for="diagnostico">* Diagnostico: </label>
-                <input type="text" name="diagnostico" maxlength='45' required/><br/>
+                    <label for="diagnostico">* Diagnostico: </label>
+                    <input type="text" name="diagnostico" maxlength='45' required/><br/>
 
-                <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
-                <a href="listar.php">Volver al listado de pruebas - clientes </a>&emsp;
-                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-            </form> 
+                    <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
+                    <a href="listar.php">Volver al listado de pruebas - clientes </a>&emsp;
+                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                </form> 
+                <?php
+                include_once '../comunes/pie.php';
+                ?>
+            </div>
             <?php
-            include_once '../comunes/pie.php';
+            include '../comunes/footer.php';
             ?>
-        </div>
-        <?php
-        include '../comunes/footer.php';
-        ?>
     </body>
 </html>
 

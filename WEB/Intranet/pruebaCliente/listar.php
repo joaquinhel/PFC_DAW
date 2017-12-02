@@ -4,7 +4,7 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CATEGORIA</title>
+        <title>Listado de pruebas programadas</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
@@ -36,7 +36,7 @@ include_once "../../crearSesion.php";
                             . "<td>" . $aux->getCliente_idCliente() . "</td>"
                             . "<td>" . $aux->getFechaPrueba() . "</td> "
                             . "<td>" . $aux->getDiagnostico() . "</td>"
-                            . "<td> <a href='actualizar.php?id=" . $aux->getPrueba_idPrueba() . "&ida=" . $aux->getCliente_idCliente() . "'>Editar</a>
+                            . "<td> <a href='actualizar.php?id=" . $aux->getCliente_idCliente() . "&ida=" . $aux->getPrueba_idPrueba() . "'>Editar</a>
                        <a href='borrar.php?id=" . $aux->getCliente_idCliente() . "&ida=" . $aux->getPrueba_idPrueba() . "'>Borrar</a></tr>";
                         }
                         echo "</table>";

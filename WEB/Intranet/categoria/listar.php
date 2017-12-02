@@ -22,19 +22,19 @@ include_once "../../crearSesion.php";
             <div id='centro'>
                 <h1>LISTADO DE CATEGORIAS DE CATEGORIAS</h1>
                 <input type = 'submit' value = 'Crear Nuevo Registro' id = 'crear' class='navegacion' name = 'crear' onclick = "location = './crear.php'"/>
-                       <?php
-                       include_once '../../../PHP/BD/categoriaBD.php';
-                       $todos = categoriaBD::listarTodos();
-                       echo "<table>";
-                       echo "<tr><th>ID</th><th>Nombre</th><th>Acciones</th></tr>";
+                <?php
+                include_once '../../../PHP/BD/categoriaBD.php';
+                $todos = categoriaBD::listarTodos();
+                echo "<table>";
+                echo "<tr><th>ID</th><th>Nombre</th><th>Acciones</th></tr>";
 
-                       foreach ($todos as $aux) {
-                           echo "<tr><td>" . $aux->getIdCategoria() . "</td> <td>" . $aux->getNombreCategoria() . "</td>"
-                           . "<td> <a href='actualizar.php?id=" . $aux->getIdCategoria() . "'>Editar</a>
+                foreach ($todos as $aux) {
+                    echo "<tr><td>" . $aux->getIdCategoria() . "</td> <td>" . $aux->getNombreCategoria() . "</td>"
+                    . "<td> <a href='actualizar.php?id=" . $aux->getIdCategoria() . "'>Editar</a>
                        <a href='borrar.php?id=" . $aux->getIdCategoria() . "'>Borrar</a></tr>";
-                       }
-                       echo "</table>";
-                       ?>
+                }
+                echo "</table>";
+                ?>
                 <br>
                     <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
             </div><br/><br/>

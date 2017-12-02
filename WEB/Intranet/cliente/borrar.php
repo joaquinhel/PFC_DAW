@@ -31,9 +31,9 @@ include_once "../../crearSesion.php";
                 if (isset($_POST['enviar'])) {
                     $borrado = clienteBD::borrarCliente($_POST['id']);
                     if ($borrado == true) {
-                        echo "El registro se ha borrado";
+                        echo "<h4>El registro se ha borrado</h4>";
                     } else {
-                        echo "El borrado no ha sido posible ya que este cliente esta en uso";
+                        echo "<h4>El borrado no ha sido posible ya que este cliente está en uso</h4>";
                     }
                 }
                 echo "<h1>LISTADO DE CATEGORIAS DE CLIENTES</h1>";
