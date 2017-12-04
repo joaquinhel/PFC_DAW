@@ -11,6 +11,7 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
         <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
         <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
@@ -43,7 +44,7 @@ include_once "../../crearSesion.php";
                 } else if (isset($_POST['actualizar'])) {
                     require_once '../../../PHP/BD/Validaciones.php';
                     $validar = Validaciones::controlarEntradaCategoria($_POST['nombreCategoria']);
-                    
+
                     if ($validar) {
                         $row = array();
                         $row['idCategoria'] = $_POST['idCategoria'];

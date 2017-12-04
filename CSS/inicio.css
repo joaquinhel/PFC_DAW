@@ -16,11 +16,13 @@ a{
 }
 
 #menu ul{
-    margin:0;padding:0;
+    margin:0;
+    padding:0;
 }
 
 #menu ul li{
-    display:inline;margin:0 3px;
+    display:inline;
+    margin:0 3px;
 }
 
 #body{
@@ -29,7 +31,9 @@ a{
     font-family: 'arial','verdana';
 }
 
-
+#slideShowImages{
+    margin:50px auto;
+}
 fieldset{
     margin-left: 30%;
     width: 40%;
@@ -39,6 +43,7 @@ fieldset{
     padding-top: 1px;
     height:100%; 
     width:90%; 
+    text-align: center;
     //background: red;
     margin:auto;      /* para centrar el contenedor */
 }
@@ -113,7 +118,7 @@ fieldset{
 
 #presentacion{
     display:block;
-    width:100%;               /* 1 - le damos un ancho */
+    width:100%;              
 }
 
 #footer{
@@ -126,4 +131,31 @@ img{
     margin:auto;
     width:700px;
     height:400px;
+}
+
+.casilla:hover { 
+    background-color: yellow;
+}
+
+.casilla{
+    display: inline;
+    padding: 3px;
+}
+
+h3{
+    color: white;
+    background-color: #5721E1;
+    padding: 10px;
+}
+
+h1{
+    color: white;
+    background-color: #5721E1;
+    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.negrita{
+   font-weight: bold;
 }

@@ -9,21 +9,43 @@
     <body id="body">
         <div id="menu">
             <ul>
-                <li><a href="inicio.php">Inicio</a></li>
+                <div class='casilla'>
+                    <li><a href="inicio.php">Inicio</a></li>
+                </div>
+
                 <li> | </li>
-                <li><a href="conozcanos.php">Conózcanos</a></li>
+                <div class='casilla'>
+                    <li><a href="conozcanos.php">Conózcanos</a></li>
+                </div>
+
                 <li> | </li>
-                <li><a href="servicios.php">Servicios</a></li>
+                <div class='casilla'>
+                    <li><a href="servicios.php">Servicios</a></li>
+                </div>
+
                 <li> | </li>
-                <li><a href="catalogo.php">Catálogo</a></li>
+                <div class='casilla'>
+                    <li><a href="catalogo.php">Catálogo</a></li>
+                </div>
                 <li> | </li>
-                <li><a href="noticias.php">Novedades</a></li>
+                <div class='casilla'>
+                    <li><a href="noticias.php">Novedades</a></li>
+                </div>
+
                 <li> | </li>
-                <li><a href="ofertas.php">Ofertas</a></li>
+                <div class='casilla'>
+                    <li><a href="ofertas.php">Ofertas</a></li>
+                </div>
+
                 <li> | </li>
-                <li><a href="consultas.php">Consultas</a></li>
+                <div class='casilla'>
+                    <li><a href="consultas.php">Consultas</a></li>
+                </div>
+
                 <li> | </li>
-                <li><a href="loginIntranet.php">Intranet</a></li>
+                <div class='casilla'>
+                    <li><a href="loginIntranet.php">Intranet</a></li>
+                </div>
             </ul>
         </div>
 </html>

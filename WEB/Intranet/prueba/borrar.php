@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CATEGORIA</title>
+        <title> BORRAR PRUEBA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
@@ -20,10 +20,9 @@
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-
-
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DE LA PRUEBA A BORRAR </p>
+                     <h1> BORRAR UNA PRUEBA </h1>
+                    <p> Introduzca el id de la prueba a borrar </p>
                     <label>ID categoria</label><input type='text' name='id'/><br/>
                     <input type='submit' name='enviar' value='Borrar' maxlength='4'/> <br/><br/>
                 </form>

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
+        <title>CENTRO OPTICO SÁNCHEZ SERVICIOS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../CSS/conozcanos.css" rel="stylesheet" type="text/css"/>
+        <link href="../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="../../CSS/estilo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php
-        include_once 'menu.php';
+        include_once 'ComunesServicio/menu.php';
         ?>
 
         <div id="contenedor">
             <?php
-            include_once 'cabecera.php';
+            include_once 'ComunesServicio/cabecera.php';
             ?>
             <div class="two-columns">
 
@@ -29,6 +31,8 @@
                     largo de nuestra vida y se ve afectado, entre otros factores, por nuestros 
                     hábitos diarios; de forma que, cuanto antes detectemos los problemas visuales, 
                     mayor será la probabilidad de tener éxito.</p>
+
+                <img class='foto_prensentacion' src="../../imagenes/aplicacion/servicios/montaje.jpg" alt="foto_presentacion"/>
 
                 <label>EL EXAMEN QUE REALIZAMOS CONSTA DE LAS SIGUIENTES PRUEBAS DE DIAGNÓSTICO:</label>
                 <ul>
@@ -80,7 +84,7 @@
                 </ul>
             </div>
             <?php
-            include 'pie.php';
+            include 'ComunesServicio/pie.php';
             ?>
         </div>
         <?php

@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
+        <title>CENTRO OPTICO SÁNCHEZ SERVICIOS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../CSS/conozcanos.css" rel="stylesheet" type="text/css"/>
+        <link href="../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="../../CSS/boton.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php
-        include_once 'menu.php';
+        include_once 'ComunesServicio/menu.php';
         ?>
 
         <div id="contenedor">
             <?php
-            include_once 'cabecera.php';
+            include_once 'ComunesServicio/cabecera.php';
             ?>
             <h3>DISPONEMOS DE LA ÚLTIMA TECNOLOGÍA EN APARATOS DIAGNÓSTICOS</h3>
             <div class="two-columns">
@@ -28,6 +30,8 @@
                     Conocemos las últimas técnicas y protocolos más avanzados gracias a la formación continua, 
                     además de disponer de la última tecnología para el diagnóstico, seguimiento, prevención y 
                     tratamiento de los diferentes problemas visuales.
+                    <img class='foto_prensentacion' src="../../imagenes/aplicacion/servicios/diagnostico.jpg" alt="foto_presentacion"/>
+
                 </p>
 
                 <label>PRUEBAS QUE REALIZAMOS EN ESTE TIPO DE EXAMEN:</label>
@@ -47,7 +51,7 @@
                 </ul>
             </div>
             <?php
-            include 'pie.php';
+            include 'ComunesServicio/pie.php';
             ?>
         </div>
         <?php

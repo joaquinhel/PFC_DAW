@@ -6,7 +6,7 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR PROVEEDOR</title>
+        <title>BORRAR PROVEEDOR</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
@@ -22,7 +22,8 @@ include_once "../../crearSesion.php";
             ?>
             <div id='centro'>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DEL PROVEEDOR A BORRAR </p>
+                    <h1> BORRAR UN PROVEEDOR </h1>
+                    <p> Introduzca el id del proveedor a borrar</p>
                     <label>ID proveedor</label><input type='text' name='id' maxlength='4'/><br/>
                     <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
                 </form>

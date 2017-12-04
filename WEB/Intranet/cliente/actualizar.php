@@ -14,6 +14,7 @@ include_once '../../crearSesion.php';
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
         <script src="../../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
         <script src="../../../js/validaciones.js" type="text/javascript"></script>
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
         <?php

@@ -1,18 +1,19 @@
 <!DOCTYPE html>  
 <html lang="es">
     <head>
-        <title>Formulario de contacto HTML5/CSS3/PHP</title>
+        <title>Formulario de contacto</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../css/estilo.css" rel="stylesheet" type="text/css"/>
         <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
+        <title>CENTRO ÓPTICO SANCHEZ</title>
+        <link rel="icon" type="image/png" href="../imagenes/iconos/centroOptico.png" />
     </head>
 
     <body>
         <?php
         include 'menu.php';
         ?>
-
         <div id="contenedor">
             <?php
             include 'cabecera.php';

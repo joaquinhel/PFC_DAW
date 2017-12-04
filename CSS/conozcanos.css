@@ -28,3 +28,11 @@
 li{
     type:'disc';
 }
+
+
+.foto_prensentacion{
+    width: 200px;
+    height: 200px;
+    float: left;
+    padding: 10px;
+}

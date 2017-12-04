@@ -10,7 +10,7 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
         <script src="//code.jquery.com/jquery-latest.js"></script>
-
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
         <script src="../../../js/miscript.js" type="text/javascript"></script>
 
     </head>

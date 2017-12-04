@@ -3,7 +3,7 @@
 <html>
     <head>
         <link href="../../../css/inicio.css" rel="stylesheet" type="text/css"/>
-        <title>Optica</title>
+        <title>MEN</title>
         <meta charset="UTF-8">
     </head>
     <body id="body">

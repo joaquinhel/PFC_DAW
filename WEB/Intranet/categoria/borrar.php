@@ -5,11 +5,12 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CATEGORIA</title>
+        <title>BORRAR CATEGORIA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
         <?php
@@ -21,7 +22,8 @@ include_once "../../crearSesion.php";
             ?>
             <div id='centro'>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DE LA CATEGORIA BORRAR </p>
+                    <h1> BORRAR UNA CATEGORIA </h1>
+                    <p class="negrita"> Introduzca el id de la categoria a borrar (puede consultar el listado de más abajo) </p>
                     <label>ID categoria</label><input type='text' name='id'  maxlength="4"/><br/>
                     <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
                 </form>

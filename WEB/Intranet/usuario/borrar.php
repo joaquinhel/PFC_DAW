@@ -11,6 +11,7 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
         <?php
@@ -47,7 +48,8 @@ include_once "../../crearSesion.php";
                 }
                 ?>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DEL USUARIO A BORRAR </p>
+                    <h1> BORRAR UN USUARIO</h1>
+                    <p> Introduzca el id del usuario a borrar </p>
                     <label>ID categoria</label><input type='text' name='id'/><br/>
                     <input type='submit' name='enviar' value='Borrar' maxlength='4'/> <br/><br/>
                     <a href="listar.php">Volver al listado de usuarios</a>&emsp;

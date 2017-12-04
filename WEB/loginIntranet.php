@@ -5,7 +5,8 @@
         <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../css/servicios.css" rel="stylesheet" type="text/css"/>
-        <title>Optica</title>
+        <link rel="icon" type="image/png" href="../imagenes/iconos/centroOptico.png" />
+        <title>CENTRO ÓPTICO SÁNCHEZ</title>
         <meta charset="UTF-8">
     </head>
     <body id="body">
@@ -39,8 +40,8 @@
             $error = "";
             ?>
 
-            <h2>Para acceder a este apartado debe ser un usuario registrado</h2>
-            <h3>Introduzca su usuario y contraseña</h3>
+            <h1>Para acceder a esta seccion debe ser un usuario registrado<br/><br/>
+                Introduzca su usuario y contraseña</h1>
             <a href="menu.php"></a>
             <div class='fila'>
                 <form action='loginIntranet.php' method='post'>

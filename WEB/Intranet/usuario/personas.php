@@ -8,34 +8,8 @@ if (isset($_GET['id'])) {
 
 function get_persons($id) {
 
-    //Cambia por los detalles de tu base datos
-    $dbserver = "localhost";
-    $dbuser = "root";
-    $password = "";
-    $dbname = "optica";
-
-    $database = new mysqli($dbserver, $dbuser, $password, $dbname);
-
-    if ($database->connect_errno) {
-        die("No se pudo conectar a la base de datos");
-    }
-
-    $jsondata = array();
-
-    //Sanitize ipnut y preparar query
-    if (is_array($id)) {
-        $id = array_map('intval', $id);
-        $querywhere = "WHERE `idUsuario` IN (" . implode(',', $id) . ")";
-    } else {
-        $id = intval($id);
-        $querywhere = "WHERE `idUsuario` = " . $id;
-    }
-    /*
-      include_once '../../../PHP/BD/usuarioBD.php';
-      $result1 = usuarioBD::listarTodos();
-     */
-    if ($result = $database->query("SELECT * FROM `usuario` " . $querywhere)) {
-
+    require_once '../../../PHP/BD/usuarioAJAX.php';
+    if ($result) {
         if ($result->num_rows > 0) {
             $jsondata["success"] = true;
             $jsondata["data"]["message"] = sprintf("Se han encontrado %d usuarios", $result->num_rows);

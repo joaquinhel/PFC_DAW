@@ -5,7 +5,8 @@
         <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../css/servicios.css" rel="stylesheet" type="text/css"/>
-        <title>Optica</title>
+        <link rel="icon" type="image/png" href="../imagenes/iconos/centroOptico.png" />
+        <title>CENTRO ÓPTICO SÁNCHEZ </title>
         <meta charset="UTF-8">
     </head>
     <body id="body">
@@ -39,10 +40,10 @@
             <?php
             include 'pie.php';
             ?>
-        <br/>
-        <?php
-        include 'footer.php';
-        ?>
+            <br/>
+            <?php
+            include 'footer.php';
+            ?>
         </div>
     </body>
 </html>

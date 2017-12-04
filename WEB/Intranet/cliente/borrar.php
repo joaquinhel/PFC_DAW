@@ -5,11 +5,12 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CLIENTE</title>
+        <title>BORRAR CLIENTES</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
         <?php
@@ -21,7 +22,8 @@ include_once "../../crearSesion.php";
             ?>
             <div id='centro'>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DEL CLIENTE A BORRAR </p>
+                    <h1> BORRAR UN PRODUCTO </h1>
+                    <p> Introduzca el id del proeducto a borrar </p>
                     <label>ID categoria</label><input type='text' name='id'/><br/>
                     <input type='submit' name='enviar' maxlength='40' value='Borrar'/> <br/><br/>
                 </form>

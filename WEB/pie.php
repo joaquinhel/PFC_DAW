@@ -26,6 +26,7 @@
 
             <p>
                 <img class="iconos" src="../imagenes/iconos/reloj.jpg" alt="reloj"/><br/>
+                <img class="iconos" src="Servicios/iconos/reloj.jpg" alt=""/><br/>
                 NUESTRO HORARIO ES <br />
                 De lunes a viernes
                 10:00 - 14:00 y 17:00 - 21:00  

@@ -5,11 +5,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
+        <title>BORRAR EMPLEADO</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <?php
     include_once '../comunes/menu.php';
@@ -21,7 +22,8 @@
         <div id='centro'>
 
             <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                <p> INTRODUZCA EL IDENTIFICADOR DEL EMPLEADO BORRAR </p>
+                 <h1> BORRAR UN EMPLEADO </h1>
+                    <p> Introduzca el id del empleado a borrar </p>
                 <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
                 <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
             </form>

@@ -10,7 +10,7 @@
     <div class="fila">
         <div class="caja">
             <p>
-                <img class="iconos" src="../imagenes/iconos/localizacion.png" alt="localizacion"/> <br/>
+                <img class="iconos" src="../../imagenes/iconos/localizacion.png" alt="localizacion"/> <br/>
                 LOCALÍZANOS EN <br/>
                 Av. Principe de Asturias, 1 <br/>
                 C.P. 30007, Murcia, Frente al Zig Zag <br/>
@@ -25,7 +25,7 @@
         <div class="caja">
 
             <p>
-                <img class="iconos" src="../imagenes/iconos/reloj.jpg" alt="reloj"/><br/>
+                <img class="iconos" src="../../imagenes/iconos/reloj.jpg" alt="reloj"/><br/>
                 NUESTRO HORARIO ES <br />
                 De lunes a viernes
                 10:00 - 14:00 y 17:00 - 21:00  

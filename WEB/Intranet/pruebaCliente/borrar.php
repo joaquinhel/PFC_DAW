@@ -6,11 +6,12 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR PRUEBA CLIENTE</title>
+        <title>BORRAR PRUEBA-CLIENTE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
         <?php
@@ -23,7 +24,8 @@ include_once "../../crearSesion.php";
             <div id='centro'>
 
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <p> INTRODUZCA EL IDENTIFICADOR DE LA PRUEBA Y EL CLIENTE A BORRAR </p>
+                     <h1> BORRAR UN PRUEBA PROGRAMADA </h1>
+                    <p> Introduzca el id de la prueba y el producto a borrar </p>
                     <label>ID prueba</label><input type='text' name='id' maxlength='4'/><br/>
                     <label>ID cliente</label><input type='text' name='ida' maxlength='4'/><br/>
                     <input type='submit' name='enviar' value='Borrar'/>                
