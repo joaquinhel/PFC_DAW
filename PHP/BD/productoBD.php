@@ -6,9 +6,12 @@ include_once ('BD.php');
 class productoBD {
 
     public static function listarTodos() {
-        $sql = "SELECT idProducto, nombreProducto, descripcion,"
-                . " marca, precio, proveedor_idProveedor, categoria_idCategoria"
-                . " from optica.producto ";
+        $sql = "SELECT pr.idProducto, pr.nombreProducto, pr.descripcion,"
+                . " pr.marca, pr.precio, pr.proveedor_idProveedor, pr.categoria_idCategoria, "
+                . " p.nombreEmpresa, c.nombreCategoria"
+                . " from optica.producto pr, optica.proveedor p, optica.categoria c "
+                . "where p.idProveedor=pr.proveedor_idProveedor and c.idCategoria=pr.categoria_idCategoria"
+        ;
         $resultado = BD::ejecutaConsulta($sql);
         $productos = array();
         if ($resultado) {
@@ -24,10 +27,12 @@ class productoBD {
 
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosProducto($cod) {
-        $sql = "SELECT idProducto, nombreProducto, descripcion,"
-                . "  marca, precio, proveedor_idProveedor, categoria_idCategoria"
-                . " from optica.producto "
-                . "where idProducto=" . $cod;
+        $sql = "SELECT pr.idProducto, pr.nombreProducto, pr.descripcion,"
+                . " pr.marca, pr.precio, p.nombreEmpresa, c.nombreCategoria, "
+                . "pr.proveedor_idProveedor, pr.categoria_idCategoria "
+                . " from optica.producto pr, optica.proveedor p, optica.categoria c "
+                . "where p.idProveedor=pr.proveedor_idProveedor and c.idCategoria=pr.categoria_idCategoria "
+                . "and idProducto=" . $cod;
         $resultado = BD::ejecutaConsulta($sql);
         $producto = array();
         if ($resultado) {

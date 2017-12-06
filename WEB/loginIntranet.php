@@ -50,12 +50,12 @@
                         <div><span class='error'><?php echo $error; ?></span></div>
                         <div class='campo'>
                             <label for='usuario' >Usuario:</label><br/>
-                            <input type='text' name='usuario' id='usuario' maxlength="50" /><br/>
+                            <input type='text' name='usuario' id='usuario' maxlength="50" /><br/><br/>
                         </div>
                         <div class='campo'>
                             <label for='password' >Contraseña:</label><br/>
                             <input type='password' name='password' id='password' maxlength="50" /><br/>
-                        </div>
+                        <br/></div>
                         <div class='campo'>
                             <input type='submit' name='enviar' value='Enviar' />
                         </div>

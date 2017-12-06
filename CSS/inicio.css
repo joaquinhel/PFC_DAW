@@ -9,31 +9,49 @@ and open the template in the editor.
 */
 a{
     text-decoration: none;
+    color:black;
 }
 
+a{
+    text-decoration: none;
+    color:black;
+}
+
+#centro a{
+    text-decoration: underline;
+    color:black;
+}
 #menu{
     margin-bottom: 15px;
+    background-color: #5721E1;
 }
 
 #menu ul{
     margin:0;
-    padding:0;
+    font-weight:bold;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 #menu ul li{
     display:inline;
     margin:0 3px;
+    color:white;
+    text-height: bold;
 }
 
 #body{
     background: #FFFFCC;
-    text-align:center; /*para que en IE 5.5 salga centrado*/
-    font-family: 'arial','verdana';
+    text-align:center; 
+    font-family: 'verdana','arial';
 }
 
 #slideShowImages{
     margin:50px auto;
 }
+
 fieldset{
     margin-left: 30%;
     width: 40%;
@@ -41,7 +59,7 @@ fieldset{
 
 #contenedor{
     padding-top: 1px;
-    height:100%; 
+    height:150%; 
     width:90%; 
     text-align: center;
     //background: red;
@@ -50,17 +68,17 @@ fieldset{
 
 #central{
     width:100%;               /* 1 - le damos un ancho */
-    height:100%;               /* 2 - le damos un alto */
+    height:120%;               /* 2 - le damos un alto */
     margin-top:10px;
 }
 .caja{
     width: 30%;               /* 3 */
-    height: 99%;              /* 4 */
+    height: 110%;              /* 4 */
     float: left;                /* 5 - para que salga en formato de tabla*/
     margin: 0px 2px 10px 5px;
     //background: blue;
     margin-left: 2.4%;
-    border: 1px solid #99cccc;
+    border: 1px dotted #99cccc;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +86,7 @@ fieldset{
 
 .cajaOferta{
     width: 45%;               /* 3 */
-    height: 99%;              /* 4 */
+    height: 125%;              /* 4 */
     float: left;                /* 5 - para que salga en formato de tabla*/
     margin: 0px 2px 10px 5px;
     //background: blue;
@@ -89,17 +107,18 @@ fieldset{
 }
 
 #logo{
-    width: 55%;               /* 3 */
-    height: 60%;
-    display: inline-block;
+    width: 60%;               /* 3 */
+    height: 65%;
+    background-color: black;
 }
 
 .fila{
-    margin: 15px 15px 15px 15px;
+    margin-bottom: 45px;
+    margin-left: 15px;
+    margin-top:15px;
+    margin-right: 15px;
     height: 200px; /* le damos un alto mínimo*/
     //background: green;
-    alignment-adjust: baseline;
-
 }
 
 .filaOferta{
@@ -120,10 +139,10 @@ fieldset{
     display:block;
     width:100%;              
 }
-
 #footer{
     position: absolute; 
     bottom: 0%; 
+    padding-bottom: 20px;
 }
 
 img{
@@ -134,12 +153,16 @@ img{
 }
 
 .casilla:hover { 
-    background-color: yellow;
+    background-color: black;
+    height: 90%;
 }
 
 .casilla{
     display: inline;
-    padding: 3px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 h3{
@@ -151,11 +174,59 @@ h3{
 h1{
     color: white;
     background-color: #5721E1;
-    padding: 5px;
-    margin-bottom: 20px;
+    padding: 15px;
     font-size: 20px;
 }
 
 .negrita{
-   font-weight: bold;
+    font-weight: bold;
+}
+
+p{
+    line-height:1.7em;
+    font-size:17px;
+}
+
+ul{
+    line-height:1.7em;
+    font-size:17px; 
+}
+
+#cierre{
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 3px;
+}
+
+p a{
+    color:black;
+}
+
+li a{
+    color:white;
+    font-weight:bold;
+}
+
+.psin {
+    margin: 0; /* o el tamaño que quieres que exista entre h1 y el siguiente elemento */
+    padding: 0;
+    font-weight: bold;
+}
+
+#menuIntranet{
+    margin: 30px;
+}
+
+.caja:hover{
+    background-color: #e4e5e8;
+}
+
+#ppal{
+    background: #E8E8E8;
+}
+
+#menuIntranet{
+    font-size: 14px;
 }

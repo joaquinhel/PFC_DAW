@@ -6,8 +6,9 @@ include_once ('BD.php');
 class pruebaClienteBD {
 
     public static function listarTodos() {
-        $sql = "SELECT cliente_idCliente, prueba_idPrueba, diagnostico, fechaPrueba"
-                . " from optica.pruebaCliente";
+        $sql = "SELECT pc.cliente_idCliente, pc.prueba_idPrueba, pc.diagnostico, pc.fechaPrueba, c.nombreCliente, p.nombrePrueba"
+                . " from optica.pruebaCliente pc, optica.cliente c, optica.prueba p"
+                . " where p.idPrueba=pc.prueba_idprueba and c.idCliente=pc.cliente_idCliente ";
         $resultado = BD::ejecutaConsulta($sql);
         $pruebaClientes = array();
         if ($resultado) {
@@ -23,9 +24,11 @@ class pruebaClienteBD {
 
 //Obtener datos de un producto a partir de su nombre
     public static function obtenerDatosPruebaCliente($cod, $cod1) {
-        $sql = "SELECT cliente_idCliente, prueba_idPrueba, diagnostico, fechaPrueba"
-                . " from optica.pruebaCliente"
-                . " where cliente_idCliente=" . $cod . " and prueba_idPrueba=". $cod1 ;
+        $sql = "SELECT pc.cliente_idCliente, pc.prueba_idPrueba, pc.diagnostico, pc.fechaPrueba,"
+                . " c.nombreCliente, p.nombrePrueba"
+                . " from optica.pruebaCliente pc, optica.cliente c, optica.prueba p"
+                . " where p.idPrueba=pc.prueba_idprueba and c.idCliente=pc.cliente_idCliente and "
+                . "cliente_idCliente=" . $cod . " and prueba_idPrueba=". $cod1 ;
         $resultado = BD::ejecutaConsulta($sql);
         $pruebaCliente = array();
         if ($resultado) {

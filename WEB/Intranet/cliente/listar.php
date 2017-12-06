@@ -12,15 +12,13 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1>LISTADO DE CLIENTES</h1>
+                <h1>LISTADO DE CLIENTES</h1><br/>
                 <input type='submit' value='Crear Nuevo Registro' class='navegacion' id='crear' name='crear' onclick = "location = './crear.php'"/>
 
                 <div>
@@ -32,7 +30,7 @@ include_once "../../crearSesion.php";
                     . "<th>Telefono</th><th>NIF</th><th>Acciones</th></tr>";
 
                     foreach ($todos as $aux) {
-                        echo "<tr><td>" . $aux->getIdCliente() . "</td> "
+                        echo "<tr class='marcar'><td>" . $aux->getIdCliente() . "</td> "
                         . "<td>" . $aux->getNombreCliente() . "</td>"
                         . "<td>" . $aux->getApellidos() . "</td>"
                         . "<td>" . $aux->getDireccion() . "</td>"
@@ -45,7 +43,7 @@ include_once "../../crearSesion.php";
                     echo "</table>";
                     ?>
                     <br/>
-                    <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
+                    <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la INTRANET</a><br/>
                 </div> <br/><br/>
             </div>
             <?php

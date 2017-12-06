@@ -13,24 +13,42 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
-    <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
+    <body> 
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
+            include_once '../../../PHP/BD/pruebaClienteBD.php';
+            $todos = pruebaClienteBD::listarTodos();
             ?>
             <div id='centro'>
 
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                     <h1> BORRAR UN PRUEBA PROGRAMADA </h1>
-                    <p> Introduzca el id de la prueba y el producto a borrar </p>
-                    <label>ID prueba</label><input type='text' name='id' maxlength='4'/><br/>
-                    <label>ID cliente</label><input type='text' name='ida' maxlength='4'/><br/>
-                    <input type='submit' name='enviar' value='Borrar'/>                
-                </form>
+                    <h1> BORRAR UN PRUEBA PROGRAMADA </h1>
+                    <p class="negrita"> Introduzca el id de la prueba ya programada
+                        a borrar (puede consultar el listado de más abajo) </p>
 
+                    <label>ID cliente</label>
+                    <select name = 'ida' id='ida'>
+                        <?php
+                        echo "<option> Seleccionar..</option>";
+                        foreach ($todos as $ida) {
+                            echo "<option value = " . $ida->getCliente_idCliente() . ">" . $ida->getCliente_idCliente() . "</option>";
+                        }
+                        ?>
+                    </select><br/>
+                    <label>ID prueba</label>
+                    <select name = 'id' id='id'>
+                        <?php
+                        echo "<option> Seleccionar..</option>";
+                        foreach ($todos as $id) {
+                            echo "<option value = " . $id->getPrueba_idPrueba() . ">" . $id->getPrueba_idPrueba() . "</option>";
+                        }
+                        ?>
+                    </select>  <br/>
+
+                    <input type='submit' name='enviar' value='Borrar'/>  
+                </form>
                 <?php
                 include_once '../../../PHP/BD/pruebaClienteBD.php';
                 if (isset($_POST['enviar'])) {
@@ -39,12 +57,11 @@ include_once "../../crearSesion.php";
                     //echo "<a href=" . $_SERVER['PHP_SELF'] . "> Ver lista actualizada</a>";
                 }
                 echo "<h1>LISTADO DE PRUEBAS A CLIENTES PROGRAMADAS</h1>";
-                $todos = pruebaClienteBD::listarTodos();
                 echo "<table>";
-                echo "<tr><th>ID Prueba</th><th>ID CLIENTE</th><th>FECHA</th><th>DIAGNOSTICO</th><th>ACCIONES</th>"
+                echo "<tr><th>ID CLIENTE</th><th>ID PRUEBA</th><th>FECHA</th><th>DIAGNOSTICO</th><th>ACCIONES</th>"
                 . "</tr>";
-
-                foreach ($todos as $aux) {
+                $todos1 = proveedorBD::listarTodos();
+                foreach ($todos1 as $aux) {
                     echo "<tr>"
                     . "<td>" . $aux->getCliente_idCliente() . "</td>"
                     . "<td>" . $aux->getPrueba_idPrueba() . "</td>"
@@ -55,7 +72,7 @@ include_once "../../crearSesion.php";
                 }
                 echo "</table>";
                 ?>
-                <br/><br/> 
+                <br/> 
                 <a href = "listar.php">Volver al listado de Pruebas - Clientes</a>&emsp;
                 <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
                 <br/><br/> 

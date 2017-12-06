@@ -12,19 +12,27 @@
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                     <h1> BORRAR UNA PRUEBA </h1>
-                    <p> Introduzca el id de la prueba a borrar </p>
-                    <label>ID categoria</label><input type='text' name='id'/><br/>
-                    <input type='submit' name='enviar' value='Borrar' maxlength='4'/> <br/><br/>
+                    <h1> BORRAR UNA PRUEBA </h1>
+                    <p class="negrita"> Introduzca el id de la prueba a borrar (puede consultar el listado de más abajo) </p>
+                    <label>ID prueba</label>
+                    <select name = 'id' id='id'>
+                        <?php
+                        include_once '../../../PHP/BD/pruebaBD.php';
+                        $todos = pruebaBD::listarTodos();
+                        echo "<option> Seleccionar..</option>";
+                        foreach ($todos as $id) {
+                            echo "<option value = " . $id->getIdPrueba() . ">" . $id->getIdPrueba() . "</option>";
+                        }
+                        ?>
+                    </select>
+                    <input type='submit' name='enviar' value='Borrar'/>  
                 </form>
 
                 <?php
@@ -39,13 +47,12 @@
                     }
                 }
                 echo "<h1>LISTADO DE PRUEBAS DIAGNOSTICAS</h1>";
-                $todos = pruebaBD::listarTodos();
                 echo "<table>";
                 echo "<tr><th>idPrueba</th><th>nombrePrueba</th><th>Instrumental</th> <th>Descripcion</th><th>Acciones</th>"
                 . "</tr>";
-
-                foreach ($todos as $aux) {
-                    echo "<tr>"
+                $todos1 = proveedorBD::listarTodos();
+                foreach ($todos1 as $aux) {
+                    echo "<tr class='marcar'>"
                     . "<td>" . $aux->getIdPrueba() . "</td> "
                     . "<td>" . $aux->getNombrePrueba() . "</td>"
                     . "<td>" . $aux->getAparatosNecesarios() . "</td>"
@@ -55,7 +62,7 @@
                 }
                 echo "</table>";
                 ?>
-                <br/><br/> 
+                <br/> 
                 <a href="listar.php">Volver al listado de pruebas</a>&emsp;
                 <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
                 <br/><br/> 

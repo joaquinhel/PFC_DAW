@@ -15,11 +15,9 @@ include_once "../../crearSesion.php";
         <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
 

@@ -16,15 +16,10 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
-            ?>
-
-            <?php
             include_once '../../../PHP/BD/empleadoBD.php';
             require_once '../../../PHP/BD/Validaciones.php';
 
@@ -39,8 +34,17 @@ include_once "../../crearSesion.php";
                 $row['nif'] = $_POST['nif'];
                 $row['estado'] = $_POST['estado'];
 
-                $validar = Validaciones::controlarEntradaCategoria($row);
+                global $js; //Variable para controlar si entra o no al js
+                $js = 0;
+                echo "<noscript>"; //Cuando está desactivado javascript
+                $js = 1;
+                require_once '../../../PHP/BD/Validaciones.php';
+                $validar = Validaciones::controlarEntradaEmpleado($row);
                 if ($validar) {
+                    empleadoBD::insertarEmpleado($row);
+                }
+                echo "</noscript>";
+                if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
                     empleadoBD::insertarEmpleado($row);
                 }
             }
@@ -62,12 +66,12 @@ include_once "../../crearSesion.php";
                     <input type='text' name='telefono' id='telefono' required maxlength='12'/><br/>
                     <label for="email">Email: </label>
                     <input type='email' name='email' id='email' maxlength='45'/><br/>
-                    <label for="fechaContratacion"> * Fecha Contratacion:  </label>
+                    <label for="fechaContratacion"> * Fecha Alta:  </label>
                     <input type='date' name='fechaContratacion' id='fechaContratacion' required/><br/>
                     <label for="sueldo">* Sueldo: </label>
                     <input type='text' name='sueldo' id='sueldo' maxlength='7'/><br/>
                     <label for="nif">* NIF: </label><input type='text' name='nif' id='nif' required maxlength='9'/><br/>
-
+                    
                     <label for="estado">* Estado: </label>
                     <select name="estado">
                         <option value="B">Borrado</option>

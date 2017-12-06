@@ -16,9 +16,8 @@
                 </p>
 
             </div>
-            <div class="caja">
+            <div class="caja" id='ppal'>
                 <p>
-
                     <a href="inicio.php"><img id='logo' src="../../../imagenes/aplicacion/centroOptico.png" alt="logo"/><br /></a>
                     <img class="iconos" src="../../../imagenes/iconos/facebook.jpg" alt="face"/>
                     <img class="iconos" src="../../../imagenes/iconos/whatsaap.png" alt="whatsaap"/>

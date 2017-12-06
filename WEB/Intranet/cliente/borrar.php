@@ -13,19 +13,25 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <h1> BORRAR UN PRODUCTO </h1>
-                    <p> Introduzca el id del proeducto a borrar </p>
-                    <label>ID categoria</label><input type='text' name='id'/><br/>
-                    <input type='submit' name='enviar' maxlength='40' value='Borrar'/> <br/><br/>
+                    <h1> BORRAR UN CLIENTE </h1>
+                    <p class="negrita"> Seleccione el id del cliente a borrar (puede consultar el listado de más abajo) </p>
+                    <select name = 'id' id='id'>
+                        <?php
+                        include_once '../../../PHP/BD/clienteBD.php';
+                        $todos = clienteBD::listarTodos();
+                        echo "<option> Seleccionar..</option>";
+                        foreach ($todos as $id) {
+                            echo "<option value = " . $id->getIdCliente() . ">" . $id->getIdCliente() . "</option>";
+                        }
+                        ?>
+                    </select>
                 </form>
 
                 <?php
@@ -38,14 +44,13 @@ include_once "../../crearSesion.php";
                         echo "<h4>El borrado no ha sido posible ya que este cliente está en uso</h4>";
                     }
                 }
-                echo "<h1>LISTADO DE CATEGORIAS DE CLIENTES</h1>";
-                $todos = clienteBD::listarTodos();
+                echo "<h1>LISTADO DE CATEGORIAS DE CLIENTES</h1> <br/>";
                 echo "<table>";
                 echo "<tr><th>ID</th><th>Nombre</th><th>Apellidos</th> <th>Dirección</th> <th> Email </th>"
                 . "<th>Telefono</th> <th>NIF</th><th>Acciones</th></tr>";
-
-                foreach ($todos as $aux) {
-                    echo "<tr><td>" . $aux->getIdCliente() . "</td> <td>" . $aux->getNombreCliente() . "</td>"
+                $todos1 = clienteBD::listarTodos();
+                foreach ($todos1 as $aux) {
+                    echo "<tr class='marcar'><td>" . $aux->getIdCliente() . "</td> <td>" . $aux->getNombreCliente() . "</td>"
                     . "<td>" . $aux->getApellidos() . "</td><td>" . $aux->getDireccion() . "</td>"
                     . "<td>" . $aux->getEmail() . "</td>"
                     . "<td>" . $aux->getTelefono() . "</td><td>" . $aux->getNif() . "</td>"
@@ -53,9 +58,11 @@ include_once "../../crearSesion.php";
                        <a href='borrar.php?id=" . $aux->getIdCliente() . "'>Borrar</a></tr>";
                 }
                 echo "</table>";
-                ?>      
+                ?>    
+                <br/>
                 <a href="listar.php">Volver al listado de Clientes</a>&emsp;
                 <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                <br/><br/>
             </div>
             <?php
             include_once '../comunes/pie.php';

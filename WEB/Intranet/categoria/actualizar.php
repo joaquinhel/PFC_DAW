@@ -16,11 +16,9 @@ include_once "../../crearSesion.php";
         <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
@@ -32,12 +30,12 @@ include_once "../../crearSesion.php";
                     $todos = categoriaBD::obtenerDatosCategoria($_GET['id']);
                     $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaCategoria()'>";
-                    echo "<p>LOS DATOS QUE PUEDE MODIFICAR DE LA CATEGORIA SELECCIONADA (ID= " . $_GET['id'] . ") SON: </p> <br />";
+                    echo "<p class='psin'>LOS DATOS QUE PUEDE MODIFICAR DE LA CATEGORIA CON ID= " . $_GET['id'] . " SON: </p> <br />";
                     echo "<input type = 'hidden' name = 'idCategoria' id='idCategoria' maxlength='35' value = " . $todos->getIdCategoria() . " />";
-                    echo "<label for='nombre'>* NOMBRE</label> <br/>";
+                    echo "<label for='nombre'>*NOMBRE</label>";
                     echo "<input type = 'text' name = 'nombreCategoria' id='nombre' maxlength='35' value = " . $todos->getNombreCategoria() . " />";
                     echo "<br/><br />";
-                    echo "<input type = 'submit' value = 'Pulse para Actualizar con los datos introducidos' id='actualizar' name = 'actualizar'/><br />";
+                    echo "<input type = 'submit' value = 'Pulse Para Actualizar Datos' id='actualizar' name = 'actualizar'/><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de categorias</a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";

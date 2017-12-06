@@ -16,17 +16,15 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
 
             <?php
             include_once '../../../PHP/BD/clienteBD.php';
-            require_once '../../../PHP/BD/Validaciones.php';
+
             if (isset($_POST['insertar'])) {
                 $row['nombre'] = $_POST['nombre'];
                 $row['apellidos'] = $_POST['apellidos'];
@@ -35,14 +33,20 @@ include_once "../../crearSesion.php";
                 $row['telefono'] = $_POST['telefono'];
                 $row['email'] = $_POST['email'];
 
-                clienteBD::insertarCliente($row);
 
-                echo "<noscript>";
+                global $js; //Variable para controlar si entra o no al js
+                $js = 0;
+                echo "<noscript>"; //Cuando está desactivado javascript
+                $js = 1;
+                require_once '../../../PHP/BD/Validaciones.php';
                 $validar = Validaciones::controlarEntradaCategoria($row);
                 if ($validar) {
                     clienteBD::insertarCliente($row);
                 }
                 echo "</noscript>";
+                if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
+                    clienteBD::insertarCliente($row);
+                }
             }
             ?>
 

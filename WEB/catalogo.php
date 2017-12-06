@@ -17,6 +17,8 @@
         <script type="text/javascript" src="../lightbox/js/jquery.smooth-scroll.min.js"></script>
         <script type="text/javascript" src="../lightbox/js/lightbox.js"></script>
         <link rel="stylesheet" href="../lightbox/css/lightbox.css" type="text/css" />
+        <link rel="icon" type="image/png" href="../imagenes/iconos/centroOptico.png" />
+
         <title>Galería imagenes</title>
     </head>
     <body>

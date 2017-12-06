@@ -14,31 +14,39 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                     <h1> BORRAR UN PRODUCTO </h1>
-                    <p> Introduzca el id del producto a borrar </p>
-                    <label>ID categoria</label><input type='text' name='id' maxlength='4'/><br/>
-                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
+                    <p class="negrita"> Introduzca el id del producto a borrar (puede consultar el listado de más abajo) </p>
+                    <label>ID producto</label>
+                    <select name = 'id' id='id'>
+                        <?php
+                        include_once '../../../PHP/productoBD.php';
+                        $todos = productoBD::listarTodos();
+                        echo "<option> Seleccionar..</option>";
+                        foreach ($todos as $id) {
+                            echo "<option value = " . $id->getIdProducto() . ">" . $id->getIdProducto() . "</option>";
+                        }
+                        ?>
+                    </select>
+                    <input type='submit' name='enviar' value='Borrar'/>  
                 </form>
 
                 <?php
                 include_once '../../../PHP/BD/productoBD.php';
                 if (isset($_POST['enviar'])) {
+                    $todos1 = productoBD::listarTodos();
                     productoBD::borrarProducto($_POST['id']);
                     echo "El registro se ha borrado";
                 }
                 echo "<h1>LISTADO DE PRODUCTOS</h1 >";
-                $todos = productoBD::listarTodos();
                 echo "<table border=1px>";
-                echo "<tr><th>idProducto</th><th>nombreProducto</th><th>Descripción</th> <th>Marca</th>"
+                echo "<tr class='marcar'><th>idProducto</th><th>nombreProducto</th><th>Descripción</th> <th>Marca</th>"
                 . "<th>Precio</th><th>proveedor_idProveedor</th> <th>categoria_idCategoria</th> <th>Acciones</th>"
                 . "</tr>";
 
@@ -56,9 +64,10 @@ include_once "../../crearSesion.php";
                 }
                 echo "</table>";
                 ?>
-
+                <br/>
                 <a href="listar.php">Volver al listado de productos</a>&emsp;
                 <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                <br/><br/>
             </div>
             <?php
             include_once '../comunes/pie.php';

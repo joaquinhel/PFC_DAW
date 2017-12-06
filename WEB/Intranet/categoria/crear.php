@@ -16,23 +16,31 @@ include_once "../../crearSesion.php";
         <script src="../../../js/validaciones.js" type="text/javascript"></script>
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
-            ?>
-
-            <?php
             include_once '../../../PHP/BD/categoriaBD.php';
-            require_once '../../../PHP/BD/Validaciones.php';
 
+            global $js; //Variable para controlar si entra o no al js
+            $js = 0;
+            echo "<noscript>"; //Cuando está desactivado javascript
+            $js = 1;
+            require_once '../../../PHP/BD/Validaciones.php';
+            $validar = Validaciones::controlarEntradaCategoria($nombre);
             if (isset($_POST['insertar'])) {
                 $nombre = $_POST['nombre'];
-                $validar = Validaciones::controlarEntradaCategoria($nombre);
                 if ($validar) {
                     categoriaBD::insertarCategoria($nombre);
+                }
+            }
+            echo "</noscript>";
+            if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
+                if (isset($_POST['insertar'])) {
+                    $nombre = $_POST['nombre'];
+                    if ($validar) {
+                        categoriaBD::insertarCategoria($nombre);
+                    }
                 }
             }
             ?>

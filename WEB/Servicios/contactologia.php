@@ -36,22 +36,23 @@
                         Damos a cada cliente las instrucciones oportunas para su correcta manipulación, 
                         le enseñamos a ponérselas y quitárselas y realizamos un seguimiento 
                         para la comprobación de su correcto funcionamiento y que esta cumple sus expectativas.
+                        <br/><br/>
+                        <label> TIPOS DE LENTES DE CONTACTO QUE ADAPTAMOS: </label>
+                        <ul>
+                            <li>LC blandas para la compensación de miopía, hipermetropía y astigmatismo 
+                                (hidrogel, hidrogel de silicona, de reemplazo diario, mensual, trimestral, anual).</li>
+                            <li>LC multifocales para la compensación de la presbicia o vista cansada.</li>
+                            <li>LC hechas a medida para parámetros especiales o clientes que no están cómodos con LC estándar.</li>
+                            <li>LC semirrígidas.</li>
+                            <li>LC rígidas.</li>
+                            <li>LC para queratocono.</li>
+                            <li>LC terapéuticas (neutras para úlceras).</li>
+                            <li>LC cosméticas para pérdidas de color en un iris.</li>
+                            <li>LC pintadas a mano (se fabrican del mismo color que el otro ojo).</li>
+                            <li>LC de color.</li>
+                            <li>LC de color graduadas.</li>
+                        </ul>
                     </p>
-                    <label> TIPOS DE LENTES DE CONTACTO QUE ADAPTAMOS: </label>
-                    <ul>
-                        <li>LC blandas para la compensación de miopía, hipermetropía y astigmatismo 
-                            (hidrogel, hidrogel de silicona, de reemplazo diario, mensual, trimestral, anual).</li>
-                        <li>LC multifocales para la compensación de la presbicia o vista cansada.</li>
-                        <li>LC hechas a medida para parámetros especiales o clientes que no están cómodos con LC estándar.</li>
-                        <li>LC semirrígidas.</li>
-                        <li>LC rígidas.</li>
-                        <li>LC para queratocono.</li>
-                        <li>LC terapéuticas (neutras para úlceras).</li>
-                        <li>LC cosméticas para pérdidas de color en un iris.</li>
-                        <li>LC pintadas a mano (se fabrican del mismo color que el otro ojo).</li>
-                        <li>LC de color.</li>
-                        <li>LC de color graduadas.</li>
-                    </ul>
                 </div>
                 <input type="button" value="Pulse para ver todos nuestros servicios" onClick="window.location.href = '../servicios.php'">
 

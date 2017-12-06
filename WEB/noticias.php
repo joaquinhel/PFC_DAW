@@ -5,6 +5,8 @@
         <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
         <link href="../css/boton.css" rel="stylesheet" type="text/css"/>
         <link href="../css/servicios.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../imagenes/iconos/centroOptico.png" />
+
         <title>Optica</title>
         <meta charset="UTF-8">
     </head>

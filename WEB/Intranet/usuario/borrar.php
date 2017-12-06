@@ -6,7 +6,7 @@ include_once "../../crearSesion.php";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>INSERTAR CATEGORIA</title>
+        <title>BORRAR USUARIO</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="../../../CSS/tablas.css" rel="stylesheet" type="text/css"/>
         <link href="../../../CSS/boton.css" rel="stylesheet" type="text/css"/>
@@ -14,18 +14,37 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
+            include_once '../../../PHP/BD/usuarioBD.php';
+
+            $todos = usuarioBD::listarTodos();
             ?>
             <div class='centro'>
-                <h1>LISTADO DE USUARIOS</h1>
+                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+                    <h1> BORRAR UN USUARIO</h1>
+                    <p class="negrita"> Introduzca el id de la categoria a borrar (puede consultar el listado de más abajo) </p>
+                    <label>ID usuario</label>
+                    <select name = 'id' id='id'>
+                        <?php
+                        echo "<option> Seleccionar..</option>";
+                        foreach ($todos as $id) {
+                            echo "<option value = " . $id->getIdUsuario() . ">" . $id->getIdUsuario() . "</option>";
+                        }
+                        ?>
+                    </select> <br/>              
+                    <input type='submit' name='enviar' value='Borrar'/> 
+                </form>
+
                 <?php
-                include_once '../../../PHP/BD/usuarioBD.php';
-                $todos = usuarioBD::listarTodos();
+                if (isset($_POST['enviar'])) {
+                    $borrado = usuarioBD::borrarUsuario($_POST['id']);
+                    echo "<h4>El registro se ha borrado</h4>";
+                }
+               
+                echo " <br/> <h1>LISTADO DE USUARIOS</h1><br/>";
                 echo "<table>";
                 echo "<tr><th>ID</th><th>Login</th><th>Pass</th><th>fecha_alta</th> "
                 . "<th>Nombre</th><th>Estado</th> <th>Acciones</th></tr>";
@@ -41,20 +60,11 @@ include_once "../../crearSesion.php";
                        <a href='borrar.php?id=" . $aux->getIdUsuario() . "'>Borrar</a></tr>";
                 }
                 echo "</table>";
-
-                if (isset($_POST['enviar'])) {
-                    usuarioBD::borrarUsuario($_POST['id']);
-                    echo "El registro se ha borrado";
-                }
                 ?>
-                <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
-                    <h1> BORRAR UN USUARIO</h1>
-                    <p> Introduzca el id del usuario a borrar </p>
-                    <label>ID categoria</label><input type='text' name='id'/><br/>
-                    <input type='submit' name='enviar' value='Borrar' maxlength='4'/> <br/><br/>
-                    <a href="listar.php">Volver al listado de usuarios</a>&emsp;
-                    <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
-                </form>
+                <br/><br/> 
+                <a href="listar.php">Volver al listado de proveedores</a>&emsp;
+                <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
+                <br/><br/> 
             </div>
             <?php
             include_once '../comunes/pie.php';

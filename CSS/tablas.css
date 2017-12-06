@@ -43,7 +43,7 @@ td, th {
 }
 
 #volver{
-    margin-left: 43%;
+    margin-left: 36%;
 }
 
 
@@ -74,14 +74,15 @@ form select {
     margin-bottom: 10px;
 }
 
-a {color:blue;
-   font-size:1.3em;
-   text-decoration:none;
+a {
+    color:blue;
+    font-size:1.3em;
 }
 a:hover{
     color:red;
     text-decoration: underline;
 }
+
 
 .navegacion{
     float: left;
@@ -89,7 +90,6 @@ a:hover{
 }
 
 #centro{
-    background-color: white;
     width: 90%;
     margin-left: 5%;
 }
@@ -97,4 +97,13 @@ a:hover{
 #btnajax{
     color:red;
     display: inline-block;
+}
+
+#ocultar{
+    display:none;
+}
+
+.marcar:hover{
+    background: #5721E1;
+    font-weight: bold; 
 }

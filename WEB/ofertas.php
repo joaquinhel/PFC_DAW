@@ -21,7 +21,7 @@
             <div class="filaOferta">
                 <a>
                     <div class="cajaOferta"> 
-                        <p> LENTES DE CONTACTO <br/>  <img class='oferta' src="../imagenes/ofertaLentillas.jpg" alt=""/><br/>
+                        <p> LENTES DE CONTACTO <br/>  <img class='oferta' src="../imagenes/aplicacion/ofertaLentillas.jpg" alt=""/><br/>
                             ¿Le molestan sus gafas para algunas de sus actividades diarias? Use lentes de contacto diarias y 
                             comodísimas por 1 € al día. ¡No deje de hacer lo que le gusta!
                         </p>
@@ -30,7 +30,7 @@
 
                 <a>
                     <div class="cajaOferta"> 
-                        <p> NAVIDAD <br/> <img class='oferta' src="../imagenes/ofertaNavidad.jpg" alt=""/><br/>
+                        <p> NAVIDAD <br/> <img class='oferta' src="../imagenes/aplicacion/ofertaNavidad.jpg" alt=""/><br/>
                             ¡Aprovecha esta oportunidad! Haz un buen regalo a un precio inmejorable. 40% de descuento
                             en gafas de sol de Carolina Herrera, Tommy Hilfiger, Gucci y Versace hasta el 5 de
                             Enero de 2017.</p>

@@ -13,15 +13,14 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1>LISTADO DE CATEGORIAS DE CATEGORIAS</h1>
+
+                <h1>LISTADO DE CATEGORIAS DE CATEGORIAS</h1><br/>
                 <input type = 'submit' value = 'Crear Nuevo Registro' id = 'crear' class='navegacion' name = 'crear' onclick = "location = './crear.php'"/>
                 <?php
                 include_once '../../../PHP/BD/categoriaBD.php';
@@ -30,15 +29,16 @@ include_once "../../crearSesion.php";
                 echo "<tr><th>ID</th><th>Nombre</th><th>Acciones</th></tr>";
 
                 foreach ($todos as $aux) {
-                    echo "<tr><td>" . $aux->getIdCategoria() . "</td> <td>" . $aux->getNombreCategoria() . "</td>"
+                    echo "<tr class='marcar'><td>" . $aux->getIdCategoria() . "</td> <td>" . $aux->getNombreCategoria() . "</td>"
                     . "<td> <a href='actualizar.php?id=" . $aux->getIdCategoria() . "'>Editar</a>
                        <a href='borrar.php?id=" . $aux->getIdCategoria() . "'>Borrar</a></tr>";
                 }
                 echo "</table>";
                 ?>
                 <br>
-                    <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
-            </div><br/><br/>
+                    <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la INTRANET</a><br/>
+                    <br/><br/>
+            </div>
 
             <?php
             include_once '../comunes/pie.php';

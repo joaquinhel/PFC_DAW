@@ -19,15 +19,13 @@ include_once '../../../PHP/BD/pruebaBD.php';
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?> 
             <div id='centro'>
-                <h2> Modificar los datos de las pruebas programadas </h2>
+                <h1> EDITAR LAS PRUEBAS PROGRAMADAS </h1>
                 <div id="error">
                 </div>
                 <?php
@@ -36,17 +34,19 @@ include_once '../../../PHP/BD/pruebaBD.php';
                     $_SESSION['id'] = $_GET['id'];
                     $_SESSION['ida'] = $_GET['ida'];
                     echo "<form action ='actualizar.php' method = 'POST'  onsubmit='return controlarEntradaPruebaCliente()'>";
-                    echo "LOS DATOS ACTUALES DE LAS PRUEBAS A MODIFICAR SON: <br />";
-                    echo "<label for = 'cliente'>* CLIENTE: </label><br/>";
+                    echo "<p class='psin'>LOS DATOS A MODIFICAR DE LA PRUEBA " . $todos->getNombrePrueba() . " PROGRAMADA PARA "
+                    . "EL CLIENTE" . $todos->getNombreCliente() . " SON:<p/>";
+                    echo "<div id='ocultar'>";
+                    echo "<label for = 'cliente'>* CLIENTE: </label>";
                     echo "<select name = 'cliente_idCliente' id = 'cliente' required>";
                     $todos1 = clienteBD::listarTodos();
                     foreach ($todos1 as $id) {
-                        echo "<option value=" . $id->getIdCliente() . ">" . $id->getNif() . "</option>";
+                        echo "<option value=" . $id->getIdCliente() . ">" . $id->getNombreCliente() . "</option>";
                     }
                     echo "</select>";
                     echo "<br/>";
 
-                    echo "<label for = 'prueba'>* PRUEBA: </label><br/>";
+                    echo "<label for = 'prueba'>* PRUEBA: </label>";
                     echo "<select name = 'prueba_idPrueba' id = 'prueba' required>";
 
                     $todos2 = pruebaBD::listarTodos();
@@ -54,14 +54,14 @@ include_once '../../../PHP/BD/pruebaBD.php';
                         echo "<option value=" . $id->getIdPrueba() . ">" . $id->getNombrePrueba() . "</option>";
                     }
                     echo "</select><br/>";
-
-                    echo "<label for='fecha'>* FECHA</label> <br/>";
+                    echo "</div>";
+                    echo "<label for='fecha'>* FECHA</label>";
                     echo "<input type = 'date' name = 'fechaPrueba' id='fecha' required value = " . $todos->getFechaPrueba() . "> <br />";
-                    echo "<label for='diagnostico'>* DIAGNOSTICO</label> <br/>";
+                    echo "<label for='diagnostico'>* DIAGNOSTICO</label>";
                     echo "<input type = 'text' name = 'diagnostico' id='diagnostico' maxlength='55' "
                     . "value = " . $todos->getDiagnostico() . "> <br />";
                     echo "<br/>";
-                    echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
+                    echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de pruebas - clientes</a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";

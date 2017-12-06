@@ -17,15 +17,13 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1> MODIFICAR UNA PRUEBA </h1>
+                <h1> MODIFICAR LOS DATOS ALMACENADOS DE UNA PRUEBA </h1>
                 <div id="error">
                 </div>
                 <?php
@@ -33,16 +31,16 @@ include_once "../../crearSesion.php";
                     $todos = pruebaBD::obtenerDatosPrueba($_GET['id']);
                     $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaPrueba()'>";
-                    echo "<p>LOS DATOS ACTUALES DE LAS PRUEBAS A MODIFICAR SON: <p />";
-                    echo "<input type = 'hidden' name = 'idPrueba' value = " . $todos->getIdPrueba() . "> <br />";
-                    echo "<label>* NOMBRE </label> <br/>";
+                    echo "<p class='psin'>LOS DATOS A MODIFICAR DE LA PRUEBA CON ID= " . $_GET['id'] . " SON:<p/>";
+                    echo "<input type = 'hidden' name = 'idPrueba' value = " . $todos->getIdPrueba() . ">";
+                    echo "<label for=nombre>* NOMBRE </label>";
                     echo "<input type = 'text' name = 'nombrePrueba' id='nombre' required maxlength='45' value = " . $todos->getNombrePrueba() . "><br />";
-                    echo "<label>* INSTRUMENTAL </label> <br/>";
+                    echo "<label for='instrumental'>*INSTRUMENTAL </label>";
                     echo "<input type = 'text' name = 'aparatosNecesarios' id='instrumental' required maxlength='45' value = " . $todos->getAparatosNecesarios() . "><br />";
-                    echo "<label>DESCRIPCIÓN </label> <br/>";
+                    echo "<label for='descripcion'>DESCRIPCIÓN </label>";
                     echo "<input type = 'text' name = 'descripcion' id='descripcion' required maxlength='45' value = " . $todos->getDescripcion() . "><br />";
                     echo "<br/>";
-                    echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
+                    echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de pruebas</a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";

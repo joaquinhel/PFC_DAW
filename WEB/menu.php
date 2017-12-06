@@ -27,6 +27,7 @@
                 <div class='casilla'>
                     <li><a href="catalogo.php">Catálogo</a></li>
                 </div>
+
                 <li> | </li>
                 <div class='casilla'>
                     <li><a href="noticias.php">Novedades</a></li>
@@ -46,6 +47,7 @@
                 <div class='casilla'>
                     <li><a href="loginIntranet.php">Intranet</a></li>
                 </div>
+
             </ul>
         </div>
 </html>

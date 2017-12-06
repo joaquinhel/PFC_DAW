@@ -8,7 +8,7 @@
     </head>
     <body id="body">
         <div id="menu">
-            <ul>
+            <ul id='menuIntranet'>
                 <div class='casilla'>
                     <li><a href="../categoria/listar.php">Categorias</a></li>
                 </div>
@@ -24,10 +24,12 @@
                 <div class='casilla'>
                     <li><a href="../producto/listar.php">Productos</a></li>
                 </div>
+
                 <li> | </li>
                 <div class='casilla'>
                     <li><a href="../proveedor/listar.php">Proveedores</a></li>
                 </div>
+             
                 <li> | </li>
                 <div class='casilla'>
                     <li><a href="../prueba/listar.php">Pruebas</a></li>
@@ -40,7 +42,7 @@
                 <div class='casilla'>
                     <li><a href="../usuario/listar.php">Usuarios</a></li>
                 </div>
-                <br/>
+                <br/> <br/>
                 <div class='casilla'>
                     <a href="../../eliminarSesion.php">Salir de INTRANET</a>
                 </div>

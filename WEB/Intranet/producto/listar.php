@@ -12,15 +12,13 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1>LISTADO DE PRODUCTOS</h1>
+                <h1>LISTADO DE PRODUCTOS</h1><br/>
                 <input type='submit' class='navegacion' value='Crear Nuevo Registro' id='crear' name='crear' onclick = "location = './crear.php'"/>
                 <div>
                     <?php
@@ -33,21 +31,21 @@ include_once "../../crearSesion.php";
                     . "</tr>";
 
                     foreach ($todos as $aux) {
-                        echo "<tr>"
+                        echo "<tr class='marcar'>"
                         . "<td>" . $aux->getIdProducto() . "</td> "
                         . "<td>" . $aux->getNombreProducto() . "</td>"
                         . "<td>" . $aux->getDescripcion() . "</td>"
                         . "<td>" . $aux->getMarca() . "</td>"
                         . "<td>" . $aux->getPrecio() . "</td> "
-                        . "<td>" . $aux->getProveedor_idProveedor() . "</td>"
-                        . "<td>" . $aux->getCategoria_idCategoria() . "</td>"
+                        . "<td>" . $aux->getNombreEmpresa() . "</td>"
+                        . "<td>" . $aux->getNombreCategoria() . "</td>"
                         . "<td> <a href='actualizar.php?id=" . $aux->getIdProducto() . "'>Editar</a>
                        <a href='borrar.php?id=" . $aux->getIdProducto() . "'>Borrar</a></tr>";
                     }
                     echo "</table>";
                     ?>
                     <br>
-                        <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
+                        <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la INTRANET</a><br/>
                 </div><br/><br/>
             </div>
             <?php

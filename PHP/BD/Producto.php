@@ -9,6 +9,8 @@ class Producto {
     protected $precio;
     protected $categoria_idCategoria;
     protected $proveedor_idProveedor;
+    protected $nombreEmpresa;
+    protected $nombreCategoria;
 
     public function __construct($row) {
         $this->idProducto = $row ['idProducto'];
@@ -18,6 +20,8 @@ class Producto {
         $this->precio = $row ['precio'];
         $this->categoria_idCategoria = $row ['categoria_idCategoria'];
         $this->proveedor_idProveedor = $row ['proveedor_idProveedor'];
+        $this->nombreEmpresa = $row ['nombreEmpresa'];
+        $this->nombreCategoria = $row ['nombreCategoria'];
     }
 
     public function getIdProducto() {
@@ -75,5 +79,23 @@ class Producto {
     public function setProveedor_idProveedor($proveedor_idProveedor) {
         $this->proveedor_idProveedor = $proveedor_idProveedor;
     }
+
+    public function getNombreCategoria() {
+        return $this->nombreCategoria;
+    }
+
+
+    public function setNombreCategoria($nombreCategoria) {
+        $this->nombreCategoria = $nombreCategoria;
+    }
+    public function getNombreEmpresa() {
+        return $this->nombreEmpresa;
+    }
+
+    public function setNombreEmpresa($nombreEmpresa) {
+        $this->nombreEmpresa = $nombreEmpresa;
+    }
+
+
 
 }

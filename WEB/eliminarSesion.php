@@ -1,7 +1,33 @@
 <?php
-
 session_start();
 session_destroy();
-echo '<h3> La sesión ha finaizado de forma correcta, gracias por utilizar nuestra aplicación</h3>';
-echo '<h2>Pulse <a href=inicio.php>aquí</a> para volver al inicio</h2>';
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>CENTRO OPTICO SÁNCHEZ SERVICIOS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../CSS/inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/conozcanos.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/boton.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body id="body">
+        <?php
+        include_once 'menu.php';
+        ?>
+        <div id='contenedor'>
+            <?php
+            include_once 'cabecera.php';
+            ?>
+            <p id="cierre"> La sesión ha finaizado de forma correcta, gracias por utilizar nuestra aplicación. <br/>
+                <a href=inicio.php>Pulse aquí para volver al inicio</a> </p>
 
+            <?php
+            include 'pie.php';
+            ?>
+        </div>
+        <?php
+        include 'footer.php';
+        ?>
+    </body>
+</html>

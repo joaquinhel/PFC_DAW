@@ -19,10 +19,11 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
+            <?php
+            include_once '../comunes/menu.php';
+            ?>
+
             <?php
             include_once '../comunes/cabecera.php';
             ?>   
@@ -35,17 +36,19 @@ include_once "../../crearSesion.php";
                     $todos = productoBD::obtenerDatosProducto($_GET['id']);
                     $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaProducto()'>";
-                    echo "<p>LOS DATOS ACTUALES DEL PRODUCTO A MODIFICAR SON: <p />";
-                    echo "<input type = 'hidden' name = 'idProducto' maxlength='4' value = " . $todos->getIdProducto() . "> <br />";
-                    echo "<label for='nombre'>* NOMBRE </label> <br/>";
+                    echo "<p class='psin'>LOS DATOS A MODIFICAR DEL PRODUCTO DE LA CATEGORÍA " . $todos->getNombreCategoria() .
+                    "  Y DEL PROVEEDOR " . $todos->getNombreEmpresa() . " SON:<p/>";
+                    echo "<input type = 'hidden' name = 'idProducto' maxlength='4' value = " . $todos->getIdProducto() . ">";
+                    echo "<label for='nombre'>* NOMBRE </label>";
                     echo "<input type = 'text' name = 'nombreProducto' id='nombre' required maxlength='40' value = " . $todos->getNombreProducto() . "><br />";
-                    echo "<label for='descripcion'>DESCRIPCIÓN </label> <br/>";
+                    echo "<label for='descripcion'>DESCRIPCIÓN </label>";
                     echo "<input type = 'text' name = 'descripcion' id='descripcion' maxlength='45' value = " . $todos->getDescripcion() . "><br />";
-                    echo "<label for='marca'>* MARCA </label> <br/>";
+                    echo "<label for='marca'>* MARCA </label>";
                     echo "<input type = 'text' name = 'marca' id='marca' required maxlength='45' value = " . $todos->getMarca() . "><br />";
-                    echo "<label for ='precio'>* PRECIO </label> <br/>";
+                    echo "<label for ='precio'>* PRECIO </label>";
                     echo "<input type = 'text' name = 'precio' id='precio' required maxlength='7' value = " . $todos->getPrecio() . "><br />";
                     //////////////////////////////////////////////////////////////////
+                    echo "<div id='ocultar'>";
                     echo "<label for='idProveedor'>* ID_PROVEEDOR: </label><br/>";
                     echo "<select name='proveedor_idProveedor' id='idProveedor'>";
                     $todos1 = proveedorBD::listarTodos();
@@ -54,20 +57,21 @@ include_once "../../crearSesion.php";
                     }
                     echo "</select><br/> ";
                     /////////////////////////////////////////////////////////////////
-                    echo "<label for = 'idCategoria'>* ID_CATEGORIA: </label><br/>";
+                    echo "<label for = 'idCategoria'>* ID_CATEGORIA: </label>";
                     echo "<select name = 'categoria_idCategoria' id='idCategoria'>";
                     $todos2 = categoriaBD::listarTodos();
                     foreach ($todos2 as $id) {
                         echo "<option value = " . $id->getIdCategoria() . ">" . $id->getNombreCategoria() . "</option>";
                     }
                     echo "</select><br/>";
+                    echo "</div>";
                     /* Cambio el tipo de seleccion
                       echo "<label for = 'proveedor'>* ID_PROVEEDOR </label> <br/>";
                       echo "<input type = 'text' name = 'proveedor_idProveedor' id = 'proveedor' required value = " . $todos->getProveedor_idProveedor() . "><br />";
                       echo "<label for = 'categoria'>* ID_CATEGORIA </label> <br/>";
                       echo "<input type = 'text' name = 'categoria_idCategoria' id = 'categoria' required value = " . $todos->getCategoria_idCategoria() . "><br />";
                       echo "<br/>"; */
-                    echo "<input type = 'submit' value = 'Actualizar' id = 'actualizar' name = 'actualizar'/><br /><br />";
+                    echo "<input type = 'submit' value = 'Actualizar' id = 'actualizar' name = 'actualizar'/><br />";
                     echo "<a href = 'listar.php'>Volver a la lista de productos </a> &emsp;
                             &emsp;
                             ";

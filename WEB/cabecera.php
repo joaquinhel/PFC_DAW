@@ -2,9 +2,9 @@
 
 <html>
     <head>
-        <link href="../css/inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/inicio.css" rel="stylesheet" type="text/css"/>
         <meta charset="UTF-8">
-    </head>
+   </head>
     <body id="body">
 
         <div class="fila">
@@ -15,8 +15,8 @@
                 </p>
 
             </div>
-            <div class="caja">
-                <p>
+            <div class="caja" id='ppal'>
+                <p class="p_cajas">
                     <a href="inicio.php"><img id='logo' src="../imagenes/aplicacion/centroOptico.png" alt="logo"/><br /></a>
                     <a target="_blank" href='https://www.facebook.com/centroopticosanchez/'><img class="iconos" src="../imagenes/iconos/facebook.jpg" alt="face"/></a>
                     <img class="iconos" src="../imagenes/iconos/whatsaap.png" alt="whatsApp" />

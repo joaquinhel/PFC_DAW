@@ -17,11 +17,9 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>  
             <div id='centro'>
@@ -33,28 +31,32 @@ include_once "../../crearSesion.php";
                     $todos = empleadoBD::obtenerDatosEmpleado($_GET['id']);
                     $_SESSION['id'] = $_GET['id'];
                     echo "<form action ='actualizar.php' method = 'POST' onsubmit='return controlarEntradaEmpleado()'>";
-                    echo "<p>LOS DATOS ACTUALES DEL EMPLEADO A MODIFICAR SON: <p />";
-                    echo "<input type = 'hidden' name = 'idEmpleado' id='idEmpleado' maxlength='4' value = " . $todos->getIdEmpleado() . "> <br />";
-                    echo "<label>* NOMBRE </label> <br/>";
+                    echo "<p class='psin'>LOS DATOS A MODIFICAR DEL EMPLEADO CON ID= " . $_GET['id'] . " SON:<p/>";
+                    echo "<input type = 'hidden' name = 'idEmpleado' id='idEmpleado' maxlength='4' value = " . $todos->getIdEmpleado() . ">";
+                    echo "<label>* NOMBRE </label>";
                     echo "<input type = 'text' name = 'nombreEmpleado'id='nombre' required  maxlength='40' value = " . $todos->getNombreEmpleado() . "><br />";
-                    echo "<label>* APELLIDOS</label> <br/>";
+                    echo "<label>* APELLIDOS</label>";
                     echo "<input type = 'text' name = 'apellidos' id='apellido' required  maxlength='45' value = " . $todos->getApellidos() . "><br />";
-                    echo "<label>DIRECCIÓN </label> <br/>";
+                    echo "<label>DIRECCIÓN </label>";
                     echo "<input type = 'text' name = 'direccion' id='direccion'  maxlength='45' value = " . $todos->getDireccion() . "><br />";
-                    echo "<label>* TELÉFONO </label> <br/>";
+                    echo "<label>* TELÉFONO </label>";
                     echo "<input type = 'text' name = 'telefono' id='telefono' required  maxlength='12' value = " . $todos->getTelefono() . "><br />";
-                    echo "<label>EMAIL </label> <br/>";
+                    echo "<label>EMAIL </label>";
                     echo "<input type = 'text' name = 'email' id='email' maxlength='45' value = " . $todos->getEmail() . "><br />";
-                    echo "<label>* FECHA DE CONTRATACIÓN </label> <br/>";
+                    echo "<label>*FECHA ALTA </label>";
                     echo "<input type = 'date' name = 'fechaContratacion' id='fecha' required  value = " . $todos->getFechaContratacion() . "><br />";
-                    echo "<label>* SUELDO </label> <br/>";
+                    echo "<label>* SUELDO </label>";
                     echo "<input type = 'text' name = 'sueldo' maxlength='7' id='sueldo' required value = " . $todos->getSueldo() . "><br />";
-                    echo "<label>* NIF </label> <br/>";
+                    echo "<label>* NIF </label>";
                     echo "<input type = 'text' name = 'nif' id='nif' required maxlength='9' value = " . $todos->getNif() . "><br />";
-                    echo "<label>* ESTADO </label> <br/>";
-                    echo "<input type = 'text' name = 'estado' maxlength='1' value = " . $todos->getEstado() . "><br />";
+                    echo "<label for = 'estado'>* Estado: </label>";
+                    echo "<select name = 'estado'>";
+                    echo "<option value=" . $todos->getEstado() . "> " . $todos->getEstado() . "</option>";
+                    echo "<option value = 'B'>Borrado</option>";
+                    echo "<option value = 'A'>Activo</option>";
+                    echo "</select>";
                     echo "<br/>";
-                    echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br /><br />";
+                    echo "<input type = 'submit' value = 'Actualizar' id='actualizar' name = 'actualizar'/><br/>";
                     echo "<a href = 'listar.php'>Volver a la lista de empleados </a> &emsp;&emsp;";
                     echo "<a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>";
                     echo "</form>";

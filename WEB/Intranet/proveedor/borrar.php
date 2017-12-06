@@ -13,38 +13,44 @@ include_once "../../crearSesion.php";
         <link href="../../../CSS/inicio.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
+            include_once '../../../PHP/BD/proveedorBD.php';
+            $todos = proveedorBD::listarTodos();
             ?>
             <div id='centro'>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                     <h1> BORRAR UN PROVEEDOR </h1>
-                    <p> Introduzca el id del proveedor a borrar</p>
-                    <label>ID proveedor</label><input type='text' name='id' maxlength='4'/><br/>
-                    <input type='submit' name='enviar' value='Borrar'/> <br/><br/>
+                    <p class="negrita"> Introduzca el id del proveedor a borrar (puede consultar el listado de más abajo) </p>
+                    <label>ID proveedor</label>
+                    <select name = 'id' id='id'>
+                        <?php
+                        echo "<option> Seleccionar..</option>";
+                        foreach ($todos as $id) {
+                            echo "<option value = " . $id->getIdProveedor() . ">" . $id->getIdProveedor() . "</option>";
+                        }
+                        ?>
+                    </select>
+                    <input type='submit' name='enviar' value='Borrar'/>  
                 </form>
 
                 <?php
-                include_once '../../../PHP/BD/proveedorBD.php';
                 if (isset($_POST['enviar'])) {
-                   $borrado =  proveedorBD::borrarProveedor($_POST['id']);
-                   if ($borrado == true) {
-                        echo "El registro se ha borrado";
+                    $borrado = proveedorBD::borrarProveedor($_POST['id']);
+                    if ($borrado == true) {
+                        echo "<h4>El registro se ha borrado</h4>";
                     } else {
                         echo "<h4>El borrado no ha sido posible ya que este proveedor está en uso</h4>";
                     }
                 }
-                echo "<h1>LISTADO DE PROVEEDORES</h1 >";
-                $todos = proveedorBD::listarTodos();
+                echo "<h1>LISTADO DE PROVEEDORES</h1>";
                 echo "<table>";
                 echo "<tr><th>ID</th><th>Dirección</th><th>Nombre Empresa</th><th>Persona Contacto</th>"
                 . " <th>CIF</th><th>Email</th><th>Teléfono</th><th>Acciones</th></tr>";
-
-                foreach ($todos as $aux) {
+                $todos1 = proveedorBD::listarTodos();
+                foreach ($todos1 as $aux) {
                     echo "<tr><td>" . $aux->getIdProveedor() . "</td> "
                     . "<td>" . $aux->getDireccion() . "</td>"
                     . "<td>" . $aux->getNombreEmpresa() . "</td>"

@@ -71,9 +71,9 @@ function controlarEntradaEmpleado() { //No hacen falta parámetros usamos las va
     if (error == true) {
         return false;
     } else {
-        alert("El registro ha sido grabado correctamente");
         return true;
     }
+    alert("El registro ha sido grabado correctamente");
 }
 
 
@@ -129,7 +129,6 @@ function controlarEntradaCliente() { //No hacen falta parámetros usamos las var
         alert("El registro ha sido grabado correctamente");
         return true;
     }
-    alert("El registro ha sido grabado correctamente");
 }
 
 
@@ -212,7 +211,6 @@ function controlarEntradaProveedor() { //No hacen falta parámetros usamos las v
     }
 }
 
-
 function controlarEntradaPrueba() {
     nombre = $("#nombre").val();
     instrumental = $("#instrumental").val();
@@ -283,7 +281,6 @@ function controlarUsuario() { //No hacen falta parámetros usamos las variables
         $('#error').append('<h4>' + "Los campos marcados con * son obligatorios" + '</h4>');
         error = true;
     }
-
     else if (nombre.length < 3 || login.length < 3 || email.length > 50 || login.length > 50
             || pass.length < 3 || pass.length > 50) {
         $('#error').append('<h4>' + "Los campos de nombre, login y pass solo aceptan valores entre 3 y 50 caracteres" + '</h4>');

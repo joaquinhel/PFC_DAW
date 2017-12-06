@@ -22,9 +22,6 @@ include_once "../../crearSesion.php";
         <div id="contenedor">
             <?php
             include_once '../comunes/cabecera.php';
-            ?>
-
-            <?php
             include_once '../../../PHP/BD/pruebaClienteBD.php';
             include_once '../../../PHP/BD/clienteBD.php';
             include_once '../../../PHP/BD/pruebaBD.php';
@@ -37,26 +34,24 @@ include_once "../../crearSesion.php";
 
                 global $js; //Variable para controlar si entra o no al js
                 $js = 0;
-                /*echo "<noscript>"; //Cuando está desactivado javascript
+                echo "<noscript>"; //Cuando está desactivado javascript
                 $js = 1;
                 require_once '../../../PHP/BD/Validaciones.php';
                 $validar = Validaciones::controlarEntradaPruebaCliente($row);
                 if ($validar) {
-                   pruebaClienteBD::insertarPruebaCliente($row);
+                    pruebaClienteBD::insertarPruebaCliente($row);
                 }
-                echo "</noscript>";*/
-                
+                echo "</noscript>";
                 if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
                     pruebaClienteBD::insertarPruebaCliente($row);
                 }
-                
             }
             ?>
             <div id='centro'>
                 <h2>PROGRAMAR NUEVA PRUEBA PARA CLIENTE</h2>
                 <div id="error">
                 </div>
-                <label>Introduzca los datos del prueba: </label>
+                <label>Introduzca los datos del prueba que desea grabar </label>
                 <form action="<?php echo ($_SERVER["PHP_SELF"]); ?>" method="post" 
                       onsubmit=" return controlarEntradaPruebaCliente()"> 
                     <label for="cliente">*Cliente: </label>
@@ -84,19 +79,20 @@ include_once "../../crearSesion.php";
                     <input type="date" name="fechaPrueba" required/><br/> 
 
                     <label for="diagnostico">* Diagnostico: </label>
-                    <input type="text" name="diagnostico" maxlength='45' required/><br/>
+                    <input type="text" name="diagnostico" maxlength='45' required/><br/><br/>
 
                     <input type="submit" name="insertar" value="Introducir Nuevo"/><br/>
                     <a href="listar.php">Volver al listado de pruebas - clientes </a>&emsp;
                     <a href = '../../menuIntranet.php'>Volver al indice INTRANET</a>
                 </form> 
-                <?php
-                include_once '../comunes/pie.php';
-                ?>
             </div>
             <?php
-            include '../comunes/footer.php';
+            include_once '../comunes/pie.php';
             ?>
+        </div>
+        <?php
+        include '../comunes/footer.php';
+        ?>
     </body>
 </html>
 

@@ -15,15 +15,13 @@ include_once "../../crearSesion.php";
 
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1>LISTADO DE CATEGORIAS DE CATEGORIAS</h1>
+                <h1>LISTADO DE USUARIOS</h1><br/>
                 <div>
                     <input type='submit' value='Crear Nuevo Registro' class='navegacion' id='crear' name='crear' onclick = "location = './crear.php'"/>
                     <?php
@@ -31,22 +29,23 @@ include_once "../../crearSesion.php";
                     $todos = usuarioBD::listarTodos();
                     echo "<table>";
                     echo "<tr><th>ID</th><th>Login</th>"
-                    . "<th>Nombre</th> <th>Acciones</th></tr>";
+                    . "<th>Nombre</th> <th>Estado</th> <th>Acciones</th></tr>";
 
                     foreach ($todos as $aux) {
                         echo "<tr><td>" . $aux->getIdUsuario() . "</td>"
                         . "<td>" . $aux->getLogin() . "</td>"
                         . "<td>" . $aux->getNombre() . "</td>"
+                        . "<td>" . $aux->getEstado() . "</td>"
                         . "<td> <a href='actualizar.php?id=" . $aux->getIdUsuario() . "'>Editar</a>
                        <a href='borrar.php?id=" . $aux->getIdUsuario() . "'>Borrar</a></tr>";
                     }
                     echo "</table>";
                     ?>
                     <br>
-                        <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/> <br/> 
+                        <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la INTRANET</a><br/> <br/> 
                         <button id='btnajax' data-user="[1,2,3,4,5,6,7,8,9]">Pulsar para ver el detalle de los usuarios</button>
                 </div>
-
+                <br/>
                 <div id="response-container">
                 </div>
                 <br/><br/>

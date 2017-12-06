@@ -12,27 +12,25 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
             ?>
             <div id='centro'>
-                <h1>LISTADO DE EMPLEADOS</h1>
+                <h1>LISTADO DE EMPLEADOS</h1><br/>
                 <input type='submit' value='Crear Nuevo Registro' class='navegacion' id='crear' name='crear' onclick = "location = './crear.php'"/>
                 <div>
                     <?php
                     include_once '../../../PHP/BD/empleadoBD.php';
                     $todos = empleadoBD::listarTodos();
-                    echo "<table border=1px>";
+                    echo "<table>";
                     echo "<tr><th>ID</th><th>Nombre</th><th>Apellidos</th> <th>Dirección</th> "
                     . "<th>Telefono</th> <th>Email</th><th>FechaContratación</th><th>Sueldo</th>"
                     . "<th>nif</th><th>Estado</th><th>Acciones</th></tr>";
 
                     foreach ($todos as $aux) {
-                        echo "<tr><td>" . $aux->getIdEmpleado() . "</td>"
+                        echo "<tr class='marcar'><td>" . $aux->getIdEmpleado() . "</td>"
                         . " <td>" . $aux->getNombreEmpleado() . "</td>"
                         . "<td>" . $aux->getApellidos() . "</td>"
                         . "<td>" . $aux->getDireccion() . "</td>"
@@ -48,7 +46,7 @@ include_once "../../crearSesion.php";
                     echo "</table>";
                     ?>
                     <br/>
-                    <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la Intranet</a><br/>
+                    <a id='volver' class='navegacion' href="../../menuIntranet.php">Volver al Menú de la INTRANET</a><br/>
                 </div> <br/><br/>
             </div> 
             <?php

@@ -16,15 +16,10 @@ include_once "../../crearSesion.php";
         <link rel="icon" type="image/png" href="../../../imagenes/iconos/centroOptico.png" />
     </head>
     <body>  
-        <?php
-        include_once '../comunes/menu.php';
-        ?>
         <div id="contenedor">
             <?php
+            include_once '../comunes/menu.php';
             include_once '../comunes/cabecera.php';
-            ?>
-
-            <?php
             include_once '../../../PHP/BD/productoBD.php';
             include_once '../../../PHP/BD/proveedorBD.php';
             include_once '../../../PHP/BD/categoriaBD.php';
@@ -38,8 +33,17 @@ include_once "../../crearSesion.php";
                 $row['proveedor_idProveedor'] = $_POST['proveedor_idProveedor'];
                 $row['categoria_idCategoria'] = $_POST['categoria_idCategoria'];
 
+                global $js; //Variable para controlar si entra o no al js
+                $js = 0;
+                echo "<noscript>"; //Cuando está desactivado javascript
+                $js = 1;
+                require_once '../../../PHP/BD/Validaciones.php';
                 $validar = Validaciones::controlarEntradaProducto($row);
                 if ($validar) {
+                    productoBD::insertarProducto($row);
+                }
+                echo "</noscript>";
+                if ($js == 0) {//Solo va a entrar cuando no haya entrado al bloque anterior (nonscript)
                     productoBD::insertarProducto($row);
                 }
             }
@@ -93,4 +97,3 @@ include_once "../../crearSesion.php";
         ?>
     </body>
 </html>
-

@@ -11,7 +11,7 @@
         <div class="caja">
             <p>
                 <img class="iconos" src="../imagenes/iconos/localizacion.png" alt="localizacion"/> <br/>
-                LOCALÍZANOS EN <br/>
+
                 Av. Principe de Asturias, 1 <br/>
                 C.P. 30007, Murcia, Frente al Zig Zag <br/>
                 Tel.: 968 967 011 <br/>
