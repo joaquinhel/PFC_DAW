@@ -1,0 +1,109 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+}
+body { 
+    font: 14px/1.4 Georgia, Serif; 
+}
+
+#page-wrap {
+    margin: 50px;
+}
+p {
+    margin: 20px 0; 
+}
+
+h1, h2, form{ 
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+h4{
+    color: red;
+}
+
+table { 
+    width: 60%; 
+    border-collapse: collapse; 
+    margin:auto;
+}
+
+tr:nth-of-type(odd) { 
+    background: #eee; 
+}
+th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+}
+td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    text-align: center;
+}
+
+#volver{
+    margin-left: 36%;
+}
+
+
+#crear{
+    margin-left: 43%;
+    margin-bottom: 40px;
+}
+
+contenido{
+    margin-bottom: 50px;
+
+}
+
+form label {
+    display: inline-block;
+    width: 150px;
+}
+
+form input {
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+form select {
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+a {
+    color:blue;
+    font-size:1.3em;
+}
+a:hover{
+    color:red;
+    text-decoration: underline;
+}
+
+
+.navegacion{
+    float: left;
+    text-align: center;
+}
+
+#centro{
+    width: 90%;
+    margin-left: 5%;
+}
+
+#btnajax{
+    color:red;
+    display: inline-block;
+}
+
+#ocultar{
+    display:none;
+}
+
+.marcar:hover{
+    background: #5721E1;
+    font-weight: bold; 
+}

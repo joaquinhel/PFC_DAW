@@ -1,0 +1,38 @@
+
+.three-columns {
+    font-size: 20px;  
+    line-height: 1.333333334;
+    margin-bottom: 20px;
+    margin-bottom: 2rem;
+    text-align: justify;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    padding: 20px;
+    column-gap: 3rem;
+}
+
+.two-columns {
+    font-size: 20px;  
+    line-height: 1.333333334;
+    margin-bottom: 20px;
+    margin-bottom: 2rem;
+    text-align: justify;
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    padding: 20px;
+    column-gap: 3rem;
+}
+
+li{
+    type:'disc';
+}
+
+
+.foto_prensentacion{
+    width: 200px;
+    height: 200px;
+    float: left;
+    padding: 10px;
+}
